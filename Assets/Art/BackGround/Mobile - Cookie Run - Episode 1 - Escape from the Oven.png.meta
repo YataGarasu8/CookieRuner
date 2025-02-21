@@ -121,7 +121,763 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Escape from the Oven_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4385
+        width: 565
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c871f5fcdc0fc614ea359c8810250554
+      internalID: -861370730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_0
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 4384
+        width: 856
+        height: 317
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f711c92e66211e74d917ac47ca7d586a
+      internalID: -1213445200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4049
+        width: 615
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da016e1f521b9746941064df32aa334
+      internalID: 1842722955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_2
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 4048
+        width: 857
+        height: 315
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83374dc4ed00b5d438fb63c5013d1550
+      internalID: 237377017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 3711
+        width: 584
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ef1e4a9f636cae4d89e0bcb1b270ed7
+      internalID: -1927066342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_4
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 3710
+        width: 792
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6f86daa41e3214696f9d7c64d6301d
+      internalID: 937417355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_5
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 3710
+        width: 857
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d927eeb47fdaa41bde087060510f39
+      internalID: -430173494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_6
+      rect:
+        serializedVersion: 2
+        x: 2260
+        y: 3710
+        width: 854
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753100b8cb864ec4fb5dfe3cd68c04dc
+      internalID: 942478377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3373
+        width: 575
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b029f423ebd67046a236611b65dbde0
+      internalID: 1785711548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_8
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 3375
+        width: 536
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10750f8231148ab4c82f355a90090e3d
+      internalID: 773693963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_9
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3036
+        width: 567
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca1bbc3a4f23f54f9354dbd46eaf126
+      internalID: -1914664345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_10
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 3036
+        width: 739
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f86c74d7efc113f41a9fa5e56a438b1a
+      internalID: 274698878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_11
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 3036
+        width: 728
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db3e632a6344c842923787664f9437c
+      internalID: 588254671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2699
+        width: 597
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f95ec1cfdfa7a448bfc3b351e98350a
+      internalID: 932077050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_13
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 2699
+        width: 587
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d256c4cc7d4ab4ab41cdd6bfb678f0
+      internalID: 1674358364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_14
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 2699
+        width: 688
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ff06cef174ca1a4aa51ebe6f18a5f26
+      internalID: -2017567135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_15
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 2699
+        width: 596
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45e9ff6fd155ebf4494b4e70e801d089
+      internalID: -493749421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_16
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 2364
+        width: 595
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fdecfcdabcc9eb4a8c314f0a3130a01
+      internalID: 1883194578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_17
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 2364
+        width: 595
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a01293a36e73645bfe76fa8a479307
+      internalID: 1269922009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_18
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 2364
+        width: 590
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 327f9439e24f64247a1c599d399fa5d4
+      internalID: 691790681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_19
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2025
+        width: 571
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f809da0e23f3ee4fb61567f6703d384
+      internalID: -1628366059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_20
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 2025
+        width: 856
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48db34bc3ef81b5428a0bfb308f9819e
+      internalID: 133530453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_21
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1688
+        width: 684
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93c1a10af2d4284bbfc5ddb69dfee4d
+      internalID: -1239305984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_22
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 1688
+        width: 1305
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7585eba3a90bd52478be52cad7b4a77a
+      internalID: -233743089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_23
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 1688
+        width: 854
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f1efe85d323801479775b1c01f857a2
+      internalID: -254504582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_24
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1351
+        width: 725
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4628d6d0ad61668479dbffc72c1561ea
+      internalID: 1813088815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_25
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1351
+        width: 858
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd48b2ca18073544795570f5808d187c
+      internalID: -2132619691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_26
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1014
+        width: 594
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff34d1957b0cbd0439482ff328451168
+      internalID: 1839000633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_27
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1014
+        width: 853
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fc09129a236c4842ad01962b4190022
+      internalID: -2066339778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_28
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 1014
+        width: 852
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fa0d4d900342643b79281f22f273b0
+      internalID: -1018121224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_29
+      rect:
+        serializedVersion: 2
+        x: 2327
+        y: 1014
+        width: 850
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9607f3996cdfc3f4b8bca888d1ab8691
+      internalID: 1395093457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_30
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 677
+        width: 956
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ff28361d9232f40a761362411424e0
+      internalID: 1452239817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_31
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 677
+        width: 957
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16505a80800cd324b8b887a3731eb276
+      internalID: -75498475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_32
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 340
+        width: 856
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e424d7b04f2b17458a1cc9053a6e5c6
+      internalID: -1013682372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_33
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 340
+        width: 856
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1b4150e86c25844a10188f4222a079
+      internalID: -120203755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_34
+      rect:
+        serializedVersion: 2
+        x: 1733
+        y: 340
+        width: 855
+        height: 316
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c02c10e47250f4d4e934571f87d29c67
+      internalID: 1325591061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +888,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Escape from the Oven_0: -861370730
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_0: -1213445200
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_1: 1842722955
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_10: 274698878
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_11: 588254671
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_12: 932077050
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_13: 1674358364
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_14: -2017567135
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_15: -493749421
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_16: 1883194578
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_17: 1269922009
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_18: 691790681
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_19: -1628366059
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_2: 237377017
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_20: 133530453
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_21: -1239305984
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_22: -233743089
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_23: -254504582
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_24: 1813088815
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_25: -2132619691
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_26: 1839000633
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_27: -2066339778
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_28: -1018121224
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_29: 1395093457
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_3: -1927066342
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_30: 1452239817
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_31: -75498475
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_32: -1013682372
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_33: -120203755
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_34: 1325591061
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_4: 937417355
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_5: -430173494
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_6: 942478377
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_7: 1785711548
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_8: 773693963
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_9: -1914664345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
