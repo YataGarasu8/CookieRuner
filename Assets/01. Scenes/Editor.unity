@@ -558,8 +558,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1349182172}
   - {fileID: 1561271194}
+  - {fileID: 1349182172}
   m_Father: {fileID: 1534481466}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &983434574
@@ -3132,7 +3132,7 @@ MonoBehaviour:
     backgroundSprite: {fileID: -861370730, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
     scale: {x: 3.2, y: 3.2}
     parallaxMultiplier: 0.8
-    imageCount: 4
+    imageCount: 3
     startPosition: {x: 0, y: 0}
     lastAppliedScale: {x: 1, y: 1}
     lastAppliedStartPosition: {x: 0, y: 0}
@@ -3150,7 +3150,7 @@ MonoBehaviour:
     backgroundSprite: {fileID: -1213445200, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
     scale: {x: 2, y: 2}
     parallaxMultiplier: -1.1
-    imageCount: 6
+    imageCount: 4
     startPosition: {x: 0, y: -1.87}
     lastAppliedScale: {x: 1, y: 1}
     lastAppliedStartPosition: {x: 0, y: 0}
