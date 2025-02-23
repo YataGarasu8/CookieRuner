@@ -22,7 +22,6 @@ public class CameraFollow : MonoBehaviour
         // 초기 오프셋 계산
         initialOffset = targetObject.transform.position - transform.position;
         offsetX += initialOffset.x;
-        offsetY += initialOffset.y;
     }
 
     void Update()
@@ -31,7 +30,7 @@ public class CameraFollow : MonoBehaviour
 
         // 실시간으로 적용되는 오프셋 반영
         Vector3 targetPosition = targetObject.transform.position;
-        Vector3 newCameraPosition = new Vector3(targetPosition.x - offsetX, targetPosition.y - offsetY, transform.position.z);
+        Vector3 newCameraPosition = new Vector3(targetPosition.x - offsetX, transform.position.y, transform.position.z);
         transform.position = newCameraPosition;
     }
 }
