@@ -10,13 +10,15 @@ public class PlayerStats : MonoBehaviour
     public PlayerStatsData statsData; // 플레이어의 스탯 정보를 담은 ScriptableObject 참조
 
     // 현재 체력 (게임 시작 시 최대 체력으로 초기화)
-    private int currentHealth;
+    private float currentHealth;
+    public float CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
     // 추가 속도 (아이템이나 버프에 의해 변동 가능)
     private float speedModifier = 0f;
 
     // 현재 적용 속도 (기본 속도 + 추가 속도)
     public float CurrentSpeed => statsData.baseSpeed + speedModifier;
+    public bool isSpeedUP = false;
 
     private float currentScale;     // 내부적으로 관리하는 크기 값
     // 현재 크기 상태 (크기 증가/감소 시 변경)
@@ -29,6 +31,7 @@ public class PlayerStats : MonoBehaviour
     // 게임 시작 시 초기값 설정
     void Start()
     {
+        Debug.Log($"{CurrentHealth}");
         if (statsData == null)
         {
             Debug.LogError("PlayerStatsData가 할당되지 않았습니다.");

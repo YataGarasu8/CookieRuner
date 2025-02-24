@@ -46,11 +46,11 @@ using UnityEngine;
 // - FixedUpdate는 물리 연산 타이밍과 동기화되며 일정한 간격으로 호출
    
 // 문제 발생 시나리오 (Update 사용 시):
-// -Update에서 트리거 호출 시 같은 프레임 내에서 애니메이션 상태 전환 전에 트리거가 해제되거나 덮어쓰기 발생
+// - Update에서 트리거 호출 시 같은 프레임 내에서 애니메이션 상태 전환 전에 트리거가 해제되거나 덮어쓰기 발생
 // - 이로 인해 애니메이터가 트리거 변경 사항을 감지하지 못하게 됨
    
 // FixedUpdate 사용 시 장점:
-// -물리 연산과 애니메이션 처리가 자연스럽게 동기화
+// - 물리 연산과 애니메이션 처리가 자연스럽게 동기화
 // - 트리거 호출 후 애니메이션 상태 전환이 안정적으로 적용
    
 // 2. Rigidbody와의 일관성 유지
@@ -58,7 +58,7 @@ using UnityEngine;
 // - 트리거 호출을 FixedUpdate에 두면 점프나 이동 애니메이션이 물리 처리와 일관되게 적용됨
    
 // 예시:
-// -점프 시 물리적으로 위로 이동하는 타이밍과 애니메이션 재생 시점이 일치
+// - 점프 시 물리적으로 위로 이동하는 타이밍과 애니메이션 재생 시점이 일치
 // - 애니메이션이 물리적 움직임과 잘 맞아떨어져 더 자연스러운 연출이 가능
    
 // 3. 트리거 호출 시점의 경쟁 조건 방지
@@ -67,7 +67,7 @@ using UnityEngine;
 // - 트리거 상태 유지 및 해제 타이밍 제어가 쉬워짐
    
 // 정리:
-// -Update는 입력 처리에 적합하지만 트리거 적용 타이밍이 불안정할 수 있음
+// - Update는 입력 처리에 적합하지만 트리거 적용 타이밍이 불안정할 수 있음
 // - FixedUpdate는 물리 연산과 동기화되어 트리거 적용 안정성을 확보할 수 있음
 // - 물리 기반 캐릭터 컨트롤러에서는 트리거 호출을 FixedUpdate에서 처리하는 것이 안정적
 // - 이를 통해 트리거가 적용되지 않는 문제를 방지하고, 애니메이션 전환과 물리 연산의 일관성을 유지할 수 있음
@@ -154,14 +154,14 @@ public class PlayerMovement : MonoBehaviour
         if (shouldTriggerJump)
         {
             animator.SetTrigger(Constants.AnimatorParams.JumpTrigger);
-            Debug.Log("[JumpTrigger] 트리거 호출");
+            //Debug.Log("[JumpTrigger] 트리거 호출");
             shouldTriggerJump = false;
         }
 
         if (shouldTriggerDoubleJump)
         {
             animator.SetTrigger(Constants.AnimatorParams.DoubleJumpTrigger);
-            Debug.Log("[DoubleJumpTrigger] 트리거 호출");
+            //Debug.Log("[DoubleJumpTrigger] 트리거 호출");
             shouldTriggerDoubleJump = false;
         }
 
