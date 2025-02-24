@@ -1,19 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class HPCotroller : MonoBehaviour
 {
-    public PlayerStatsData statsData;
-    PlayerStatsData runTimeData;
+    public GameObject PlayerStatus;
 
-    public Slider Slider;
-    Image fillArea;
+    public RectTransform rubTimeHPBar;
 
+    float runTimeHP;
 
     private void Awake()
     {
-        runTimeData = Instantiate(statsData);
+        //runTimeData = Instantiate(statsData);   
+    }
+    private void Start()
+    {
+        //runTimeHP = runTimeData.maxHealth;
+    }
+    private void Update()
+    {
+        HPDown();
+    }
+
+    void HPDown()
+    {
+        rubTimeHPBar.sizeDelta = new Vector2(runTimeHP, 0);
+        runTimeHP -= Time.deltaTime;
     }
 }
