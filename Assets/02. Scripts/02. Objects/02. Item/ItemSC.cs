@@ -8,17 +8,20 @@ public class ItemSC : MonoBehaviour
     public Item data;
     private SpriteRenderer spriteRenderer;
     //private Animator animator;
-    private Rigidbody2D rb;
+    //private Rigidbody2D rb;
 
     [Header("Trigger 감지 설정")]
-    public Vector2 triggerSize = new Vector2(2f, 2f);
-    public float triggerOffset = 5f;
+    public Vector2 triggerSize = new Vector2(1f, 1f);
+    public float triggerOffset = 1f;
 
     private void Start()
     {
-        InitializeComponents();
-        SetupItem();
-        SetupTriggerCollider(); // 트리거 콜라이더 추가
+        Invoke(nameof(InitializeComponents), 0.001f);
+        Invoke(nameof(SetupItem), 0.001f);
+        Invoke(nameof(SetupTriggerCollider), 0.001f);
+        //InitializeComponents();
+        //SetupItem();
+        //SetupTriggerCollider(); // 트리거 콜라이더 추가
     }
 
     private void SetupItem()
@@ -47,13 +50,13 @@ public class ItemSC : MonoBehaviour
         collider.isTrigger = true;
 
         // Rigidbody2D 설정
-        rb = GetComponent<Rigidbody2D>();
+        /*rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody2D>();
         }
         rb.gravityScale = 0;
-        rb.bodyType = RigidbodyType2D.Static; // 장애물은 고정 (움직이는 장애물은 코드 내에서 변경)
+        rb.bodyType = RigidbodyType2D.Static; // 장애물은 고정 (움직이는 장애물은 코드 내에서 변경)*/
     }
 
     private void SetupTriggerCollider()
@@ -73,6 +76,11 @@ public class ItemSC : MonoBehaviour
     public void OnPlayerDetected(Collider2D collider)
     {
         PlayerStats playerStats = collider.GetComponent<PlayerStats>();
+
+        Vector2 coli = new Vector2(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y);
+        Vector2 item = new Vector2((float)transform.position.x, (float)this.transform.position.y);
+        //Debug.Log(collider.gameObject.transform.position.x);
+        //Debug.Log(collider.gameObject.transform.position.y);
         if (playerStats == null)
         {
             Debug.Log("컴포넌트 없음");
@@ -83,7 +91,8 @@ public class ItemSC : MonoBehaviour
         switch (data.Type)
         {
             case ItemType.Score:
-                ScoreManager.Instance.AddScore(data.score);
+                //ScoreManager.Instance.AddScore(data.score);
+                Debug.Log($"스코어 획득 :   { data.score}");
                 break;
             case ItemType.HPUPItem:
                 playerStats.Heal(data.healthBonus);
@@ -104,5 +113,9 @@ public class ItemSC : MonoBehaviour
                 Debug.Log("디폴트");
                 break;
         }
+
+        Debug.Log("Destroy전");
+        this.gameObject.SetActive(false);
+        Debug.Log("Destroy후");
     }
 }

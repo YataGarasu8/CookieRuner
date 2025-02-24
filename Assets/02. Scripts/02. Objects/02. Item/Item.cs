@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public abstract class Item : ScriptableObject
+
+[CreateAssetMenu(fileName = "ItemData", menuName = "Item/Create New Item Data")]
+public class Item : ScriptableObject
 {
     public ItemType Type;
 
@@ -22,6 +24,6 @@ public abstract class Item : ScriptableObject
     [Header("스코어 아이템 전용")]
     public int score;
 
-    public abstract void Use(PlayerStats playerStats);
+    //public abstract void Use(PlayerStats playerStats);
 
 }

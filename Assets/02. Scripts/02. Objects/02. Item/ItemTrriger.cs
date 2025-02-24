@@ -15,6 +15,7 @@ public class ItemTrriger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("if¹® ³»ºÎ");
             Item.OnPlayerDetected(collision);
         }
     }
