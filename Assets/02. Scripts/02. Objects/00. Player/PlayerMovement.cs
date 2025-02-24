@@ -70,6 +70,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isSliding = false;          // 슬라이드 상태
     private bool isInvincible = false;       // 무적 상태 여부
 
+    private bool shouldTriggerJump = false;         // 점프 트리거 호출 플래그
+    private bool shouldTriggerDoubleJump = false;   // 더블 점프 트리거 호출 플래그
+
     void Awake()
     {
         // 필수 컴포넌트 초기화 및 검사
@@ -102,6 +105,21 @@ public class PlayerMovement : MonoBehaviour
         Move();                      // 지속 이동 처리
         isGrounded = CheckGrounded(); // 바닥 감지 업데이트
         UpdateAnimatorParameters(); // 애니메이터 파라미터 업데이트
+
+        // 점프 트리거 호출
+        if (shouldTriggerJump)
+        {
+            animator.SetTrigger(Constants.AnimatorParams.JumpTrigger);
+            Debug.Log("[JumpTrigger] 트리거 호출");
+            shouldTriggerJump = false;
+        }
+
+        if (shouldTriggerDoubleJump)
+        {
+            animator.SetTrigger(Constants.AnimatorParams.DoubleJumpTrigger);
+            Debug.Log("[DoubleJumpTrigger] 트리거 호출");
+            shouldTriggerDoubleJump = false;
+        }
 
         // 착지 시 점프 횟수 초기화
         if (isGrounded && currentJumpCount > 0)
@@ -191,6 +209,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0); // 기존 수직 속도 제거
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 위 방향으로 점프력 적용
         animator.SetTrigger(Constants.AnimatorParams.JumpTrigger); // 점프 애니메이션 실행
+        shouldTriggerJump = true;
         currentJumpCount = 1; // 점프 횟수 갱신
     }
 
@@ -200,6 +219,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0); // 기존 수직 속도 제거
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 이단 점프력 적용
         animator.SetTrigger(Constants.AnimatorParams.DoubleJumpTrigger); // 이단 점프 애니메이션 실행
+        shouldTriggerDoubleJump = true;
         currentJumpCount = 2; // 점프 횟수 갱신
     }
 
