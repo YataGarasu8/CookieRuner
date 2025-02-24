@@ -269,6 +269,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Coin_01
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 15
+        width: 82
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba82d751169c6e944870998f61856b51
+      internalID: 2042848220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_02
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 15
+        width: 82
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755d869d5854cf241bd83cbfd239f384
+      internalID: -1537207722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_03
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 15
+        width: 82
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276dda58a9473b64fb69a82e00b1465e
+      internalID: -355304349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_04
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 15
+        width: 82
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f0fe9bebbddde4aac4620014a77205
+      internalID: -1907962380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -284,6 +368,10 @@ TextureImporter:
       Big_Heart_02: -1414835450
       Big_Heart_03: -1859338712
       Big_Heart_04: -535422665
+      Coin_01: 2042848220
+      Coin_02: -1537207722
+      Coin_03: -355304349
+      Coin_04: -1907962380
       Mobile - Cookie Run - General Jellies_0: -1358846793
       Mobile - Cookie Run - General Jellies_1: 990238935
       Mobile - Cookie Run - General Jellies_2: 1704048084
