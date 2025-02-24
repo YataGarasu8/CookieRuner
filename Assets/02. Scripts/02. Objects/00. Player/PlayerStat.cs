@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
     public PlayerStatsData statsData; // 플레이어의 스탯 정보를 담은 ScriptableObject 참조
 
     // 현재 체력 (게임 시작 시 최대 체력으로 초기화)
-    private int currentHealth;
+    public float currentHealth;
 
     // 추가 속도 (아이템이나 버프에 의해 변동 가능)
     private float speedModifier = 0f;

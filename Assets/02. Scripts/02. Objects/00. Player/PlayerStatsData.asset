@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f51bf9a2f2e52c4ba2733e4e58ad871, type: 3}
   m_Name: PlayerStatsData
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   maxHealth: 100
   baseSpeed: 10
+=======
+  maxHealth: 300
+  baseSpeed: 3.8
+>>>>>>> IGH/HP_UI
   baseScale: 1
   maxScale: 2
   scaleIncreaseAmount: 0.2
