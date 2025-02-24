@@ -10,13 +10,15 @@ public class PlayerStats : MonoBehaviour
     public PlayerStatsData statsData; // 플레이어의 스탯 정보를 담은 ScriptableObject 참조
 
     // 현재 체력 (게임 시작 시 최대 체력으로 초기화)
-    public float currentHealth;
+    private float currentHealth;
+    public float CurrentHealth { get; set; }
 
     // 추가 속도 (아이템이나 버프에 의해 변동 가능)
     private float speedModifier = 0f;
 
     // 현재 적용 속도 (기본 속도 + 추가 속도)
     public float CurrentSpeed => statsData.baseSpeed + speedModifier;
+    public bool isSpeedUP = false;
 
     private float currentScale;     // 내부적으로 관리하는 크기 값
     // 현재 크기 상태 (크기 증가/감소 시 변경)
@@ -26,11 +28,10 @@ public class PlayerStats : MonoBehaviour
     // 크기 변화에 사용되는 코루틴 참조 (중복 실행 방지용)
     private Coroutine scaleCoroutine;
 
-    public bool isSpeedUP = false;
-
     // 게임 시작 시 초기값 설정
     void Start()
     {
+        Debug.Log($"{CurrentHealth}");
         if (statsData == null)
         {
             Debug.LogError("PlayerStatsData가 할당되지 않았습니다.");
@@ -62,14 +63,12 @@ public class PlayerStats : MonoBehaviour
     public void ModifySpeed(float amount)
     {
         speedModifier += amount;
-        isSpeedUP = true;
     }
 
     // 추가 속도를 초기화 (버프 효과 종료 시 사용)
     public void ResetSpeedModifier()
     {
         speedModifier = 0f;
-        isSpeedUP = false;
     }
 
     // 플레이어 크기를 일정량 증가시킴

@@ -168,33 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 329669093}
-  backgroundLayer:
-    layerName: Background
-    backgroundSprite: {fileID: -861370730, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
-    scale: {x: 3.2, y: 3.2}
-    parallaxMultiplier: 0.8
-    imageCount: 3
-    startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 1, y: 1}
-    lastAppliedStartPosition: {x: 0, y: 0}
-  midgroundLayer:
-    layerName: Midground
-    backgroundSprite: {fileID: 0}
-    scale: {x: 1, y: 1}
-    parallaxMultiplier: 0.5
-    imageCount: 5
-    startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 1, y: 1}
-    lastAppliedStartPosition: {x: 0, y: 0}
-  foregroundLayer:
-    layerName: Foreground
-    backgroundSprite: {fileID: -1213445200, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
-    scale: {x: 2, y: 2}
-    parallaxMultiplier: -1.1
-    imageCount: 4
-    startPosition: {x: 0, y: -1.87}
-    lastAppliedScale: {x: 1, y: 1}
-    lastAppliedStartPosition: {x: 0, y: 0}
 --- !u!1 &329669092
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3b33abaa003fe429d6650924e6bf6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsData: {fileID: 11400000, guid: afc31491e8d93b142b2058c54e976d13, type: 2}
-  currentHealth: 0
+  statsData: {fileID: 11400000, guid: baf46ec227536d644932ccdd7c95749c, type: 2}
+  isSpeedUP: 0
 --- !u!114 &329669096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +302,8 @@ MonoBehaviour:
   normalColliderOffset: {x: 0.15, y: -0.77}
   slideColliderSize: {x: 1.25, y: 0.5}
   slideColliderOffset: {x: 0.1, y: -1.07}
+  invincibilityDuration: 2
+  blinkInterval: 0.2
 --- !u!50 &329669098
 Rigidbody2D:
   serializedVersion: 4
@@ -986,50 +961,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &933561170
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 933561171}
-  - component: {fileID: 933561172}
-  m_Layer: 0
-  m_Name: MapManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &933561171
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933561170}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1724818612}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &933561172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933561170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40edd276bf717c34a8fe9987e2f1c8ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1025957582
 GameObject:
   m_ObjectHideFlags: 0
@@ -7454,6 +7385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinCountText: {fileID: 1903246685}
+  PausePanel: {fileID: 0}
 --- !u!1 &1665323994
 GameObject:
   m_ObjectHideFlags: 0
@@ -7533,7 +7465,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 933561171}
   - {fileID: 611450807}
   - {fileID: 1467050051}
   m_Father: {fileID: 0}

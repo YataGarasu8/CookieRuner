@@ -12,16 +12,17 @@ public class HPCotroller : MonoBehaviour
 
     private void Start()
     {
-        backGroundBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().currentHealth, 24);
+        backGroundBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().CurrentHealth, 24);
     }
     private void Update()
     {
         HPDown();
+        Debug.Log($"{PlayerStat.GetComponent<PlayerStats>().CurrentHealth}");
     }
 
     void HPDown()
     {
-        rubTimeHPBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().currentHealth, 0);
-        PlayerStat.GetComponent<PlayerStats>().currentHealth -= Time.deltaTime;
+        rubTimeHPBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().CurrentHealth, 0);
+        PlayerStat.GetComponent<PlayerStats>().CurrentHealth -= Time.deltaTime;
     }
 }
