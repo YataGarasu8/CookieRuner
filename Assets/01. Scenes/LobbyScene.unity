@@ -592,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 401896048}
-  bgmVolume: 0.353
+  bgmVolume: 0.274
   sfxPoolSize: 10
   sfxVolume: 0.616
   sfxClips: []
@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.501
+  m_Value: 0.198
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
