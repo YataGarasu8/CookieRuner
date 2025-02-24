@@ -79,8 +79,6 @@ public class ItemSC : MonoBehaviour
 
         Vector2 coli = new Vector2(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y);
         Vector2 item = new Vector2((float)transform.position.x, (float)this.transform.position.y);
-        //Debug.Log(collider.gameObject.transform.position.x);
-        //Debug.Log(collider.gameObject.transform.position.y);
         if (playerStats == null)
         {
             Debug.Log("컴포넌트 없음");
@@ -98,13 +96,29 @@ public class ItemSC : MonoBehaviour
                 playerStats.Heal(data.healthBonus);
                 break;
             case ItemType.SpeedUPItem:
-                playerStats.ModifySpeed(data.speedBonus);
-                playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                if (playerStats.isSpeedUP)
+                {
+                    playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                }
+                else
+                {
+                    playerStats.ModifySpeed(data.speedBonus);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                }
                 break;
             case ItemType.TreasureItem:
                 playerStats.Heal(data.healthBonus);
-                playerStats.ModifySpeed(data.speedBonus);
-                playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                if (playerStats.isSpeedUP)
+                {
+                    playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                }
+                else
+                {
+                    playerStats.ModifySpeed(data.speedBonus);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                }
                 break;
             case ItemType.BonusItem:
                 //보너스아이템 처리
@@ -118,9 +132,6 @@ public class ItemSC : MonoBehaviour
                 Debug.Log("디폴트");
                 break;
         }
-
-        Debug.Log("Destroy전");
         Destroy(this);
-        Debug.Log("Destroy후");
     }
 }

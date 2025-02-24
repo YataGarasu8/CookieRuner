@@ -26,6 +26,8 @@ public class PlayerStats : MonoBehaviour
     // 크기 변화에 사용되는 코루틴 참조 (중복 실행 방지용)
     private Coroutine scaleCoroutine;
 
+    public bool isSpeedUP = false;
+
     // 게임 시작 시 초기값 설정
     void Start()
     {
@@ -60,12 +62,14 @@ public class PlayerStats : MonoBehaviour
     public void ModifySpeed(float amount)
     {
         speedModifier += amount;
+        isSpeedUP = true;
     }
 
     // 추가 속도를 초기화 (버프 효과 종료 시 사용)
     public void ResetSpeedModifier()
     {
         speedModifier = 0f;
+        isSpeedUP = false;
     }
 
     // 플레이어 크기를 일정량 증가시킴
