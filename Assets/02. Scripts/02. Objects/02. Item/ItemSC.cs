@@ -12,7 +12,7 @@ public class ItemSC : MonoBehaviour
 
     [Header("Trigger 감지 설정")]
     public Vector2 triggerSize = new Vector2(1f, 1f);
-    public float triggerOffset = 1f;
+    public float triggerOffset = 0f;
 
     private void Start()
     {
@@ -92,22 +92,27 @@ public class ItemSC : MonoBehaviour
         {
             case ItemType.Score:
                 //ScoreManager.Instance.AddScore(data.score);
-                Debug.Log($"스코어 획득 :   { data.score}");
+                Debug.Log($"스코어 획득 :   {data.score}");
                 break;
             case ItemType.HPUPItem:
                 playerStats.Heal(data.healthBonus);
                 break;
             case ItemType.SpeedUPItem:
                 playerStats.ModifySpeed(data.speedBonus);
+                playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
                 break;
             case ItemType.TreasureItem:
-                {
-                    playerStats.Heal(data.healthBonus);
-                    playerStats.ModifySpeed(data.speedBonus);
-                }
+                playerStats.Heal(data.healthBonus);
+                playerStats.ModifySpeed(data.speedBonus);
+                playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
                 break;
             case ItemType.BonusItem:
                 //보너스아이템 처리
+                break;
+            case ItemType.PowerUPItem:
+                playerStats.IncreaseSize();
+
+                //무적처리
                 break;
             default:
                 Debug.Log("디폴트");
@@ -115,7 +120,7 @@ public class ItemSC : MonoBehaviour
         }
 
         Debug.Log("Destroy전");
-        this.gameObject.SetActive(false);
+        Destroy(this);
         Debug.Log("Destroy후");
     }
 }
