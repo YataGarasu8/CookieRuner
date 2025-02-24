@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         HandleMovementInput();  // 점프 및 슬라이드 입력 처리
         HandleSpeedInput();     // 속도 조절 입력 처리
         HandleSizeInput();      // 크기 조절 입력 처리
-
+        Debug.Log($"{stats.CurrentHealth}");
         HandleDamageTestInput(); // 임시 데미지 입력 처리
     }
 

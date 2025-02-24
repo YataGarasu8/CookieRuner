@@ -1,147 +1,204 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-// Å¸ÀÏ¸ÊÀ» °ü¸®ÇÏ¸ç ÇÃ·¹ÀÌ¾î ÀÌµ¿¿¡ µû¶ó Å¸ÀÏ¸Ê »ı¼º ¹× Á¦°Å¸¦ ´ã´çÇÏ´Â Å¬·¡½º
-// - ÀÎ½ºÆåÅÍ Ã¢¿¡¼­ ¿©·¯ Å¸ÀÏ¸Ê ÇÁ¸®ÆÕÀ» ¹Ş¾Æ ¼ø¼­´ë·Î »ç¿ë
-// - È°¼ºÈ­µÈ Å¸ÀÏ¸Ê °³¼ö´Â 2°³·Î Á¦ÇÑ
-// - ÇöÀç ÇÃ·¹ÀÌ¾î°¡ À§Ä¡ÇÑ Å¸ÀÏ¸ÊÀÇ ±æÀÌ¸¦ °¡Á®¿Í ÇØ´ç À§Ä¡¿¡ ÀÌ¾î¼­ ´ÙÀ½ Å¸ÀÏ¸Ê »ı¼º
-// - ÇÃ·¹ÀÌ¾î°¡ Å¸ÀÏ¸ÊÀÇ 3ºĞÀÇ 2 ÁöÁ¡À» Áö³ª¸é »õ·Î¿î Å¸ÀÏ¸Ê »ı¼º ¹× ÀÌÀü Å¸ÀÏ¸Ê Á¦°Å
+// íƒ€ì¼ë§µì„ ê´€ë¦¬í•˜ë©° í”Œë ˆì´ì–´ ì´ë™ì— ë”°ë¼ íƒ€ì¼ë§µ ìƒì„± ë° ì œê±°ë¥¼ ë‹´ë‹¹í•˜ëŠ” í´ë˜ìŠ¤
+// - ì¸ìŠ¤í™í„° ì°½ì—ì„œ ì—¬ëŸ¬ íƒ€ì¼ë§µ í”„ë¦¬íŒ¹ì„ ë°›ì•„ ìˆœì„œëŒ€ë¡œ ì‚¬ìš©
+// - í™œì„±í™”ëœ íƒ€ì¼ë§µ ê°œìˆ˜ëŠ” 2ê°œë¡œ ì œí•œ
+// - í˜„ì¬ í”Œë ˆì´ì–´ê°€ ìœ„ì¹˜í•œ íƒ€ì¼ë§µì˜ ê¸¸ì´ë¥¼ ê°€ì ¸ì™€ í•´ë‹¹ ìœ„ì¹˜ì— ì´ì–´ì„œ ë‹¤ìŒ íƒ€ì¼ë§µ ìƒì„±
+// - í”Œë ˆì´ì–´ê°€ íƒ€ì¼ë§µì˜ 3ë¶„ì˜ 2 ì§€ì ì„ ì§€ë‚˜ë©´ ìƒˆë¡œìš´ íƒ€ì¼ë§µ ìƒì„± ë° ì´ì „ íƒ€ì¼ë§µ ì œê±°
+
 public class TilemapManager : MonoBehaviour
 {
-    [Header("Å¸ÀÏ¸Ê °ü¸® ¼³Á¤")]
-    [Tooltip("»ç¿ëÇÒ Å¸ÀÏ¸Ê ÇÁ¸®ÆÕ ¸®½ºÆ® (»ı¼º ¼ø¼­´ë·Î Ãß°¡)")]
-    public List<GameObject> tilemapPrefabs;       // »ç¿ëÇÒ Å¸ÀÏ¸Ê ÇÁ¸®ÆÕ ¸®½ºÆ®
+    [Header("íƒ€ì¼ë§µ ê´€ë¦¬ ì„¤ì •")]
+    [Tooltip("ì‚¬ìš©í•  íƒ€ì¼ë§µ í”„ë¦¬íŒ¹ ë¦¬ìŠ¤íŠ¸ (ìƒì„± ìˆœì„œëŒ€ë¡œ ì¶”ê°€)")]
+    public List<GameObject> tilemapPrefabs; // ì‚¬ìš©í•  íƒ€ì¼ë§µ í”„ë¦¬íŒ¹ ëª©ë¡ (ìˆœí™˜ì ìœ¼ë¡œ ì‚¬ìš©)
 
-    [Tooltip("ÇÃ·¹ÀÌ¾î Æ®·£½ºÆû")]
-    public Transform player;                      // ÇÃ·¹ÀÌ¾î ÂüÁ¶
+    [Tooltip("í”Œë ˆì´ì–´ íŠ¸ëœìŠ¤í¼")]
+    public Transform player; // í”Œë ˆì´ì–´ì˜ Transform (ìœ„ì¹˜ ê¸°ë°˜ íƒ€ì¼ë§µ ì „í™˜ì— ì‚¬ìš©)
 
-    private Queue<GameObject> activeTilemaps = new Queue<GameObject>(); // È°¼º Å¸ÀÏ¸Ê Å¥ (ÃÖ´ë 2°³ À¯Áö)
-    private int currentTilemapIndex = 0;                                // ÇöÀç »ç¿ëÇÒ Å¸ÀÏ¸Ê ÀÎµ¦½º
-    private GameObject currentTilemap;                                  // ÇöÀç ÇÃ·¹ÀÌ¾î°¡ À§Ä¡ÇÑ Å¸ÀÏ¸Ê
-    private float currentTilemapThresholdX;                             // ÇöÀç Å¸ÀÏ¸ÊÀÇ 3ºĞÀÇ 2 ÁöÁ¡ X ÁÂÇ¥
+    [Header("íŒ¨ëŸ´ë™ìŠ¤ ë° í˜ì´ë“œ ì„¤ì •")]
+    [Tooltip("ê²Œì„ì—ì„œ ì‚¬ìš©í•  ë‹¨ì¼ íŒ¨ëŸ´ë™ìŠ¤ ë ˆì´ì–´")]
+    public MultipleParallaxLayer parallaxLayer; // íŒ¨ëŸ´ë™ìŠ¤ ë ˆì´ì–´ ì°¸ì¡° (í•˜ë‚˜ë§Œ ì‚¬ìš©)
 
+    [Tooltip("í˜ì´ë“œ íš¨ê³¼ë¥¼ ë‹´ë‹¹í•˜ëŠ” ë§¤ë‹ˆì €")]
+    public FadeManager fadeManager; // í™”ë©´ ì „í™˜ ì‹œ í˜ì´ë“œ ì¸/ì•„ì›ƒ íš¨ê³¼ë¥¼ ìœ„í•œ ë§¤ë‹ˆì €
+
+    private Queue<GameObject> activeTilemaps = new Queue<GameObject>(); // í™œì„±í™”ëœ íƒ€ì¼ë§µì„ íë¡œ ê´€ë¦¬ (ìµœëŒ€ 2ê°œ ìœ ì§€)
+    private int currentTilemapIndex = 0; // í˜„ì¬ ì‚¬ìš©í•  íƒ€ì¼ë§µ ì¸ë±ìŠ¤ (ìˆœí™˜ ë°©ì‹)
+    private GameObject currentTilemap; // í˜„ì¬ í”Œë ˆì´ì–´ê°€ ìœ„ì¹˜í•œ íƒ€ì¼ë§µ
+    private float currentTilemapThresholdX; // í”Œë ˆì´ì–´ê°€ ì§€ë‚  ë•Œ ìƒˆë¡œìš´ íƒ€ì¼ë§µì„ ìƒì„±í•˜ëŠ” ì„ê³„ê°’ (í˜„ì¬ íƒ€ì¼ë§µì˜ 3ë¶„ì˜ 2 ì§€ì )
+
+    private bool isChangingTilemap = false; // ì½”ë£¨í‹´ ì¤‘ë³µ ë°©ì§€
+
+    // ê²Œì„ ì‹œì‘ ì‹œ ì´ˆê¸° íƒ€ì¼ë§µ ìƒì„± ë° ì „í™˜ ì„ê³„ê°’ ì„¤ì •
     void Start()
     {
+        // íƒ€ì¼ë§µ í”„ë¦¬íŒ¹ ë¦¬ìŠ¤íŠ¸ ìœ íš¨ì„± ê²€ì‚¬
         if (tilemapPrefabs == null || tilemapPrefabs.Count == 0)
         {
-            Debug.LogError("TilemapManager: Å¸ÀÏ¸Ê ÇÁ¸®ÆÕ ¸®½ºÆ®°¡ ºñ¾î ÀÖ½À´Ï´Ù. ÀÎ½ºÆåÅÍ¿¡¼­ ¼³Á¤ÇÏ¼¼¿ä.");
+            Debug.LogError("TilemapManager: íƒ€ì¼ë§µ í”„ë¦¬íŒ¹ ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤. ì¸ìŠ¤í™í„°ì—ì„œ ì„¤ì •í•˜ì„¸ìš”.");
             return;
         }
 
+        // í”Œë ˆì´ì–´ ì°¸ì¡° ìœ íš¨ì„± ê²€ì‚¬
         if (!player)
         {
-            Debug.LogError("TilemapManager: ÇÃ·¹ÀÌ¾î°¡ ÇÒ´çµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogError("TilemapManager: í”Œë ˆì´ì–´ê°€ í• ë‹¹ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
             return;
         }
 
-        // ÃÊ±â Å¸ÀÏ¸Ê »ı¼º ¹× ÀÓ°è ÁöÁ¡ ¼³Á¤
+        // íŒ¨ëŸ´ë™ìŠ¤ ë ˆì´ì–´ ì°¸ì¡° ìœ íš¨ì„± ê²€ì‚¬
+        if (!parallaxLayer)
+        {
+            Debug.LogError("TilemapManager: íŒ¨ëŸ´ë™ìŠ¤ ë ˆì´ì–´ê°€ í• ë‹¹ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+            return;
+        }
+
+        // ì´ˆê¸° íƒ€ì¼ë§µ ìƒì„± ë° íƒ€ì¼ë§µ ì „í™˜ ì„ê³„ê°’ ì„¤ì •
         SpawnInitialTilemap();
         UpdateTilemapThreshold();
     }
 
+    // ë§¤ í”„ë ˆì„ í”Œë ˆì´ì–´ ìœ„ì¹˜ í™•ì¸ ë° íƒ€ì¼ë§µ ì „í™˜ ì¡°ê±´ ê²€ì‚¬
     void Update()
     {
-        if (player.position.x >= currentTilemapThresholdX)
+        // í”Œë ˆì´ì–´ê°€ í˜„ì¬ íƒ€ì¼ë§µì˜ 3ë¶„ì˜ 2 ì§€ì ì„ ì§€ë‚¬ì„ ë•Œ ë‹¤ìŒ íƒ€ì¼ë§µ ìƒì„±
+        if (!isChangingTilemap && player.position.x >= currentTilemapThresholdX)
         {
-            SpawnTilemap();           // ´ÙÀ½ Å¸ÀÏ¸Ê »ı¼º
-            UpdateTilemapThreshold(); // »õ·Î¿î Å¸ÀÏ¸Ê ÀÓ°è°ª °»½Å
+            StartCoroutine(ChangeTilemapWithFade());
+        }
+    }
 
-            // ÃÖ´ë È°¼º Å¸ÀÏ¸Ê ¼ö(2°³) ÃÊ°ú ½Ã ÀÌÀü Å¸ÀÏ¸Ê Á¦°Å
-            if (activeTilemaps.Count > 2)
+    // ê²Œì„ ì‹œì‘ ì‹œ ìµœì´ˆ íƒ€ì¼ë§µ ìƒì„± ë° íŒ¨ëŸ´ë™ìŠ¤ ì„¤ì • ì ìš©
+    private void SpawnInitialTilemap()
+    {
+        // ì²« ë²ˆì§¸ íƒ€ì¼ë§µ í”„ë¦¬íŒ¹ì„ (0,0,0) ìœ„ì¹˜ì— ìƒì„±
+        GameObject initialTilemap = Instantiate(GetNextTilemapPrefab(), Vector3.zero, Quaternion.identity);
+        initialTilemap.transform.SetParent(transform); // TilemapManagerì˜ ìì‹ìœ¼ë¡œ ì„¤ì •
+
+        activeTilemaps.Enqueue(initialTilemap); // íì— ì¶”ê°€í•˜ì—¬ í™œì„± íƒ€ì¼ë§µìœ¼ë¡œ ë“±ë¡
+        currentTilemap = initialTilemap; // í˜„ì¬ íƒ€ì¼ë§µ ì°¸ì¡° ê°±ì‹ 
+
+        // ìƒì„±ëœ íƒ€ì¼ë§µì˜ íŒ¨ëŸ´ë™ìŠ¤ ì„¤ì • ì ìš©
+        ApplyParallaxConfigFromTilemap(initialTilemap);
+    }
+
+    // íƒ€ì¼ë§µ ì „í™˜ ì‹œ í˜ì´ë“œ íš¨ê³¼ ì ìš© ë° ìƒˆë¡œìš´ íƒ€ì¼ë§µ ìƒì„± ì²˜ë¦¬
+    private IEnumerator ChangeTilemapWithFade()
+    {
+        isChangingTilemap = true; // ì¤‘ë³µ ì‹¤í–‰ ë°©ì§€
+
+        // FadeInOut ë©”ì„œë“œë¥¼ í•œ ë²ˆë§Œ í˜¸ì¶œí•˜ì—¬ ì¤‘ê°„ ì•ŒíŒŒ ë„ë‹¬ ì‹œ íƒ€ì¼ë§µ ì „í™˜ ì²˜ë¦¬
+        yield return StartCoroutine(fadeManager.FadeInOut(() =>
+        {
+            // ê°€ì¥ ì˜¤ë˜ëœ íƒ€ì¼ë§µ ì œê±° (í ê´€ë¦¬ ìš°ì„ )
+            if (activeTilemaps.Count >= 2)
             {
                 RemoveOldestTilemap();
             }
-        }
+
+            // ìƒˆë¡œìš´ íƒ€ì¼ë§µ ìƒì„±
+            SpawnNextTilemap();
+
+            // ìƒˆë¡œìš´ íƒ€ì¼ë§µ ìƒì„± í›„ ì„ê³„ê°’ ì—…ë°ì´íŠ¸
+            UpdateTilemapThreshold();
+        }));
+
+        isChangingTilemap = false; // ì½”ë£¨í‹´ ì¢…ë£Œ ì‹œ í”Œë˜ê·¸ í•´ì œ
     }
 
-    // ÃÊ±â Å¸ÀÏ¸Ê »ı¼º ¹× Å¥¿¡ Ãß°¡
-    private void SpawnInitialTilemap()
-    {
-        GameObject initialTilemap = Instantiate(GetNextTilemapPrefab(), Vector3.zero, Quaternion.identity);
-        initialTilemap.transform.SetParent(transform); // TilemapManager ÇÏÀ§¿¡ ¹èÄ¡
-        activeTilemaps.Enqueue(initialTilemap);
-        currentTilemap = initialTilemap;
 
-        // parallaxLayer Ã£±â ¹× ÇÃ·¹ÀÌ¾î transform ÇÒ´ç
-        var parallaxLayer = currentTilemap.GetComponentInChildren<MultiLayerParallaxWithDynamicStartPositionAndScale>();
-        if (parallaxLayer != null)
-        {
-            parallaxLayer.playerTransform = player;
-        }
-        else
-        {
-            Debug.LogWarning("parallaxLayer¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
-        }
-    }
-
-    // »õ·Î¿î Å¸ÀÏ¸Ê »ı¼º ¹× Å¥¿¡ Ãß°¡
-    private void SpawnTilemap()
+    // ìƒˆë¡œìš´ íƒ€ì¼ë§µ ìƒì„± ë° í ê´€ë¦¬, íŒ¨ëŸ´ë™ìŠ¤ ì„¤ì • ì ìš©
+    private void SpawnNextTilemap()
     {
+        // í˜„ì¬ íƒ€ì¼ë§µì˜ ê°€ë¡œ ê¸¸ì´ ê³„ì‚°
         float tilemapLength = GetTilemapWorldLength(currentTilemap);
+
+        // ìƒˆ íƒ€ì¼ë§µ ìƒì„± ìœ„ì¹˜ ê³„ì‚° (í˜„ì¬ íƒ€ì¼ë§µ ì˜¤ë¥¸ìª½ ëì— ë°°ì¹˜)
         Vector3 spawnPosition = currentTilemap.transform.position + new Vector3(tilemapLength, 0f, 0f);
 
+        // ìƒˆ íƒ€ì¼ë§µ ìƒì„± ë° TilemapManagerì˜ ìì‹ìœ¼ë¡œ ì„¤ì •
         GameObject newTilemap = Instantiate(GetNextTilemapPrefab(), spawnPosition, Quaternion.identity);
-        newTilemap.transform.SetParent(transform); // TilemapManager ÇÏÀ§¿¡ ¹èÄ¡
+        newTilemap.transform.SetParent(transform);
 
-        // parallaxLayer Ã£±â ¹× ÇÃ·¹ÀÌ¾î transform ÇÒ´ç
-        var parallaxLayer = newTilemap.GetComponentInChildren<MultiLayerParallaxWithDynamicStartPositionAndScale>();
-        if (parallaxLayer != null)
-        {
-            parallaxLayer.playerTransform = player;
-        }
-        else
-        {
-            Debug.LogWarning("parallaxLayer¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
-        }
+        // í™œì„± íƒ€ì¼ë§µ íì— ì¶”ê°€í•˜ê³  í˜„ì¬ íƒ€ì¼ë§µ ì°¸ì¡° ê°±ì‹ 
+        activeTilemaps.Enqueue(newTilemap);
+        currentTilemap = newTilemap;
 
-        activeTilemaps.Enqueue(newTilemap); // Å¥¿¡ Ãß°¡
-        currentTilemap = newTilemap;        // ÇöÀç Å¸ÀÏ¸Ê ¾÷µ¥ÀÌÆ®
+        // ìƒˆ íƒ€ì¼ë§µì˜ íŒ¨ëŸ´ë™ìŠ¤ ì„¤ì • ì ìš© (ì„ê³„ê°’ ì—…ë°ì´íŠ¸ ì´í›„ì— í˜¸ì¶œ)
+        ApplyParallaxConfigFromTilemap(newTilemap);
     }
 
-    // Å¸ÀÏ¸Ê ÇÁ¸®ÆÕ ¸®½ºÆ®¿¡¼­ ´ÙÀ½ Å¸ÀÏ¸Ê °¡Á®¿À±â (¼øÈ¯)
-    private GameObject GetNextTilemapPrefab()
-    {
-        GameObject prefab = tilemapPrefabs[currentTilemapIndex];
-        currentTilemapIndex = (currentTilemapIndex + 1) % tilemapPrefabs.Count; // ÀÎµ¦½º ¼øÈ¯
-        return prefab;
-    }
-
-    // ÇöÀç Å¸ÀÏ¸ÊÀÇ 3ºĞÀÇ 2 ÁöÁ¡ °è»ê ¹× ¾÷µ¥ÀÌÆ®
-    private void UpdateTilemapThreshold()
-    {
-        float tilemapLength = GetTilemapWorldLength(currentTilemap);
-        currentTilemapThresholdX = currentTilemap.transform.position.x + (tilemapLength * 2f / 3f);
-    }
-
-    // °¡Àå ¿À·¡µÈ Å¸ÀÏ¸Ê Á¦°Å
+    // ê°€ì¥ ì˜¤ë˜ëœ íƒ€ì¼ë§µ ì œê±° ë° ë©”ëª¨ë¦¬ ìµœì í™”
     private void RemoveOldestTilemap()
     {
         if (activeTilemaps.Count == 0) return;
 
-        GameObject oldestTilemap = activeTilemaps.Dequeue();
+        GameObject oldestTilemap = activeTilemaps.Dequeue(); // íì—ì„œ ê°€ì¥ ì˜¤ë˜ëœ íƒ€ì¼ë§µ ì œê±°
         if (oldestTilemap != null)
         {
-            Destroy(oldestTilemap); // ¸Ş¸ğ¸® Àı¾àÀ» À§ÇØ Á¦°Å
+            Destroy(oldestTilemap); // ë©”ëª¨ë¦¬ ì ˆì•½ì„ ìœ„í•´ ì œê±°
         }
     }
 
-    // Å¸ÀÏ¸ÊÀÇ °¡·Î ±æÀÌ¸¦ ¿ùµå ÁÂÇ¥ ±âÁØÀ¸·Î °è»ê
+    // íƒ€ì¼ë§µì—ì„œ ParallaxLayerConfigDataë¥¼ ê°€ì ¸ì™€ íŒ¨ëŸ´ë™ìŠ¤ ë ˆì´ì–´ì— ì ìš©
+    private void ApplyParallaxConfigFromTilemap(GameObject tilemapObj)
+    {
+        // íƒ€ì¼ë§µì—ì„œ TilemapParallaxData ì»´í¬ë„ŒíŠ¸ ê°€ì ¸ì˜¤ê¸°
+        var tilemapData = tilemapObj.GetComponent<TilemapParallaxData>();
+
+        // íŒ¨ëŸ´ë™ìŠ¤ ì„¤ì •ì´ ì¡´ì¬í•˜ë©´ ì ìš©
+        if (tilemapData != null && tilemapData.parallaxConfigData != null)
+        {
+            parallaxLayer.ApplyParallaxConfig(tilemapData.parallaxConfigData);
+        }
+        else
+        {
+            Debug.LogWarning($"TilemapManager: {tilemapObj.name}ì— íŒ¨ëŸ´ë™ìŠ¤ ì„¤ì •ì´ ì—†ìŠµë‹ˆë‹¤.");
+        }
+    }
+
+    // íƒ€ì¼ë§µ í”„ë¦¬íŒ¹ ë¦¬ìŠ¤íŠ¸ì—ì„œ ë‹¤ìŒ íƒ€ì¼ë§µì„ ìˆœí™˜ì ìœ¼ë¡œ ê°€ì ¸ì˜¤ê¸°
+    private GameObject GetNextTilemapPrefab()
+    {
+        // í˜„ì¬ ì¸ë±ìŠ¤ì˜ íƒ€ì¼ë§µ ë°˜í™˜
+        GameObject prefab = tilemapPrefabs[currentTilemapIndex];
+
+        // ì¸ë±ìŠ¤ë¥¼ ìˆœí™˜ì ìœ¼ë¡œ ì—…ë°ì´íŠ¸
+        currentTilemapIndex = (currentTilemapIndex + 1) % tilemapPrefabs.Count;
+
+        return prefab;
+    }
+
+    // í˜„ì¬ íƒ€ì¼ë§µì˜ 3ë¶„ì˜ 2 ì§€ì ì„ ê³„ì‚°í•˜ì—¬ ì „í™˜ ì„ê³„ê°’ì„ ì—…ë°ì´íŠ¸
+    private void UpdateTilemapThreshold()
+    {
+        float tilemapLength = GetTilemapWorldLength(currentTilemap);
+
+        // í”Œë ˆì´ì–´ê°€ ì´ ê°’ì„ ë„˜ìœ¼ë©´ ë‹¤ìŒ íƒ€ì¼ë§µ ìƒì„±
+        currentTilemapThresholdX = currentTilemap.transform.position.x + (tilemapLength * 2f / 3f);
+    }
+
+    // íƒ€ì¼ë§µì˜ ê°€ë¡œ ê¸¸ì´ë¥¼ ì›”ë“œ ì¢Œí‘œ ê¸°ì¤€ìœ¼ë¡œ ê³„ì‚°
     private float GetTilemapWorldLength(GameObject tilemapObj)
     {
+        // íƒ€ì¼ë§µ ì»´í¬ë„ŒíŠ¸ ê°€ì ¸ì˜¤ê¸°
         Tilemap tilemap = tilemapObj.GetComponentInChildren<Tilemap>();
 
+        // íƒ€ì¼ë§µì´ ì—†ì„ ê²½ìš° ê¸°ë³¸ ê¸¸ì´ ë°˜í™˜
         if (tilemap == null)
         {
-            Debug.LogWarning("TilemapManager: Tilemap ÄÄÆ÷³ÍÆ®¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù. ±âº» ±æÀÌ 10 Àû¿ë.");
-            return 10f; // ±âº» ±æÀÌ Àû¿ë
+            // ì„ì‹œ
+            Debug.LogWarning("TilemapManager: Tilemap ì»´í¬ë„ŒíŠ¸ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ê¸°ë³¸ ê¸¸ì´ 200 ì ìš©.");
+            return 200;
         }
 
-        tilemap.CompressBounds(); // Å¸ÀÏ¸Ê °æ°è ÃÖÀûÈ­
-        Bounds tilemapBounds = tilemap.localBounds; // ·ÎÄÃ °æ°è °¡Á®¿À±â
+        tilemap.CompressBounds(); // ë¶ˆí•„ìš”í•œ ë¹ˆ ì˜ì—­ ì œê±°
+        Bounds tilemapBounds = tilemap.localBounds; // ë¡œì»¬ ê²½ê³„ ê°€ì ¸ì˜¤ê¸°
 
-        // ·ÎÄÃ °æ°è¸¦ ¿ùµå ´ÜÀ§·Î º¯È¯
+        // ë¡œì»¬ ê²½ê³„ë¥¼ ì›”ë“œ ë‹¨ìœ„ë¡œ ë³€í™˜í•˜ì—¬ ê°€ë¡œ ê¸¸ì´ ë°˜í™˜
         Vector3 worldSize = Vector3.Scale(tilemapBounds.size, tilemap.transform.lossyScale);
         return worldSize.x;
     }

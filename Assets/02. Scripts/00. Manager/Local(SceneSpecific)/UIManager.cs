@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject.transform.root.gameObject);
         }
         else if (instance != this)
         {
