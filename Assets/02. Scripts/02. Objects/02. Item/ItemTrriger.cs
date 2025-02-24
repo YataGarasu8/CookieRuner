@@ -15,7 +15,7 @@ public class ItemTrriger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Item.OnPlayerDetected();
+            Item.OnPlayerDetected(collision);
         }
     }
 }

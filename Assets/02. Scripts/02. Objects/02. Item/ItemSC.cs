@@ -5,14 +5,14 @@ using UnityEngine;
 public class ItemSC : MonoBehaviour
 {
 
-    Item data;
+    public Item data;
     private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    //private Animator animator;
     private Rigidbody2D rb;
 
     [Header("Trigger 감지 설정")]
     public Vector2 triggerSize = new Vector2(2f, 2f);
-    public float triggerOffset = 20f;
+    public float triggerOffset = 5f;
 
     private void Start()
     {
@@ -20,7 +20,6 @@ public class ItemSC : MonoBehaviour
         SetupItem();
         SetupTriggerCollider(); // 트리거 콜라이더 추가
     }
-
 
     private void SetupItem()
     {
@@ -71,9 +70,39 @@ public class ItemSC : MonoBehaviour
         trriger.SetItem(this);
     }
 
-    public void OnPlayerDetected()
+    public void OnPlayerDetected(Collider2D collider)
     {
+        PlayerStats playerStats = collider.GetComponent<PlayerStats>();
+        if (playerStats == null)
+        {
+            Debug.Log("컴포넌트 없음");
+            return;
+        }
         Debug.Log("Trigger 영역에서 플레이어 감지!");
         // 감지 시 추가 로직 가능 (예: 팝업 시작, 공격 준비 등)
+        switch (data.Type)
+        {
+            case ItemType.Score:
+                ScoreManager.Instance.AddScore(data.score);
+                break;
+            case ItemType.HPUPItem:
+                playerStats.Heal(data.healthBonus);
+                break;
+            case ItemType.SpeedUPItem:
+                playerStats.ModifySpeed(data.speedBonus);
+                break;
+            case ItemType.TreasureItem:
+                {
+                    playerStats.Heal(data.healthBonus);
+                    playerStats.ModifySpeed(data.speedBonus);
+                }
+                break;
+            case ItemType.BonusItem:
+                //보너스아이템 처리
+                break;
+            default:
+                Debug.Log("디폴트");
+                break;
+        }
     }
 }
