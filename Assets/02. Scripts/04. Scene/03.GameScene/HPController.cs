@@ -5,19 +5,14 @@ using UnityEngine.UI;
 
 public class HPCotroller : MonoBehaviour
 {
-    public GameObject PlayerStatus;
+    public GameObject PlayerStat;
 
     public RectTransform rubTimeHPBar;
+    public RectTransform backGroundBar;
 
-    float runTimeHP;
-
-    private void Awake()
-    {
-        //runTimeData = Instantiate(statsData);   
-    }
     private void Start()
     {
-        //runTimeHP = runTimeData.maxHealth;
+        backGroundBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().currentHealth, 24);
     }
     private void Update()
     {
@@ -26,7 +21,7 @@ public class HPCotroller : MonoBehaviour
 
     void HPDown()
     {
-        rubTimeHPBar.sizeDelta = new Vector2(runTimeHP, 0);
-        runTimeHP -= Time.deltaTime;
+        rubTimeHPBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().currentHealth, 0);
+        PlayerStat.GetComponent<PlayerStats>().currentHealth -= Time.deltaTime;
     }
 }
