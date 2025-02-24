@@ -259,7 +259,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapPrefabs:
   - {fileID: 8622471835378288503, guid: 990a2b991b304cd4ba16c6b9758a0988, type: 3}
-  - {fileID: 8622471835378288503, guid: ac48386acac7d78468521227985db3a7, type: 3}
+  - {fileID: 8622471835378288503, guid: 733b776fa97fd0f46a93cb8f218efadd, type: 3}
+  - {fileID: 8622471835378288503, guid: 546304848d515b0499406662288958f8, type: 3}
   player: {fileID: 354924344}
   parallaxLayer: {fileID: 61675983}
   fadeManager: {fileID: 184544527}
@@ -275,8 +276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60dc13f86d3e39b4a81eedd30bd34b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeImage: {fileID: 0}
-  fadeDuration: 0.5
+  fadeImage: {fileID: 1820355054}
+  targetAlpha: 0.9
+  fadeDuration: 3
 --- !u!1 &354924343
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1820355053
 RectTransform:
   m_ObjectHideFlags: 0
