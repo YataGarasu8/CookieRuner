@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mobile - Cookie Run - General Jellies_0
+      name: Big_Heart_01
       rect:
         serializedVersion: 2
         x: 1476
@@ -131,7 +131,7 @@ TextureImporter:
         width: 140
         height: 140
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mobile - Cookie Run - General Jellies_1
+      name: Big_Heart_02
       rect:
         serializedVersion: 2
         x: 1622
@@ -152,7 +152,7 @@ TextureImporter:
         width: 140
         height: 140
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mobile - Cookie Run - General Jellies_2
+      name: Big_Heart_03
       rect:
         serializedVersion: 2
         x: 1768
@@ -173,7 +173,7 @@ TextureImporter:
         width: 140
         height: 140
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mobile - Cookie Run - General Jellies_3
+      name: Big_Heart_04
       rect:
         serializedVersion: 2
         x: 1914
@@ -194,7 +194,7 @@ TextureImporter:
         width: 140
         height: 140
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,6 +202,69 @@ TextureImporter:
       bones: []
       spriteID: a8ee9f0c15db03f4f8e71c4dfe4c47b9
       internalID: -535422665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - General Jellies_0
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 29
+        width: 72
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b586949b28e030479a723d8209b160a
+      internalID: -1358846793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - General Jellies_1
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 29
+        width: 72
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f21ee9bcaab0eae4c822e0cd2371137f
+      internalID: 990238935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - General Jellies_2
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 29
+        width: 72
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e6bd854e618b74891c1fe4d8818459
+      internalID: 1704048084
       vertices: []
       indices: 
       edges: []
@@ -217,10 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mobile - Cookie Run - General Jellies_0: -1114243370
-      Mobile - Cookie Run - General Jellies_1: -1414835450
-      Mobile - Cookie Run - General Jellies_2: -1859338712
-      Mobile - Cookie Run - General Jellies_3: -535422665
+      Big_Heart_01: -1114243370
+      Big_Heart_02: -1414835450
+      Big_Heart_03: -1859338712
+      Big_Heart_04: -535422665
+      Mobile - Cookie Run - General Jellies_0: -1358846793
+      Mobile - Cookie Run - General Jellies_1: 990238935
+      Mobile - Cookie Run - General Jellies_2: 1704048084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
