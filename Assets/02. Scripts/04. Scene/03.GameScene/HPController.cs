@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HPUI : MonoBehaviour
+public class HPCotroller : MonoBehaviour
 {
     public PlayerStatsData statsData;
     PlayerStatsData runTimeData;
