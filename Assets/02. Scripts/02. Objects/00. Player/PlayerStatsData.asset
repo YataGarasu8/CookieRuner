@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStatsData
   m_EditorClassIdentifier: 
   maxHealth: 100
-  baseSpeed: 3.94
+  baseSpeed: 10
   baseScale: 1
   maxScale: 2
   scaleIncreaseAmount: 0.2
