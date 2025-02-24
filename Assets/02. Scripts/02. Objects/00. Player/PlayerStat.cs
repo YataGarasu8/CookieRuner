@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour
 
     // 현재 체력 (게임 시작 시 최대 체력으로 초기화)
     private float currentHealth;
-    public float CurrentHealth { get; set; }
+    public float CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
     // 추가 속도 (아이템이나 버프에 의해 변동 가능)
     private float speedModifier = 0f;

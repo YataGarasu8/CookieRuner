@@ -12,6 +12,10 @@ public class HPCotroller : MonoBehaviour
 
     private void Start()
     {
+        PlayerStats stats = PlayerStat.GetComponent<PlayerStats>() as PlayerStats;
+
+        
+
         backGroundBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().CurrentHealth, 24);
     }
     private void Update()
