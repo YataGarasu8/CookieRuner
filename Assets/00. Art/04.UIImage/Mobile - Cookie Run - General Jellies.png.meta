@@ -299,7 +299,7 @@ TextureImporter:
         width: 82
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -320,7 +320,7 @@ TextureImporter:
         width: 82
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -341,7 +341,7 @@ TextureImporter:
         width: 82
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -349,6 +349,27 @@ TextureImporter:
       bones: []
       spriteID: 59f0fe9bebbddde4aac4620014a77205
       internalID: -1907962380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mov_Coin_01
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 672
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d1ab0cdb8a41a41af1bf75e47b51d0
+      internalID: -1128967672
       vertices: []
       indices: 
       edges: []
@@ -375,6 +396,7 @@ TextureImporter:
       Mobile - Cookie Run - General Jellies_0: -1358846793
       Mobile - Cookie Run - General Jellies_1: 990238935
       Mobile - Cookie Run - General Jellies_2: 1704048084
+      Mov_Coin_01: -1128967672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
