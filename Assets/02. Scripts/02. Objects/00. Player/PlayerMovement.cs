@@ -34,6 +34,50 @@ using UnityEngine;
 
 
 
+
+
+// 왜 트리거를 FixedUpdate에서 호출해야 할까?
+   
+// Unity에서 애니메이션 트리거 호출 시점은 애니메이션 상태 전환의 성공 여부에 중요한 영향을 미침
+// 특히, 트리거 호출을 Update에서 처리할 때 애니메이션 상태 전환이 불안정하거나 무시되는 현상이 발생할 수 있음!!!
+   
+// 1. Update와 Animator 업데이트 타이밍 차이
+// - Update는 프레임마다 호출되며 렌더링 타이밍과 동기화
+// - FixedUpdate는 물리 연산 타이밍과 동기화되며 일정한 간격으로 호출
+   
+// 문제 발생 시나리오 (Update 사용 시):
+// -Update에서 트리거 호출 시 같은 프레임 내에서 애니메이션 상태 전환 전에 트리거가 해제되거나 덮어쓰기 발생
+// - 이로 인해 애니메이터가 트리거 변경 사항을 감지하지 못하게 됨
+   
+// FixedUpdate 사용 시 장점:
+// -물리 연산과 애니메이션 처리가 자연스럽게 동기화
+// - 트리거 호출 후 애니메이션 상태 전환이 안정적으로 적용
+   
+// 2. Rigidbody와의 일관성 유지
+// - 캐릭터의 이동, 점프, 충돌 등은 물리 연산(FixedUpdate)에서 처리됨
+// - 트리거 호출을 FixedUpdate에 두면 점프나 이동 애니메이션이 물리 처리와 일관되게 적용됨
+   
+// 예시:
+// -점프 시 물리적으로 위로 이동하는 타이밍과 애니메이션 재생 시점이 일치
+// - 애니메이션이 물리적 움직임과 잘 맞아떨어져 더 자연스러운 연출이 가능
+   
+// 3. 트리거 호출 시점의 경쟁 조건 방지
+// - Update와 Animator 업데이트가 충돌할 경우, 트리거가 너무 빠르게 호출 및 해제되면 애니메이션 전환 실패 가능성이 있음
+// - FixedUpdate에서 트리거 호출 시, 애니메이터 업데이트 전에 안전하게 트리거를 적용할 수 있음
+// - 트리거 상태 유지 및 해제 타이밍 제어가 쉬워짐
+   
+// 정리:
+// -Update는 입력 처리에 적합하지만 트리거 적용 타이밍이 불안정할 수 있음
+// - FixedUpdate는 물리 연산과 동기화되어 트리거 적용 안정성을 확보할 수 있음
+// - 물리 기반 캐릭터 컨트롤러에서는 트리거 호출을 FixedUpdate에서 처리하는 것이 안정적
+// - 이를 통해 트리거가 적용되지 않는 문제를 방지하고, 애니메이션 전환과 물리 연산의 일관성을 유지할 수 있음
+
+
+
+
+
+
+
 // 플레이어 이동, 점프, 슬라이드 및 충돌 영역 변경을 관리하는 클래스
 // PlayerStats에서 스탯 데이터를 가져와 이동 속도, 크기 등에 적용
 // CircleCollider2D를 사용하여 슬라이드 시 충돌체 반지름 및 위치를 변경
@@ -51,48 +95,75 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("충돌체 설정 (BoxCollider2D)")]
     public Vector2 normalColliderSize = new Vector2(1f, 2f);       // 일반 상태 충돌체 크기
-    public Vector2 normalColliderOffset = new Vector2(0f, -0.5f);  // 일반 상태 위치
-
+    public Vector2 normalColliderOffset = new Vector2(0f, -0.5f);  // 일반 상태 충돌체 위치
     public Vector2 slideColliderSize = new Vector2(1.5f, 1f);      // 슬라이드 시 충돌체 크기
-    public Vector2 slideColliderOffset = new Vector2(0f, -1f);     // 슬라이드 시 위치
+    public Vector2 slideColliderOffset = new Vector2(0f, -1f);     // 슬라이드 시 충돌체 위치
 
-    private BoxCollider2D boxCollider; // 충돌체 참조
+    [Header("무적 설정")]
+    public float invincibilityDuration = 2f; // 무적 지속 시간
+    public float blinkInterval = 0.2f;       // 깜빡임 간격
 
-    private Rigidbody2D rb;             // 물리 계산용 Rigidbody2D
-    private Animator animator;          // 애니메이션 제어용 Animator
-    private PlayerStats stats;          // 플레이어 스탯 데이터 접근
+    private Rigidbody2D rb;                  // 물리 계산용 Rigidbody2D
+    private Animator animator;               // 애니메이션 제어용 Animator
+    private PlayerStats stats;               // 플레이어 스탯 데이터 접근
+    private BoxCollider2D boxCollider;       // 충돌체 참조
+    private SpriteRenderer spriteRenderer;   // 깜빡임 효과를 위한 스프라이트 렌더러
 
-    private int currentJumpCount = 0;   // 현재 점프 횟수
-    private bool isGrounded = false;    // 바닥 접촉 여부
-    private bool isSliding = false;     // 슬라이드 상태
+    private int currentJumpCount = 0;        // 현재 점프 횟수
+    private bool isGrounded = false;         // 바닥 접촉 여부
+    private bool isSliding = false;          // 슬라이드 상태
+    private bool isInvincible = false;       // 무적 상태 여부
+
+    private bool shouldTriggerJump = false;         // 점프 트리거 호출 플래그
+    private bool shouldTriggerDoubleJump = false;   // 더블 점프 트리거 호출 플래그
+
     void Awake()
     {
+        // 필수 컴포넌트 초기화 및 검사
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         stats = GetComponent<PlayerStats>();
         boxCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (!(rb && animator && stats && boxCollider))
-            Debug.LogError("필수 컴포넌트가 누락되었습니다.");
+        // 컴포넌트가 없을 시 오류 로그 출력
+        if (rb == null) Debug.LogError("[PlayerMovement] Rigidbody2D가 누락되었습니다.");
+        if (animator == null) Debug.LogError("[PlayerMovement] Animator가 누락되었습니다.");
+        if (stats == null) Debug.LogError("[PlayerMovement] PlayerStats가 누락되었습니다.");
+        if (spriteRenderer == null) Debug.LogError("[PlayerMovement] SpriteRenderer가 누락되었습니다.");
+        if (boxCollider == null) Debug.LogError("[PlayerMovement] BoxCollider2D가 누락되었습니다.");
     }
+
     void Start()
     {
-        animator.SetFloat(Constants.AnimatorParams.PlayerHP, stats.statsData.maxHealth);
+        // 애니메이터에 최대 체력 값 전달 (스탯 데이터가 존재할 때만 적용)
+        if (animator != null && stats != null && stats.statsData != null)
+            animator.SetFloat(Constants.AnimatorParams.PlayerHP, stats.statsData.maxHealth);
 
-        // stats 초기화 후 적용 (크기 초기화 방지)
-        Invoke(nameof(ApplyNormalCollider), 0.01f); // 0.01초 지연 호출
-    }
-
-    void Update()
-    {
-        UpdateAnimatorParameters(); // 애니메이터 값 갱신
-        HandleInput();              // 플레이어 입력 처리
+        // 초기 충돌체 설정 (크기 초기화 방지)
+        Invoke(nameof(ApplyNormalCollider), 0.01f); // 0.01초 지연 호출로 적용 보장
     }
 
     void FixedUpdate()
     {
-        Move();                      // 지속 이동
-        isGrounded = CheckGrounded(); // 바닥 감지
+        Move();                      // 지속 이동 처리
+        isGrounded = CheckGrounded(); // 바닥 감지 업데이트
+        UpdateAnimatorParameters(); // 애니메이터 파라미터 업데이트
+
+        // 점프 트리거 호출
+        if (shouldTriggerJump)
+        {
+            animator.SetTrigger(Constants.AnimatorParams.JumpTrigger);
+            Debug.Log("[JumpTrigger] 트리거 호출");
+            shouldTriggerJump = false;
+        }
+
+        if (shouldTriggerDoubleJump)
+        {
+            animator.SetTrigger(Constants.AnimatorParams.DoubleJumpTrigger);
+            Debug.Log("[DoubleJumpTrigger] 트리거 호출");
+            shouldTriggerDoubleJump = false;
+        }
 
         // 착지 시 점프 횟수 초기화
         if (isGrounded && currentJumpCount > 0)
@@ -102,55 +173,71 @@ public class PlayerMovement : MonoBehaviour
     // 인스펙터에서 값 변경 시 자동 호출 (에디터 실시간 반영)
     void OnValidate()
     {
-        // circleCollider가 할당되지 않았을 때 초기화 시도
         if (boxCollider == null)
             boxCollider = GetComponent<BoxCollider2D>();
 
-        // 초기화 실패 시 경고 후 종료
         if (boxCollider == null)
         {
-            Debug.LogWarning("boxCollider2D 가 할당되지 않았습니다. 충돌체를 추가하세요.");
+            Debug.LogWarning("[PlayerMovement] BoxCollider2D가 할당되지 않았습니다. 충돌체를 추가하세요.");
             return;
         }
 
-        // 상태에 따라 충돌체 적용
+        // 슬라이드 상태에 따른 충돌체 적용
         if (isSliding)
             ApplySlideCollider();
         else
             ApplyNormalCollider();
     }
 
-
     // 오른쪽으로 지속 이동 처리
     private void Move()
     {
-        rb.velocity = new Vector2(stats.CurrentSpeed, rb.velocity.y);
+        if (rb != null && stats != null)
+            rb.velocity = new Vector2(stats.CurrentSpeed, rb.velocity.y); // x축 이동 속도 적용 (y축 속도는 유지)
     }
 
-    // 입력 처리
+    // 입력 처리 메서드
     private void HandleInput()
     {
-        // 점프 입력
+        // 점프 입력 처리
         if (Input.GetKeyDown(Constants.InputKeys.Jump))
             AttemptJump();
 
         // 슬라이드 시작 (바닥에 있을 때만 가능)
         if (Input.GetKeyDown(Constants.InputKeys.Slide) && isGrounded)
-        {
-            isSliding = true;
-            ApplySlideCollider();
-        }
+            StartSlide();
 
-        // 슬라이드 종료
+        // 슬라이드 종료 (슬라이드 키 해제 시 적용)
         if (Input.GetKeyUp(Constants.InputKeys.Slide))
+            EndSlide();
+    }
+
+    // 슬라이드 시작 처리
+    public void StartSlide()
+    {
+        if (!isSliding && isGrounded)
         {
-            isSliding = false;
-            ApplyNormalCollider();
+            isSliding = true;                     // 슬라이드 상태 활성화
+            ApplySlideCollider();                 // 슬라이드 충돌체 적용
+            if (animator != null)
+                animator.SetBool(Constants.AnimatorParams.IsSliding, true); // 애니메이션 슬라이드 상태 적용
         }
     }
 
-    // 점프 시도 처리
-    private void AttemptJump()
+    // 슬라이드 종료 처리
+    public void EndSlide()
+    {
+        if (isSliding)
+        {
+            isSliding = false;                    // 슬라이드 상태 비활성화
+            ApplyNormalCollider();                // 일반 충돌체 복원
+            if (animator != null)
+                animator.SetBool(Constants.AnimatorParams.IsSliding, false); // 애니메이션 슬라이드 상태 해제
+        }
+    }
+
+    // 점프 시도 처리 (슬라이드 중에는 점프 불가)
+    public void AttemptJump()
     {
         if (isSliding) return; // 슬라이드 중 점프 불가
 
@@ -160,12 +247,13 @@ public class PlayerMovement : MonoBehaviour
             DoubleJump();
     }
 
-    // 점프 실행
+    // 점프 실행 (1단 점프)
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0); // 기존 수직 속도 제거
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 위로 힘 적용
-        animator.SetTrigger(Constants.AnimatorParams.JumpTrigger); // 애니메이션 실행
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 위 방향으로 점프력 적용
+        animator.SetTrigger(Constants.AnimatorParams.JumpTrigger); // 점프 애니메이션 실행
+        shouldTriggerJump = true;
         currentJumpCount = 1; // 점프 횟수 갱신
     }
 
@@ -173,17 +261,18 @@ public class PlayerMovement : MonoBehaviour
     public void DoubleJump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0); // 기존 수직 속도 제거
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        animator.SetTrigger(Constants.AnimatorParams.DoubleJumpTrigger);
-        currentJumpCount = 2;
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // 이단 점프력 적용
+        animator.SetTrigger(Constants.AnimatorParams.DoubleJumpTrigger); // 이단 점프 애니메이션 실행
+        shouldTriggerDoubleJump = true;
+        currentJumpCount = 2; // 점프 횟수 갱신
     }
 
     // 애니메이터 파라미터 업데이트
     private void UpdateAnimatorParameters()
     {
-        animator.SetFloat(Constants.AnimatorParams.Speed, Mathf.Abs(rb.velocity.x)); // 수평 속도 반영
+        animator.SetFloat(Constants.AnimatorParams.Speed, Mathf.Abs(rb.velocity.x));  // 수평 속도 반영
         animator.SetFloat(Constants.AnimatorParams.VerticalVelocity, rb.velocity.y);  // 수직 속도 반영
-        animator.SetBool(Constants.AnimatorParams.IsGrounded, isGrounded);            // 바닥 여부 반영
+        animator.SetBool(Constants.AnimatorParams.IsGrounded, isGrounded);            // 바닥 접촉 여부 반영
         animator.SetBool(Constants.AnimatorParams.IsSliding, isSliding);              // 슬라이드 상태 반영
     }
 
@@ -192,11 +281,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Collider2D hit = Physics2D.OverlapCircle(
             groundCheck.position,
-            groundCheckRadius * stats.CurrentScale, // 플레이어 크기 반영
+            groundCheckRadius * stats.CurrentScale, // 플레이어 크기에 따른 감지 반경 적용
             groundLayer
         );
 
-        return hit != null && hit.gameObject != gameObject;
+        return hit != null && hit.gameObject != gameObject; // 자기 자신 제외
     }
 
     // 일반 상태 충돌체 적용
@@ -204,7 +293,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (boxCollider == null)
         {
-            Debug.LogWarning("충돌체가 null입니다.");
+            Debug.LogWarning("[PlayerMovement] BoxCollider2D가 null입니다. 충돌체 적용 실패.");
             return;
         }
 
@@ -213,22 +302,21 @@ public class PlayerMovement : MonoBehaviour
             stats = GetComponent<PlayerStats>();
             if (stats == null)
             {
-                Debug.LogWarning("PlayerStats가 null입니다.");
+                Debug.LogWarning("[PlayerMovement] PlayerStats가 null입니다. 충돌체 적용 실패.");
                 return;
             }
         }
 
-        if (boxCollider == null) return;
-        boxCollider.size = normalColliderSize * stats.CurrentScale;  // 크기 적용
-        boxCollider.offset = normalColliderOffset * stats.CurrentScale; // 위치 적용
+        boxCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
+        boxCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
     }
 
-    // 슬라이드 시 충돌체 적용 (반지름 감소 및 위치 변경)
+    // 슬라이드 시 충돌체 적용 (크기 및 위치 변경)
     private void ApplySlideCollider()
     {
         if (boxCollider == null)
         {
-            Debug.LogWarning("충돌체가 null입니다.");
+            Debug.LogWarning("[PlayerMovement] BoxCollider2D가 null입니다. 충돌체 적용 실패.");
             return;
         }
 
@@ -237,16 +325,49 @@ public class PlayerMovement : MonoBehaviour
             stats = GetComponent<PlayerStats>();
             if (stats == null)
             {
-                Debug.LogWarning("PlayerStats가 null입니다.");
+                Debug.LogWarning("[PlayerMovement] PlayerStats가 null입니다. 충돌체 적용 실패.");
                 return;
             }
         }
 
-        boxCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 크기 적용
-        boxCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 위치 적용
+        boxCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
+        boxCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
+    }
+    
+    // 플레이어 피격 시 호출할 함수
+    public void TakeDamage(int damage)
+    {
+        if (isInvincible) return; // 무적 상태일 때는 무시
+
+        // 체력 감소 로직 추가 예정
+        stats.TakeDamage(damage);
+
+        StartCoroutine(InvincibilityCoroutine()); // 무적 및 깜빡임 코루틴 실행
     }
 
-    // 씬 창에서 충돌 영역 시각화
+    // 무적 상태 코루틴
+    private System.Collections.IEnumerator InvincibilityCoroutine()
+    {
+        isInvincible = true;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < invincibilityDuration)
+        {
+            // 반투명하게 만들기
+            spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
+            yield return new WaitForSeconds(blinkInterval);
+
+            // 원래 색상으로 복원
+            spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+            yield return new WaitForSeconds(blinkInterval);
+
+            elapsedTime += blinkInterval * 2;
+        }
+
+        isInvincible = false; // 무적 해제
+    }
+
+    // 씬 창에서 충돌 영역 시각화 (디버깅 용도)
     void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
@@ -254,12 +375,20 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = isGrounded ? Color.green : Color.red; // 바닥 여부에 따른 색상
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius * (stats != null ? stats.CurrentScale : 1f));
         }
+        else
+        {
+            Debug.LogWarning("[PlayerMovement] groundCheck가 null입니다. Gizmos 표시 실패.");
+        }
 
         if (boxCollider != null)
         {
             Gizmos.color = isSliding ? Color.blue : Color.yellow; // 슬라이드 시 파랑, 일반 시 노랑
-            Vector2 colliderPosition = (Vector2)transform.position + boxCollider.offset;
-            Gizmos.DrawWireCube(colliderPosition, boxCollider.size); // 박스 형태로 시각화
+            Vector2 colliderPosition = (Vector2)transform.position + boxCollider.offset; // 현재 위치와 오프셋 합산
+            Gizmos.DrawWireCube(colliderPosition, boxCollider.size); // 충돌체 시각화
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerMovement] BoxCollider2D가 null입니다. Gizmos 표시 실패.");
         }
     }
 }

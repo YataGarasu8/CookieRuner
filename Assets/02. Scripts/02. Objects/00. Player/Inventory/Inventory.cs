@@ -10,6 +10,6 @@ public class Inventory : MonoBehaviour
     public void AddItem(Item item)
     {
         items.Add(item);
-        item.Use(playerStats);
+        //item.Use(playerStats);
     }
 }
