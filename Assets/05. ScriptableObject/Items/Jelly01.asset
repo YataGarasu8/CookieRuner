@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3db32b87dafd24243b9ac504126b7ba2, type: 3}
-  m_Name: New Score
+  m_Name: Jelly01
   m_EditorClassIdentifier: 
-  itemName: 
-  icon: {fileID: 0}
-  score: 0
+  itemName: Jelly1
+  icon: {fileID: 1015055405, guid: e4071d3b27311c1409431889956ccc08, type: 3}
+  score: 5
