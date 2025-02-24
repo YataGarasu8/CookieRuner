@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d7cca98b928d664588b54517aab8666, type: 3}
-  m_Name: New Treasure
+  m_Script: {fileID: 11500000, guid: 3db32b87dafd24243b9ac504126b7ba2, type: 3}
+  m_Name: New Score
   m_EditorClassIdentifier: 
   itemName: 
   icon: {fileID: 0}
-  speedBonus: 0
-  healthBonus: 0
+  score: 0
