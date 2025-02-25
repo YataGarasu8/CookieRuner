@@ -77,8 +77,6 @@ public class ItemSC : MonoBehaviour
     {
         PlayerStats playerStats = collider.GetComponent<PlayerStats>();
 
-        //Vector2 coli = new Vector2(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y);
-        //Vector2 item = new Vector2((float)transform.position.x, (float)this.transform.position.y);
         if (playerStats == null)
         {
             Debug.Log("ÄÄÆ÷³ÍÆ® ¾øÀ½");
@@ -89,7 +87,7 @@ public class ItemSC : MonoBehaviour
         switch (data.Type)
         {
             case ItemType.Score:
-                //ScoreManager.Instance.AddScore(data.score);
+                ScoreManager.Instance.AddScore(data.score);
                 Debug.Log($"½ºÄÚ¾î È¹µæ :   {data.score}");
                 break;
             case ItemType.HPUPItem:
