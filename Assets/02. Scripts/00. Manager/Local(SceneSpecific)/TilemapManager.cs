@@ -83,7 +83,34 @@ public class TilemapManager : MonoBehaviour
 
         // 생성된 타일맵의 패럴랙스 설정 적용
         ApplyParallaxConfigFromTilemap(initialTilemap);
+
+        // TilemapRenderer 비활성화
+        DisableTilemapRendererComponent(currentTilemap);
     }
+
+    void DisableTilemapRendererComponent(GameObject currentTilemap)
+    {
+        // currentTilemap의 자식 중 "Tilemap(Obstacles)" 오브젝트를 찾음
+        Transform obstaclesTransform = currentTilemap.transform.Find("Grid/Tilemap(Obstacles)");
+        if (obstaclesTransform != null)
+        {
+            // TilemapRenderer 컴포넌트를 가져와 비활성화
+            TilemapRenderer tilemapRenderer = obstaclesTransform.GetComponent<TilemapRenderer>();
+            if (tilemapRenderer != null)
+            {
+                tilemapRenderer.enabled = false;
+            }
+            else
+            {
+                Debug.LogWarning("Tilemap(Obstacles)에서 TilemapRenderer 컴포넌트를 찾을 수 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("tilemapPrefabs 내에 'Tilemap(Obstacles)' 오브젝트가 존재하지 않습니다.");
+        }
+    }
+
 
     // 타일맵 전환 시 페이드 효과 적용 및 새로운 타일맵 생성 처리
     private IEnumerator ChangeTilemapWithFade()
@@ -129,6 +156,9 @@ public class TilemapManager : MonoBehaviour
 
         // 새 타일맵의 패럴랙스 설정 적용 (임계값 업데이트 이후에 호출)
         ApplyParallaxConfigFromTilemap(newTilemap);
+
+        // TilemapRenderer 비활성화
+        DisableTilemapRendererComponent(currentTilemap);
     }
 
     // 가장 오래된 타일맵 제거 및 메모리 최적화
