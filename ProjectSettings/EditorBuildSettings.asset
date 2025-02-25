@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01. Scenes/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/01. Scenes/StoreScene.unity
+    guid: 509dd1b336d0e3c4f98dddc1e53a9b07
+  - enabled: 1
+    path: Assets/01. Scenes/MyCookieScene.unity
+    guid: 5eef766ef747bec40a1ff6417f5932e8
   m_configObjects: {}
