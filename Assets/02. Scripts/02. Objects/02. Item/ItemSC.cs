@@ -77,8 +77,8 @@ public class ItemSC : MonoBehaviour
     {
         PlayerStats playerStats = collider.GetComponent<PlayerStats>();
 
-        Vector2 coli = new Vector2(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y);
-        Vector2 item = new Vector2((float)transform.position.x, (float)this.transform.position.y);
+        //Vector2 coli = new Vector2(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y);
+        //Vector2 item = new Vector2((float)transform.position.x, (float)this.transform.position.y);
         if (playerStats == null)
         {
             Debug.Log("컴포넌트 없음");
@@ -132,6 +132,6 @@ public class ItemSC : MonoBehaviour
                 Debug.Log("디폴트");
                 break;
         }
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
