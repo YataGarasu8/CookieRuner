@@ -10,7 +10,7 @@ public class ItemSC : MonoBehaviour
     //private Animator animator;
     //private Rigidbody2D rb;
 
-    [Header("Trigger °¨Áö ¼³Á¤")]
+    [Header("Trigger ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public Vector2 triggerSize = new Vector2(1f, 1f);
     public float triggerOffset = 0f;
 
@@ -21,7 +21,7 @@ public class ItemSC : MonoBehaviour
         Invoke(nameof(SetupTriggerCollider), 0.001f);
         //InitializeComponents();
         //SetupItem();
-        //SetupTriggerCollider(); // Æ®¸®°Å ÄÝ¶óÀÌ´õ Ãß°¡
+        //SetupTriggerCollider(); // Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ ï¿½ß°ï¿½
     }
 
     private void SetupItem()
@@ -29,18 +29,18 @@ public class ItemSC : MonoBehaviour
         if (data.icon != null)
             spriteRenderer.sprite = data.icon;
         else
-            Debug.LogWarning("¾ÆÀÌÅÛ¿¡ ½ºÇÁ¶óÀÌÆ®°¡ ÁöÁ¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("ï¿½ï¿½ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
     }
     private void InitializeComponents()
     {
-        // SpriteRenderer ¼³Á¤
+        // SpriteRenderer ï¿½ï¿½ï¿½ï¿½
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
             spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         }
 
-        // Collider ¼³Á¤
+        // Collider ï¿½ï¿½ï¿½ï¿½
         var collider = GetComponent<BoxCollider2D>();
         if (collider == null)
         {
@@ -49,14 +49,14 @@ public class ItemSC : MonoBehaviour
         collider.size = data.size;
         collider.isTrigger = true;
 
-        // Rigidbody2D ¼³Á¤
+        // Rigidbody2D ï¿½ï¿½ï¿½ï¿½
         /*rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody2D>();
         }
         rb.gravityScale = 0;
-        rb.bodyType = RigidbodyType2D.Static; // Àå¾Ö¹°Àº °íÁ¤ (¿òÁ÷ÀÌ´Â Àå¾Ö¹°Àº ÄÚµå ³»¿¡¼­ º¯°æ)*/
+        rb.bodyType = RigidbodyType2D.Static; // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)*/
     }
 
     private void SetupTriggerCollider()
@@ -75,22 +75,21 @@ public class ItemSC : MonoBehaviour
 
     public void OnPlayerDetected(Collider2D collider)
     {
-        PlayerStats playerStats = collider.GetComponent<PlayerStats>();
+        PlayerStats playerStats = collider.GetComponentInParent<PlayerStats>();
+        PlayerMovement playerMovement = collider.GetComponentInParent<PlayerMovement>();
 
-        Vector2 coli = new Vector2(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y);
-        Vector2 item = new Vector2((float)transform.position.x, (float)this.transform.position.y);
         if (playerStats == null)
         {
-            Debug.Log("ÄÄÆ÷³ÍÆ® ¾øÀ½");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½");
             return;
         }
-        Debug.Log("Trigger ¿µ¿ª¿¡¼­ ÇÃ·¹ÀÌ¾î °¨Áö!");
-        // °¨Áö ½Ã Ãß°¡ ·ÎÁ÷ °¡´É (¿¹: ÆË¾÷ ½ÃÀÛ, °ø°Ý ÁØºñ µî)
+        Debug.Log("Trigger ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½!");
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½: ï¿½Ë¾ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ ï¿½ï¿½)
         switch (data.Type)
         {
             case ItemType.Score:
-                //ScoreManager.Instance.AddScore(data.score);
-                Debug.Log($"½ºÄÚ¾î È¹µæ :   {data.score}");
+                ScoreManager.Instance.AddScore(data.score);
+                Debug.Log($"ï¿½ï¿½ï¿½Ú¾ï¿½ È¹ï¿½ï¿½ :   {data.score}");
                 break;
             case ItemType.HPUPItem:
                 playerStats.Heal(data.healthBonus);
@@ -99,12 +98,12 @@ public class ItemSC : MonoBehaviour
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 else
                 {
                     playerStats.ModifySpeed(data.speedBonus);
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 break;
             case ItemType.TreasureItem:
@@ -112,7 +111,7 @@ public class ItemSC : MonoBehaviour
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 else
                 {
@@ -121,17 +120,21 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.BonusItem:
-                //º¸³Ê½º¾ÆÀÌÅÛ Ã³¸®
+                //ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
                 break;
             case ItemType.PowerUPItem:
                 playerStats.IncreaseSize();
-
-                //¹«ÀûÃ³¸®
+                playerMovement.TolggleImmune();
+                playerMovement.Invoke(nameof(playerMovement.TolggleImmune),data.duration);
+                break;
+            //ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
+            case ItemType.MoneyItem:
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
                 break;
             default:
-                Debug.Log("µðÆúÆ®");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½Æ®");
                 break;
         }
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }

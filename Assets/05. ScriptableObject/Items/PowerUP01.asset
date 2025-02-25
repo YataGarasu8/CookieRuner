@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
   m_Name: PowerUP01
   m_EditorClassIdentifier: 
-  Type: 3
+  Type: 6
   itemName: PowerUP01
   icon: {fileID: -524006377, guid: e4071d3b27311c1409431889956ccc08, type: 3}
   size: {x: 10, y: 10}
@@ -20,3 +20,4 @@ MonoBehaviour:
   speedBonus: 0
   money: 0
   score: 0
+  duration: 5

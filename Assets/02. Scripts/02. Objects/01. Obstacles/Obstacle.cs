@@ -119,12 +119,14 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("ObsColider"))
         {
-            PlayerStats playerStats = collision.collider.GetComponent<PlayerStats>();
-            if (playerStats != null)
+            //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
+            PlayerController playerController = collision.collider.GetComponentInParent<PlayerController>();
+            if (playerController != null)
             {
-                playerStats.TakeDamage(data.damage);
+                playerController.OnHit(data.damage);
+                //playerStats.TakeDamage(data.damage);
                 Debug.Log($"플레이어가 {data.damage}의 데미지를 받았습니다.");
             }
         }

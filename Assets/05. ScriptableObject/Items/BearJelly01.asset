@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
+  m_Name: BearJelly01
+  m_EditorClassIdentifier: 
+  Type: 0
+  itemName: jelly10
+  icon: {fileID: -1568732648, guid: e4071d3b27311c1409431889956ccc08, type: 3}
+  size: {x: 3, y: 3}
+  healthBonus: 0
+  speedBonus: 0
+  money: 0
+  score: 10
+  duration: 0

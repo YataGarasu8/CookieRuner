@@ -539,6 +539,7 @@ GameObject:
   - component: {fileID: 315963170}
   - component: {fileID: 315963172}
   - component: {fileID: 315963171}
+  - component: {fileID: 315963173}
   m_Layer: 5
   m_Name: OptionPanel
   m_TagString: Untagged
@@ -607,6 +608,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315963169}
   m_CullTransparentMesh: 1
+--- !u!114 &315963173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315963169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110a7469639713443a3cadcec805cf27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 315963169}
 --- !u!1 &372089240
 GameObject:
   m_ObjectHideFlags: 0
