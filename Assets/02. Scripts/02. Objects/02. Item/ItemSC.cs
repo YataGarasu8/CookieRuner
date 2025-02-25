@@ -88,7 +88,7 @@ public class ItemSC : MonoBehaviour
         switch (data.Type)
         {
             case ItemType.Score:
-                ScoreManager.Instance.AddScore(data.score);
+                //ScoreManager.Instance.AddScore(data.score);
                 Debug.Log($"���ھ� ȹ�� :   {data.score}");
                 break;
             case ItemType.HPUPItem:
@@ -120,16 +120,25 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.BonusItem:
-                //���ʽ������� ó��
+                //보너스아이템 처리
+                Debug.Log("보너스 아이템 획득");
                 break;
             case ItemType.PowerUPItem:
-                playerStats.IncreaseSize();
-                playerMovement.TolggleImmune();
-                playerMovement.Invoke(nameof(playerMovement.TolggleImmune),data.duration);
+                Debug.Log("파워업아이템 획득");
+                if (playerMovement.isItemInvincible)
+                {
+                    playerMovement.CancelInvoke(nameof(playerMovement.TolggleImmune));
+                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                }
+                else
+                {
+                    playerStats.IncreaseSize();
+                    playerMovement.TolggleImmune();
+                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                }
                 break;
-            //����ó��
             case ItemType.MoneyItem:
-                //�������� ó��
+                Debug.Log($"돈 아이템 획득 : {data.money}");
                 break;
             default:
                 Debug.Log("����Ʈ");

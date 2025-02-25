@@ -113,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;         // 바닥 접촉 여부
     private bool isSliding = false;          // 슬라이드 상태
     private bool isInvincible = false;       // 무적 상태 여부
+    public bool isItemInvincible = false;       // 무적 아이템 상태 여부
 
     private bool shouldTriggerJump = false;         // 점프 트리거 호출 플래그
     private bool shouldTriggerDoubleJump = false;   // 더블 점프 트리거 호출 플래그
@@ -395,8 +396,14 @@ public class PlayerMovement : MonoBehaviour
     public void TolggleImmune()
     {
         if (isInvincible)
-            isInvincible = false;
+        {
+            isInvincible = false; isItemInvincible = false;
+        }
+
         else
-            isInvincible = true;
+        {
+            isInvincible = true; isItemInvincible = false;
+        }
+            
     }
 }
