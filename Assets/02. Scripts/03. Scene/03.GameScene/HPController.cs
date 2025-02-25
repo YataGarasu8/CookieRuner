@@ -21,6 +21,7 @@ public class HPCotroller : MonoBehaviour
     private void Update()
     {
         HPDown();
+
     }
 
     void HPDown()
