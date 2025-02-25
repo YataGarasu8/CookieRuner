@@ -479,6 +479,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Bear_Jelly
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 669
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3abf1473d956b954e86c99e447c5e495
+      internalID: -1568732648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -490,6 +511,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Bear_Jelly: -1568732648
       HPUPItem_Large: -1188901267
       HPUPItem_small: 1056327008
       Mobile - Cookie Run - General Jellies_0: 2114068532
