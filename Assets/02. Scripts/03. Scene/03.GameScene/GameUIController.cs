@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameUIController : MonoBehaviour
 {
     public TextMeshProUGUI CoinCountText;
     public GameObject PausePanel;
+    public GameObject Canvas;
 
     int coinCount;
 
-    private void Start()
+    private void Awake()
     {
         PausePanel.gameObject.SetActive(false);
+    }
+    private void Start()
+    {
+        Canvas.gameObject.SetActive(true);
     }
     private void Update()
     {
@@ -32,5 +38,12 @@ public class GameUIController : MonoBehaviour
     {
             PausePanel.gameObject.SetActive(false);
             Time.timeScale = 1f;
+    }
+    public void OutGame()
+    {
+        PausePanel.gameObject.SetActive(false);
+        Canvas.gameObject.SetActive(false);
+        SceneManager.LoadScene("LobbyScene");
+        Time.timeScale = 1f;
     }
 }
