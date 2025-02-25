@@ -77,7 +77,6 @@ public class PlayerStats : MonoBehaviour
     // 최대 크기를 초과하지 않도록 제한
     public void IncreaseSize()
     {
-        Debug.Log("사이즈업 내부");
         if (scaleCoroutine != null)
             StopCoroutine(scaleCoroutine); // 기존 크기 변경 코루틴 중지
 

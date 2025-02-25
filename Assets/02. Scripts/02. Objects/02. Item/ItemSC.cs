@@ -88,7 +88,7 @@ public class ItemSC : MonoBehaviour
         {
             case ItemType.Score:
                 //ScoreManager.Instance.AddScore(data.score);
-                Debug.Log($"���ھ� ȹ�� :   {data.score}");
+                Debug.Log($"점수획득 :   {data.score}");
                 break;
             case ItemType.HPUPItem:
                 playerStats.Heal(data.healthBonus);
