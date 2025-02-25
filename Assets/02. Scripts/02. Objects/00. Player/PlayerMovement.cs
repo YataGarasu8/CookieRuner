@@ -402,7 +402,7 @@ public class PlayerMovement : MonoBehaviour
 
         else
         {
-            isInvincible = true; isItemInvincible = false;
+            isInvincible = true; isItemInvincible = true;
         }
             
     }
