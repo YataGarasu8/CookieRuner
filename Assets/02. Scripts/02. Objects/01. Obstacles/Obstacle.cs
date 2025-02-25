@@ -124,6 +124,7 @@ public class Obstacle : MonoBehaviour
             //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
             PlayerController playerController = collision.collider.GetComponentInParent<PlayerController>();
             PlayerMovement playerMovement = collision.collider.GetComponentInParent<PlayerMovement>();
+            
             if (playerController != null)
             {
                 if (playerMovement.isItemInvincible == false)
@@ -132,10 +133,18 @@ public class Obstacle : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("ELSEπÆ ¡¯¿‘");
                     rb.bodyType = RigidbodyType2D.Dynamic;
+                    Debug.Log(rb.bodyType);
+                    rb.AddForce((Vector2)collision.gameObject.transform.position * data.power);
                 }
             }
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
     }
 
     public void OnPlayerDetected()
