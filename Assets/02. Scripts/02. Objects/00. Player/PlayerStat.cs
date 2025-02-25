@@ -61,14 +61,14 @@ public class PlayerStats : MonoBehaviour
     // 예시: 아이템 획득 시 속도 증가
     public void ModifySpeed(float amount)
     {
+        isSpeedUP = true;
         speedModifier += amount;
     }
 
     // 추가 속도를 초기화 (버프 효과 종료 시 사용)
     public void ResetSpeedModifier()
     {
-        Debug.Log("속도줄어들기");
-        Debug.Log(CurrentSpeed);
+        isSpeedUP = false;
         speedModifier = 0f;
     }
 
