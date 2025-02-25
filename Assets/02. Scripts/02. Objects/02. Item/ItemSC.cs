@@ -88,7 +88,7 @@ public class ItemSC : MonoBehaviour
         switch (data.Type)
         {
             case ItemType.Score:
-                ScoreManager.Instance.AddScore(data.score);
+                //ScoreManager.Instance.AddScore(data.score);
                 Debug.Log($"���ھ� ȹ�� :   {data.score}");
                 break;
             case ItemType.HPUPItem:
