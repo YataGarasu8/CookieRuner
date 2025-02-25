@@ -794,11 +794,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: d47b8685-c837-4f02-b7e5-c8e986406042
+  cloudProjectId: 7eb14b05-b802-434d-b15a-58c828f9d852
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: CookieRuner
-  organizationId: king17tkddj
+  organizationId: chinodaisuki
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

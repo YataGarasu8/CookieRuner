@@ -3,38 +3,47 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameUIController : MonoBehaviour
 {
     public TextMeshProUGUI CoinCountText;
     public GameObject PausePanel;
+    public GameObject Canvas;
 
     int coinCount;
 
+    private void Awake()
+    {
+        PausePanel.gameObject.SetActive(false);
+    }
+    private void Start()
+    {
+        Canvas.gameObject.SetActive(true);
+    }
     private void Update()
     {
-        PauseGame();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseGame();
+        }
     }
 
     public void PauseGame()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
             PausePanel.gameObject.SetActive(true);
-            PausePanelButton();
             Time.timeScale = 0f;
-        }
     }
-    public void PausePanelButton()
+    public void ReturnGame()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            //메인메뉴 돌아가기
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
             PausePanel.gameObject.SetActive(false);
             Time.timeScale = 1f;
-        }
+    }
+    public void OutGame()
+    {
+        PausePanel.gameObject.SetActive(false);
+        Canvas.gameObject.SetActive(false);
+        SceneManager.LoadScene("LobbyScene");
+        Time.timeScale = 1f;
     }
 }
