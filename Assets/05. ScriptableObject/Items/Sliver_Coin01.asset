@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
-  m_Name: PowerUP01
+  m_Name: Sliver_Coin01
   m_EditorClassIdentifier: 
-  Type: 6
-  itemName: PowerUP01
-  icon: {fileID: -524006377, guid: e4071d3b27311c1409431889956ccc08, type: 3}
-  size: {x: 10, y: 10}
+  Type: 0
+  itemName: 
+  icon: {fileID: -1128967672, guid: d0147459fe7a98d44969d0a08950e798, type: 3}
+  size: {x: 1, y: 1}
   healthBonus: 0
   speedBonus: 0
-  money: 0
+  money: 1
   score: 0
-  duration: 5
+  duration: 0

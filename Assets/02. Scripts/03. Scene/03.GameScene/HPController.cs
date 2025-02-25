@@ -21,7 +21,6 @@ public class HPCotroller : MonoBehaviour
     private void Update()
     {
         HPDown();
-        //Debug.Log($"{PlayerStat.GetComponent<PlayerStats>().CurrentHealth}");
     }
 
     void HPDown()
