@@ -123,11 +123,17 @@ public class Obstacle : MonoBehaviour
         {
             //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
             PlayerController playerController = collision.collider.GetComponentInParent<PlayerController>();
+            PlayerMovement playerMovement = collision.collider.GetComponentInParent<PlayerMovement>();
             if (playerController != null)
             {
-                playerController.OnHit(data.damage);
-                //playerStats.TakeDamage(data.damage);
-                Debug.Log($"플레이어가 {data.damage}의 데미지를 받았습니다.");
+                if (playerMovement.isItemInvincible == false)
+                {
+                    playerController.OnHit(data.damage);
+                }
+                else
+                {
+                    rb.bodyType = RigidbodyType2D.Dynamic;
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ public class ItemSC : MonoBehaviour
     //private Animator animator;
     //private Rigidbody2D rb;
 
-    [Header("Trigger ���� ����")]
+    [Header("Trigger 크기")]
     public Vector2 triggerSize = new Vector2(1f, 1f);
     public float triggerOffset = 0f;
 
@@ -21,7 +21,7 @@ public class ItemSC : MonoBehaviour
         Invoke(nameof(SetupTriggerCollider), 0.001f);
         //InitializeComponents();
         //SetupItem();
-        //SetupTriggerCollider(); // Ʈ���� �ݶ��̴� �߰�
+        //SetupTriggerCollider();
     }
 
     private void SetupItem()
@@ -29,18 +29,18 @@ public class ItemSC : MonoBehaviour
         if (data.icon != null)
             spriteRenderer.sprite = data.icon;
         else
-            Debug.LogWarning("�����ۿ� ��������Ʈ�� �������� �ʾҽ��ϴ�.");
+            Debug.LogWarning("스프라이트가 없음.");
     }
     private void InitializeComponents()
     {
-        // SpriteRenderer ����
+        // SpriteRenderer 
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
             spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         }
 
-        // Collider ����
+        // Collider 
         var collider = GetComponent<BoxCollider2D>();
         if (collider == null)
         {
@@ -49,7 +49,7 @@ public class ItemSC : MonoBehaviour
         collider.size = data.size;
         collider.isTrigger = true;
 
-        // Rigidbody2D ����
+        // Rigidbody2D
         /*rb = GetComponent<Rigidbody2D>();
         if (rb == null)
         {
@@ -80,15 +80,14 @@ public class ItemSC : MonoBehaviour
 
         if (playerStats == null)
         {
-            Debug.Log("������Ʈ ����");
+            Debug.Log("PlayerStat없음");
             return;
         }
-        Debug.Log("Trigger �������� �÷��̾� ����!");
-        // ���� �� �߰� ���� ���� (��: �˾� ����, ���� �غ� ��)
+        Debug.Log("Trigger에 Player가 감지됨!");
         switch (data.Type)
         {
             case ItemType.Score:
-                ScoreManager.Instance.AddScore(data.score);
+                //ScoreManager.Instance.AddScore(data.score);
                 Debug.Log($"���ھ� ȹ�� :   {data.score}");
                 break;
             case ItemType.HPUPItem:
@@ -120,19 +119,28 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.BonusItem:
-                //���ʽ������� ó��
+                //보너스아이템 처리
+                Debug.Log("보너스 아이템 획득");
                 break;
             case ItemType.PowerUPItem:
-                playerStats.IncreaseSize();
-                playerMovement.TolggleImmune();
-                playerMovement.Invoke(nameof(playerMovement.TolggleImmune),data.duration);
+                Debug.Log("파워업아이템 획득");
+                if (playerMovement.isItemInvincible)
+                {
+                    playerMovement.CancelInvoke(nameof(playerMovement.TolggleImmune));
+                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                }
+                else
+                {
+                    playerStats.IncreaseSize();
+                    playerMovement.TolggleImmune();
+                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                }
                 break;
-            //����ó��
             case ItemType.MoneyItem:
-                //�������� ó��
+                Debug.Log($"돈 아이템 획득 : {data.money}");
                 break;
             default:
-                Debug.Log("����Ʈ");
+                Debug.Log("디폴트");
                 break;
         }
         Destroy(this.gameObject);
