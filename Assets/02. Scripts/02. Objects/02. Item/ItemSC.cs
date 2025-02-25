@@ -119,8 +119,22 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.BonusItem:
-                //보너스아이템 처리
-                Debug.Log("보너스 아이템 획득");
+                if(GameManager.Instance.GetBonusItem(data.name))
+                {
+                    //이미 보너스 아이템을 획득한 경우 점수획득
+                    ScoreManager.Instance.AddScore(data.score);
+                    Debug.Log($"점수획득 :   {data.score}");
+                }
+                else
+                {
+                    Debug.Log($"보너스 아이템 획득 : {data.name}");
+                }
+
+                if (GameManager.Instance.IsGetAllBonusItem())
+                {
+                    //보너스 스테이지로 이동 처리
+                    GameManager.Instance.ResetBonusItem();
+                }
                 break;
             case ItemType.PowerUPItem:
                 Debug.Log("파워업아이템 획득");
