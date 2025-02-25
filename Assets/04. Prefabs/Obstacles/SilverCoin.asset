@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77825715ef64cfd4ba6f334fde302189, type: 3}
-  m_Name: Big_Fork02
+  m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
+  m_Name: SilverCoin
   m_EditorClassIdentifier: 
-  type: 0
-  staticSprite: {fileID: 21300000, guid: c8b5ea6e93233d64ab1a027ef80a96f2, type: 3}
-  animatorController: {fileID: 0}
+  Type: 0
+  itemName: 
+  icon: {fileID: 0}
   size: {x: 1, y: 1}
-  damage: 1
-  flyingSpeed: 0
+  healthBonus: 0
+  speedBonus: 0
+  money: 0
+  score: 0
+  duration: 0
