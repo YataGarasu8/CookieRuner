@@ -2,125 +2,124 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
-// PlayerStatsData(ScriptableObject)ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Þ¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+// ÇÃ·¹ÀÌ¾îÀÇ ½ºÅÈ ·ÎÁ÷À» ´ã´çÇÏ´Â Å¬·¡½º
+// PlayerStatsData(ScriptableObject)·ÎºÎÅÍ µ¥ÀÌÅÍ¸¦ ¹Þ¾Æ¿Í ·ÎÁ÷ Ã³¸® ¹× Àû¿ëÀ» ´ã´ç
 public class PlayerStats : MonoBehaviour
 {
-    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
-    public PlayerStatsData statsData; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ScriptableObject ï¿½ï¿½ï¿½ï¿½
+    [Header("½ºÅÈ µ¥ÀÌÅÍ")]
+    public PlayerStatsData statsData; // ÇÃ·¹ÀÌ¾îÀÇ ½ºÅÈ Á¤º¸¸¦ ´ãÀº ScriptableObject ÂüÁ¶
 
-    // ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­)
+    // ÇöÀç Ã¼·Â (°ÔÀÓ ½ÃÀÛ ½Ã ÃÖ´ë Ã¼·ÂÀ¸·Î ÃÊ±âÈ­)
     private float currentHealth;
     public float CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
 
-    // ï¿½ß°ï¿½ ï¿½Óµï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    // Ãß°¡ ¼Óµµ (¾ÆÀÌÅÛÀÌ³ª ¹öÇÁ¿¡ ÀÇÇØ º¯µ¿ °¡´É)
     private float speedModifier = 0f;
 
-    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ (ï¿½âº» ï¿½Óµï¿½ + ï¿½ß°ï¿½ ï¿½Óµï¿½)
+    // ÇöÀç Àû¿ë ¼Óµµ (±âº» ¼Óµµ + Ãß°¡ ¼Óµµ)
     public float CurrentSpeed => statsData.baseSpeed + speedModifier;
     public bool isSpeedUP = false;
 
-    private float currentScale;     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½
-    // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
-    public float CurrentScale => Mathf.Max(currentScale, 0.01f); // ï¿½Ö¼Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private float currentScale;     // ³»ºÎÀûÀ¸·Î °ü¸®ÇÏ´Â Å©±â °ª
+    // ÇöÀç Å©±â »óÅÂ (Å©±â Áõ°¡/°¨¼Ò ½Ã º¯°æ)
+    public float CurrentScale => Mathf.Max(currentScale, 0.01f); // ÃÖ¼Ò°ª º¸Àå
 
 
-    // Å©ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½ (ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+    // Å©±â º¯È­¿¡ »ç¿ëµÇ´Â ÄÚ·çÆ¾ ÂüÁ¶ (Áßº¹ ½ÇÇà ¹æÁö¿ë)
     private Coroutine scaleCoroutine;
 
-    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±â°ª ï¿½ï¿½ï¿½ï¿½
+    // °ÔÀÓ ½ÃÀÛ ½Ã ÃÊ±â°ª ¼³Á¤
     void Start()
     {
+        //Debug.Log($"{CurrentHealth}");
         if (statsData == null)
         {
-            Debug.LogError("PlayerStatsDataï¿½ï¿½ ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
+            Debug.LogError("PlayerStatsData°¡ ÇÒ´çµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
             return;
         }
 
-        currentHealth = statsData.maxHealth; // Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
-        currentScale = statsData.baseScale;  // ï¿½âº» Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-        UpdatePlayerScale();                 // Transform ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+        currentHealth = statsData.maxHealth; // Ã¼·ÂÀ» ÃÖ´ë Ã¼·ÂÀ¸·Î ÃÊ±âÈ­
+        currentScale = statsData.baseScale;  // ±âº» Å©±â ¼³Á¤
+        UpdatePlayerScale();                 // Transform ½ºÄÉÀÏ¿¡ Àû¿ë
     }
 
-    // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
-    // Ã¼ï¿½ï¿½ï¿½ï¿½ 0 ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+    // ÇÃ·¹ÀÌ¾î°¡ µ¥¹ÌÁö¸¦ ¹ÞÀ» ¶§ È£Ãâ
+    // Ã¼·ÂÀÌ 0 ÀÌÇÏ·Î ¶³¾îÁöÁö ¾Êµµ·Ï Ã³¸®
     public void TakeDamage(int damage)
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         Debug.Log($"Player Health: {currentHealth}");
     }
 
-    // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ Ã¼ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È£ï¿½ï¿½
-    // ï¿½Ö´ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+    // ÇÃ·¹ÀÌ¾î°¡ Ã¼·ÂÀ» È¸º¹ÇÒ ¶§ È£Ãâ
+    // ÃÖ´ë Ã¼·ÂÀ» ÃÊ°úÇÏÁö ¾Êµµ·Ï Ã³¸®
     public void Heal(int amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, statsData.maxHealth);
     }
 
-    // ï¿½ß°ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å´
-    // ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¹ï¿½ï¿½ ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
+    // Ãß°¡ ¼Óµµ¸¦ Áõ°¡/°¨¼Ò ½ÃÅ´
+    // ¿¹½Ã: ¾ÆÀÌÅÛ È¹µæ ½Ã ¼Óµµ Áõ°¡
     public void ModifySpeed(float amount)
     {
-        isSpeedUP = true;
         speedModifier += amount;
         Debug.Log($"ÇöÀç¼Óµµ : {CurrentSpeed}");
     }
 
-    // ï¿½ß°ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ (ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½)
+    // Ãß°¡ ¼Óµµ¸¦ ÃÊ±âÈ­ (¹öÇÁ È¿°ú Á¾·á ½Ã »ç¿ë)
     public void ResetSpeedModifier()
     {
-        isSpeedUP = false;
         speedModifier = 0f;
         Debug.Log($"ÇöÀç¼Óµµ : {CurrentSpeed}");
     }
 
-    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å´
-    // ï¿½Ö´ï¿½ Å©ï¿½â¸¦ ï¿½Ê°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // ÇÃ·¹ÀÌ¾î Å©±â¸¦ ÀÏÁ¤·® Áõ°¡½ÃÅ´
+    // ÃÖ´ë Å©±â¸¦ ÃÊ°úÇÏÁö ¾Êµµ·Ï Á¦ÇÑ
     public void IncreaseSize()
     {
         Debug.Log("»çÀÌÁî¾÷ ³»ºÎ");
         if (scaleCoroutine != null)
-            StopCoroutine(scaleCoroutine); // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
+            StopCoroutine(scaleCoroutine); // ±âÁ¸ Å©±â º¯°æ ÄÚ·çÆ¾ ÁßÁö
 
         float targetScale = Mathf.Min(CurrentScale + statsData.scaleIncreaseAmount, statsData.maxScale);
         scaleCoroutine = StartCoroutine(ScaleOverTime(CurrentScale, targetScale));
     }
 
-    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Å©ï¿½â¸¦ ï¿½âº» Å©ï¿½ï¿½ï¿½ ï¿½Çµï¿½ï¿½ï¿½
+    // ÇÃ·¹ÀÌ¾î Å©±â¸¦ ±âº» Å©±â·Î µÇµ¹¸²
     public void ResetSize()
     {
         if (scaleCoroutine != null)
-            StopCoroutine(scaleCoroutine); // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
+            StopCoroutine(scaleCoroutine); // ±âÁ¸ Å©±â º¯°æ ÄÚ·çÆ¾ ÁßÁö
 
         scaleCoroutine = StartCoroutine(ScaleOverTime(CurrentScale, statsData.baseScale));
     }
 
-    // Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    // ï¿½ï¿½È­ ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (targetScaleï¿½ï¿½ baseScaleï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½)
+    // Å©±â¸¦ ÀÏÁ¤ ½Ã°£ µ¿¾È ºÎµå·´°Ô º¯°æÇÔ
+    // º¯È­ ¿Ï·á ÈÄ ÀÏÁ¤ ½Ã°£ÀÌ Áö³ª¸é ¿ø»óÅÂ º¹±Í (targetScaleÀÌ baseScaleÀÌ ¾Æ´Ò ¶§)
     private System.Collections.IEnumerator ScaleOverTime(float startScale, float targetScale)
     {
         float elapsed = 0f;
 
         while (elapsed < 1f)
         {
-            elapsed += Time.deltaTime * statsData.scaleChangeSpeed; // Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
-            currentScale = Mathf.Lerp(startScale, targetScale, elapsed); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½È­
-            UpdatePlayerScale(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Å©ï¿½ï¿½ ï¿½Ý¿ï¿½
-            yield return null;   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            elapsed += Time.deltaTime * statsData.scaleChangeSpeed; // Å©±â º¯°æ ¼Óµµ Àû¿ë
+            currentScale = Mathf.Lerp(startScale, targetScale, elapsed); // ¼±Çü º¸°£À¸·Î Å©±â º¯È­
+            UpdatePlayerScale(); // ½ÇÁ¦ ¿ÀºêÁ§Æ® Å©±â ¹Ý¿µ
+            yield return null;   // ÇÁ·¹ÀÓ ´ë±â
         }
 
-        currentScale = targetScale; // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        currentScale = targetScale; // ÃÖÁ¾ Å©±â Àû¿ë
         UpdatePlayerScale();
 
-        // Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        // Å©±â Áõ°¡ ½Ã ÀÏÁ¤ ½Ã°£ À¯Áö ÈÄ ¿ø»ó º¹±Í
         if (targetScale != statsData.baseScale)
         {
-            yield return new WaitForSeconds(statsData.scaleDuration); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½
-            ResetSize(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            yield return new WaitForSeconds(statsData.scaleDuration); // À¯Áö ½Ã°£ ´ë±â
+            ResetSize(); // ¿ø»ó º¹±Í
         }
     }
 
-    // ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â¸¦ Transformï¿½ï¿½ localScaleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // ÇöÀç Å©±â¸¦ TransformÀÇ localScale¿¡ Àû¿ë
     private void UpdatePlayerScale()
     {
         transform.localScale = Vector3.one * CurrentScale;
