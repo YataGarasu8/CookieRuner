@@ -27,6 +27,18 @@ public class Item : ScriptableObject
     [Header("아이템 지속시간")]
     public float duration;
 
+    [Header("보너스아이템전용")]
+    public MoluName name;
+
     //public abstract void Use(PlayerStats playerStats);
 
+}
+
+public enum MoluName
+{
+    LJH,
+    LKW,
+    JSW,
+    LYJ,
+    KYJ
 }
