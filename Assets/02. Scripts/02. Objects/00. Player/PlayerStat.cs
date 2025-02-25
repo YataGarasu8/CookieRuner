@@ -28,12 +28,6 @@ public class PlayerStats : MonoBehaviour
     // 크기 변화에 사용되는 코루틴 참조 (중복 실행 방지용)
     private Coroutine scaleCoroutine;
 
-    //보너스아이템 획득여부
-    private bool isGetLJH = false;
-    private bool isGetLKW = false;
-    private bool isGetJSW = false;
-    private bool isGetLYJ = false;
-    private bool isGetKYJ = false;
 
     // 게임 시작 시 초기값 설정
     void Start()
@@ -131,21 +125,5 @@ public class PlayerStats : MonoBehaviour
         transform.localScale = Vector3.one * CurrentScale;
     }
 
-    public bool IsGetAllBonusItem()
-    {
-        if (isGetJSW && isGetKYJ && isGetLJH && isGetLKW && isGetLYJ)
-        {
-            return true;
-        }
-        else 
-            return false;
-    }
-
-    public void GetBonusItem(string name)
-    {
-        switch (name)
-        {
-            case 
-        }
-    }
+ 
 }
