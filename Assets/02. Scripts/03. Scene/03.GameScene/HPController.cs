@@ -21,7 +21,10 @@ public class HPCotroller : MonoBehaviour
     private void Update()
     {
         HPDown();
+<<<<<<< Updated upstream
         //Debug.Log($"{PlayerStat.GetComponent<PlayerStats>().CurrentHealth}");
+=======
+>>>>>>> Stashed changes
     }
 
     void HPDown()
