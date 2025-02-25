@@ -75,8 +75,8 @@ public class ItemSC : MonoBehaviour
 
     public void OnPlayerDetected(Collider2D collider)
     {
-        PlayerStats playerStats = collider.GetComponent<PlayerStats>();
-        PlayerMovement playerMovement = collider.GetComponent<PlayerMovement>();
+        PlayerStats playerStats = collider.GetComponentInParent<PlayerStats>();
+        PlayerMovement playerMovement = collider.GetComponentInParent<PlayerMovement>();
 
         if (playerStats == null)
         {
@@ -126,7 +126,10 @@ public class ItemSC : MonoBehaviour
                 playerStats.IncreaseSize();
                 playerMovement.TolggleImmune();
                 playerMovement.Invoke(nameof(playerMovement.TolggleImmune),data.duration);
-                //公利贸府
+                break;
+            //公利贸府
+            case ItemType.MoneyItem:
+                //捣酒捞袍 贸府
                 break;
             default:
                 Debug.Log("叼弃飘");
