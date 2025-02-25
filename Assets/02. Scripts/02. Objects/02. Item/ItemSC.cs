@@ -76,9 +76,8 @@ public class ItemSC : MonoBehaviour
     public void OnPlayerDetected(Collider2D collider)
     {
         PlayerStats playerStats = collider.GetComponent<PlayerStats>();
+        PlayerMovement playerMovement = collider.GetComponent<PlayerMovement>();
 
-        //Vector2 coli = new Vector2(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y);
-        //Vector2 item = new Vector2((float)transform.position.x, (float)this.transform.position.y);
         if (playerStats == null)
         {
             Debug.Log("ÄÄÆ÷³ÍÆ® ¾øÀ½");
@@ -90,7 +89,7 @@ public class ItemSC : MonoBehaviour
         {
             case ItemType.Score:
                 //ScoreManager.Instance.AddScore(data.score);
-                Debug.Log($"½ºÄÚ¾î È¹µæ :   {data.score}");
+                Debug.Log($"½ºÄÚ¾î È¹µæ : {data.score}");
                 break;
             case ItemType.HPUPItem:
                 playerStats.Heal(data.healthBonus);
@@ -99,12 +98,12 @@ public class ItemSC : MonoBehaviour
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 else
                 {
                     playerStats.ModifySpeed(data.speedBonus);
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 break;
             case ItemType.TreasureItem:
@@ -112,7 +111,7 @@ public class ItemSC : MonoBehaviour
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 else
                 {
@@ -125,7 +124,8 @@ public class ItemSC : MonoBehaviour
                 break;
             case ItemType.PowerUPItem:
                 playerStats.IncreaseSize();
-
+                playerMovement.TolggleImmune();
+                playerMovement.Invoke(nameof(playerMovement.TolggleImmune),data.duration);
                 //¹«ÀûÃ³¸®
                 break;
             default:

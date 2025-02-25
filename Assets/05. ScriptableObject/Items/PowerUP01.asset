@@ -20,3 +20,4 @@ MonoBehaviour:
   speedBonus: 0
   money: 0
   score: 0
+  duration: 5
