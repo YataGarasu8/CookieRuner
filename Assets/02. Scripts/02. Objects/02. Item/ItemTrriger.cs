@@ -13,7 +13,7 @@ public class ItemTrriger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("ItemColider"))
         {
             Debug.Log("if¹® ³»ºÎ");
             Item.OnPlayerDetected(collision);
