@@ -76,6 +76,7 @@ public class ItemSC : MonoBehaviour
     public void OnPlayerDetected(Collider2D collider)
     {
         PlayerStats playerStats = collider.GetComponent<PlayerStats>();
+        PlayerMovement playerMovement = collider.GetComponent<PlayerMovement>();
 
         if (playerStats == null)
         {
@@ -87,7 +88,7 @@ public class ItemSC : MonoBehaviour
         switch (data.Type)
         {
             case ItemType.Score:
-                ScoreManager.Instance.AddScore(data.score);
+                //ScoreManager.Instance.AddScore(data.score);
                 Debug.Log($"胶内绢 裙垫 :   {data.score}");
                 break;
             case ItemType.HPUPItem:
@@ -97,12 +98,12 @@ public class ItemSC : MonoBehaviour
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 else
                 {
                     playerStats.ModifySpeed(data.speedBonus);
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 break;
             case ItemType.TreasureItem:
@@ -110,7 +111,7 @@ public class ItemSC : MonoBehaviour
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
                 else
                 {
@@ -123,7 +124,8 @@ public class ItemSC : MonoBehaviour
                 break;
             case ItemType.PowerUPItem:
                 playerStats.IncreaseSize();
-
+                playerMovement.TolggleImmune();
+                playerMovement.Invoke(nameof(playerMovement.TolggleImmune),data.duration);
                 //公利贸府
                 break;
             default:

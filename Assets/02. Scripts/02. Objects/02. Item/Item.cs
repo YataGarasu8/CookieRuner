@@ -24,6 +24,9 @@ public class Item : ScriptableObject
     [Header("스코어 아이템 전용")]
     public int score;
 
+    [Header("아이템 지속시간")]
+    public float duration;
+
     //public abstract void Use(PlayerStats playerStats);
 
 }

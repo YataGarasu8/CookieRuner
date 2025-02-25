@@ -37,35 +37,35 @@ using UnityEngine;
 
 
 // 왜 트리거를 FixedUpdate에서 호출해야 할까?
-   
+
 // Unity에서 애니메이션 트리거 호출 시점은 애니메이션 상태 전환의 성공 여부에 중요한 영향을 미침
 // 특히, 트리거 호출을 Update에서 처리할 때 애니메이션 상태 전환이 불안정하거나 무시되는 현상이 발생할 수 있음!!!
-   
+
 // 1. Update와 Animator 업데이트 타이밍 차이
 // - Update는 프레임마다 호출되며 렌더링 타이밍과 동기화
 // - FixedUpdate는 물리 연산 타이밍과 동기화되며 일정한 간격으로 호출
-   
+
 // 문제 발생 시나리오 (Update 사용 시):
 // - Update에서 트리거 호출 시 같은 프레임 내에서 애니메이션 상태 전환 전에 트리거가 해제되거나 덮어쓰기 발생
 // - 이로 인해 애니메이터가 트리거 변경 사항을 감지하지 못하게 됨
-   
+
 // FixedUpdate 사용 시 장점:
 // - 물리 연산과 애니메이션 처리가 자연스럽게 동기화
 // - 트리거 호출 후 애니메이션 상태 전환이 안정적으로 적용
-   
+
 // 2. Rigidbody와의 일관성 유지
 // - 캐릭터의 이동, 점프, 충돌 등은 물리 연산(FixedUpdate)에서 처리됨
 // - 트리거 호출을 FixedUpdate에 두면 점프나 이동 애니메이션이 물리 처리와 일관되게 적용됨
-   
+
 // 예시:
 // - 점프 시 물리적으로 위로 이동하는 타이밍과 애니메이션 재생 시점이 일치
 // - 애니메이션이 물리적 움직임과 잘 맞아떨어져 더 자연스러운 연출이 가능
-   
+
 // 3. 트리거 호출 시점의 경쟁 조건 방지
 // - Update와 Animator 업데이트가 충돌할 경우, 트리거가 너무 빠르게 호출 및 해제되면 애니메이션 전환 실패 가능성이 있음
 // - FixedUpdate에서 트리거 호출 시, 애니메이터 업데이트 전에 안전하게 트리거를 적용할 수 있음
 // - 트리거 상태 유지 및 해제 타이밍 제어가 쉬워짐
-   
+
 // 정리:
 // - Update는 입력 처리에 적합하지만 트리거 적용 타이밍이 불안정할 수 있음
 // - FixedUpdate는 물리 연산과 동기화되어 트리거 적용 안정성을 확보할 수 있음
@@ -333,7 +333,7 @@ public class PlayerMovement : MonoBehaviour
         boxCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
         boxCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
     }
-    
+
     // 플레이어 피격 시 호출할 함수
     public void TakeDamage(int damage)
     {
@@ -390,5 +390,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogWarning("[PlayerMovement] BoxCollider2D가 null입니다. Gizmos 표시 실패.");
         }
+    }
+
+    public void TolggleImmune()
+    {
+        if (isInvincible)
+            isInvincible = false;
+        else
+            isInvincible = true;
     }
 }
