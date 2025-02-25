@@ -8,14 +8,14 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
 
     [Header("UI Elements")]
-    public Text scoreText; // 현재 점수 표시
-    public Text highScoresText; // 역대 점수 표시
+    public Text scoreText;          // 현재 점수 표시
+    public Text highScoresText;     // 역대 최고 점수 표시
 
     [Header("Settings")]
-    public int maxHighScores = 10; // 최대 순위 개수
+    public int maxHighScores = 10;  // 최대 순위 개수
 
-    private int currentScore = 0;
-    private List<int> highScores = new List<int>();
+    private int currentScore = 0;   // 현재 점수
+    private List<int> highScores = new List<int>(); // 로컬 최고 점수 목록
 
     void Awake()
     {
@@ -29,27 +29,43 @@ public class ScoreManager : MonoBehaviour
         UpdateUI();
     }
 
-    // 점수 추가
+    // 게임 도중 점수를 추가하는 함수
     public void AddScore(int amount)
     {
         currentScore += amount;
         UpdateUI();
+        Debug.Log($"현재 점수: {currentScore}");
     }
 
-    // 게임 종료 시 점수 저장
+    // 게임 종료 시 호출되는 함수 (한 번만 클라우드에 저장)
     public void SaveCurrentScore()
     {
+        // 로컬 최고 점수 목록 업데이트
         highScores.Add(currentScore);
         highScores.Sort((a, b) => b.CompareTo(a)); // 내림차순 정렬
-
         if (highScores.Count > maxHighScores)
             highScores.RemoveRange(maxHighScores, highScores.Count - maxHighScores);
-
         SaveHighScores();
         UpdateUI();
+
+        // PlayerDataManager의 ScriptableObject와 비교하여 최고 점수 갱신
+        if (PlayerDataManager.Instance != null && PlayerDataManager.Instance.playerDataSO != null)
+        {
+            if (currentScore > PlayerDataManager.Instance.playerDataSO.highScore)
+            {
+                PlayerDataManager.Instance.playerDataSO.highScore = currentScore;
+                Debug.Log("클라우드에 저장할 최고 점수를 업데이트합니다: " + currentScore);
+                // 게임 종료 시 한 번만 클라우드에 저장
+                PlayerDataManager.Instance.SavePlayerDataAsync();
+            }
+        }
+        else
+        {
+            Debug.LogError("PlayerDataManager 또는 playerDataSO가 null입니다!");
+        }
     }
 
-    // UI 업데이트
+    // UI 업데이트 함수
     private void UpdateUI()
     {
         if (scoreText != null)
@@ -57,7 +73,7 @@ public class ScoreManager : MonoBehaviour
 
         if (highScoresText != null)
         {
-            highScoresText.text = "?? 역대 최고 점수:\n";
+            highScoresText.text = "역대 최고 점수:\n";
             for (int i = 0; i < highScores.Count; i++)
             {
                 highScoresText.text += $"{i + 1}. {highScores[i]}점\n";
@@ -65,7 +81,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    // 최고 점수 로드
+    // 로컬 최고 점수 로드 (PlayerPrefs 사용)
     private void LoadHighScores()
     {
         highScores.Clear();
@@ -78,7 +94,7 @@ public class ScoreManager : MonoBehaviour
         highScores.Sort((a, b) => b.CompareTo(a));
     }
 
-    // 최고 점수 저장
+    // 로컬 최고 점수 저장 (PlayerPrefs 사용)
     private void SaveHighScores()
     {
         for (int i = 0; i < highScores.Count; i++)
@@ -88,12 +104,15 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // 점수 초기화 (디버그용)
     [ContextMenu("Reset High Scores")]
     public void ResetHighScores()
     {
         PlayerPrefs.DeleteAll();
         highScores.Clear();
         UpdateUI();
+    }
+    void OnApplicationQuit()
+    {
+        SaveCurrentScore();
     }
 }
