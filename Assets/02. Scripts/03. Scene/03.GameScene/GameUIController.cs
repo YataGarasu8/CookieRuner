@@ -11,30 +11,26 @@ public class GameUIController : MonoBehaviour
 
     int coinCount;
 
+    private void Start()
+    {
+        PausePanel.gameObject.SetActive(false);
+    }
     private void Update()
     {
-        PauseGame();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseGame();
+        }
     }
 
     public void PauseGame()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
             PausePanel.gameObject.SetActive(true);
-            PausePanelButton();
             Time.timeScale = 0f;
-        }
     }
-    public void PausePanelButton()
+    public void ReturnGame()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            //메인메뉴 돌아가기
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
             PausePanel.gameObject.SetActive(false);
             Time.timeScale = 1f;
-        }
     }
 }
