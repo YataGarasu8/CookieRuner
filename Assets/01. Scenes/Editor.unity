@@ -211,6 +211,8 @@ GameObject:
   - component: {fileID: 184544525}
   - component: {fileID: 184544526}
   - component: {fileID: 184544527}
+  - component: {fileID: 184544528}
+  - component: {fileID: 184544529}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -279,6 +281,34 @@ MonoBehaviour:
   fadeImage: {fileID: 6611446334193943595, guid: d8b467d1418d6b049b687a031e2ff4bd, type: 3}
   targetAlpha: 0.9
   fadeDuration: 3
+--- !u!114 &184544528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184544523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8035968ce800cdc4f9066bd5f48599cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  highScoresText: {fileID: 0}
+  maxHighScores: 10
+--- !u!114 &184544529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184544523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e8759966d97d449955e9ac44e26cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDataSO: {fileID: 11400000, guid: 7ef7a3ba7951b6c4ea8bd705131ae789, type: 2}
 --- !u!1 &354924343
 GameObject:
   m_ObjectHideFlags: 0

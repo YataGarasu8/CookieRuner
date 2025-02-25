@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour
     // 게임 시작 시 초기값 설정
     void Start()
     {
-        Debug.Log($"{CurrentHealth}");
+        //Debug.Log($"{CurrentHealth}");
         if (statsData == null)
         {
             Debug.LogError("PlayerStatsData가 할당되지 않았습니다.");
