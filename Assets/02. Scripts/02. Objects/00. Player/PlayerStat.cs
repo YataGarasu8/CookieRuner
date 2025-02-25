@@ -68,6 +68,8 @@ public class PlayerStats : MonoBehaviour
     // 추가 속도를 초기화 (버프 효과 종료 시 사용)
     public void ResetSpeedModifier()
     {
+        Debug.Log("속도줄어들기");
+        Debug.Log(CurrentSpeed);
         speedModifier = 0f;
     }
 
