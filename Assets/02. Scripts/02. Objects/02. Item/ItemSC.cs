@@ -121,15 +121,24 @@ public class ItemSC : MonoBehaviour
                 break;
             case ItemType.BonusItem:
                 //보너스아이템 처리
+                Debug.Log("보너스 아이템 획득");
                 break;
             case ItemType.PowerUPItem:
-                playerStats.IncreaseSize();
-                playerMovement.TolggleImmune();
-                playerMovement.Invoke(nameof(playerMovement.TolggleImmune),data.duration);
+                Debug.Log("파워업아이템 획득");
+                if (playerMovement.isItemInvincible)
+                {
+                    playerMovement.CancelInvoke(nameof(playerMovement.TolggleImmune));
+                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                }
+                else
+                {
+                    playerStats.IncreaseSize();
+                    playerMovement.TolggleImmune();
+                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                }
                 break;
-            //무적처리
             case ItemType.MoneyItem:
-                //돈아이템 처리
+                Debug.Log($"돈 아이템 획득 : {data.money}");
                 break;
             default:
                 Debug.Log("디폴트");

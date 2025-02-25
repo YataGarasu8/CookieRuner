@@ -63,6 +63,7 @@ public class PlayerStats : MonoBehaviour
     {
         isSpeedUP = true;
         speedModifier += amount;
+        Debug.Log($"현재속도 : {CurrentSpeed}");
     }
 
     // 추가 속도를 초기화 (버프 효과 종료 시 사용)
@@ -70,12 +71,14 @@ public class PlayerStats : MonoBehaviour
     {
         isSpeedUP = false;
         speedModifier = 0f;
+        Debug.Log($"현재속도 : {CurrentSpeed}");
     }
 
     // 플레이어 크기를 일정량 증가시킴
     // 최대 크기를 초과하지 않도록 제한
     public void IncreaseSize()
     {
+        Debug.Log("사이즈업 내부");
         if (scaleCoroutine != null)
             StopCoroutine(scaleCoroutine); // 기존 크기 변경 코루틴 중지
 
