@@ -65,7 +65,9 @@ public class TilemapManager : MonoBehaviour
     void Update()
     {
         // 플레이어가 현재 타일맵의 3분의 2 지점을 지났을 때 다음 타일맵 생성
-        if (!isChangingTilemap && player.position.x >= currentTilemapThresholdX)
+        if (player == null)
+        { return; }
+        else if (!isChangingTilemap && player.position.x >= currentTilemapThresholdX)
         {
             StartCoroutine(ChangeTilemapWithFade());
         }
