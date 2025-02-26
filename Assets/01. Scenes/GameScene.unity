@@ -2942,7 +2942,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1724818612}
-  - component: {fileID: 1724818611}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2950,19 +2949,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1724818611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1724818610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e4db7af02b66947aea69c905996a18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  getGold: {fileID: 1903246685}
 --- !u!4 &1724818612
 Transform:
   m_ObjectHideFlags: 0
@@ -2995,7 +2981,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1804474605}
-  - component: {fileID: 1804474606}
   - component: {fileID: 1804474607}
   m_Layer: 0
   m_Name: Sound
@@ -3019,24 +3004,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1724818612}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1804474606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804474604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72800a2f4183f2a4e8f71ba8443bd907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgmSource: {fileID: 1804474607}
-  bgmVolume: 0.5
-  sfxPoolSize: 10
-  sfxVolume: 0.7
-  sfxClips: []
-  bgmClips: []
 --- !u!82 &1804474607
 AudioSource:
   m_ObjectHideFlags: 0
