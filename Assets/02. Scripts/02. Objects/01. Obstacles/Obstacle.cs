@@ -124,6 +124,8 @@ public class Obstacle : MonoBehaviour
             //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
             PlayerController playerController = collision.collider.GetComponentInParent<PlayerController>();
             PlayerMovement playerMovement = collision.collider.GetComponentInParent<PlayerMovement>();
+
+            Collider2D collider = GetComponent<Collider2D>();
             
             if (playerController != null)
             {
@@ -137,6 +139,7 @@ public class Obstacle : MonoBehaviour
                     rb.bodyType = RigidbodyType2D.Dynamic;
                     Debug.Log(rb.bodyType);
                     rb.AddForce((Vector2)collision.gameObject.transform.position * data.power);
+                    Destroy(collider);
                 }
             }
         }
