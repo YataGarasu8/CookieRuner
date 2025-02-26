@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3b18100b66acee348be5d8d0d22deb2f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0e142131a34d9a34aaf3d360908b6724, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -58,7 +58,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ThornUp
+  m_Name: HandUp
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isTrigger
@@ -100,7 +100,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3601d4f9d6947434a977b8b850a8ad95, type: 2}
+  m_Motion: {fileID: 7400000, guid: 867d42c8c165e6e42acbeb2bb1cf0742, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
