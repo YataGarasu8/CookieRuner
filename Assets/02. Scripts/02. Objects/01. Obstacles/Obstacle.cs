@@ -124,6 +124,8 @@ public class Obstacle : MonoBehaviour
             //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
             PlayerController playerController = collision.collider.GetComponentInParent<PlayerController>();
             PlayerMovement playerMovement = collision.collider.GetComponentInParent<PlayerMovement>();
+
+            Collider2D collider = GetComponent<Collider2D>();
             
             if (playerController != null)
             {
@@ -137,6 +139,7 @@ public class Obstacle : MonoBehaviour
                     rb.bodyType = RigidbodyType2D.Dynamic;
                     Debug.Log(rb.bodyType);
                     rb.AddForce((Vector2)collision.gameObject.transform.position * data.power);
+                    Destroy(collider);
                 }
             }
         }
@@ -149,7 +152,7 @@ public class Obstacle : MonoBehaviour
 
     public void OnPlayerDetected()
     {
-        Debug.Log("Trigger 영역에서 플레이어 감지!");
+        Debug.Log("Obstacle Trigger 영역에서 플레이어 감지!");
         // 감지 시 추가 로직 가능 (예: 팝업 시작, 공격 준비 등)
     }
 }
