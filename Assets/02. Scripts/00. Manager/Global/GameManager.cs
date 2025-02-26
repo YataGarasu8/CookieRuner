@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public TextMeshProUGUI getGold;
-    public Text playerGold;
 
     //보너스아이템 획득여부
     private bool isGetLJH = false;
@@ -19,7 +18,7 @@ public class GameManager : MonoBehaviour
     private bool isGetKYJ = false;
 
     public int Money { get; set; } // 한 게임에서 얻는 골드재화
-    int playerMoney;//플레이어가 보유한 골드의 총량
+    public int playerMoney;//플레이어가 보유한 골드의 총량
 
     private void Awake()
     {
@@ -34,7 +33,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        CalculateMoney();
+        //CalculateMoney();
     }
     private void Update()
     {
@@ -113,12 +112,9 @@ public class GameManager : MonoBehaviour
             getGold.text = Money.ToString();
         }
     }
-    void CalculateMoney()
+    public void CalculateMoney()
     {
         playerMoney += Money;
-        if (playerGold != null)
-        {
-            playerGold.text = playerMoney.ToString();
-        }
     }
+
 }
