@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
   m_Name: Sliver_Coin01
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 5
   itemName: 
   icon: {fileID: -1128967672, guid: d0147459fe7a98d44969d0a08950e798, type: 3}
   size: {x: 1, y: 1}
   healthBonus: 0
   speedBonus: 0
-  money: 1
+  money: 10
   score: 0
   duration: 0
+  name: 0
