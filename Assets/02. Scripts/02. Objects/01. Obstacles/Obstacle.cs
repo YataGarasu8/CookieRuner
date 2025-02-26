@@ -19,6 +19,7 @@ public class Obstacle : MonoBehaviour
         InitializeComponents();
         SetupObstacle();
         SetupTriggerCollider(); // 트리거 콜라이더 추가
+        this.gameObject.layer = 7;
     }
 
     private void InitializeComponents()
@@ -119,11 +120,13 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("ObsColider"))
         {
+            Debug.LogWarning("obs콜라이더 충돌");
             //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
-            PlayerController playerController = collision.collider.GetComponent<PlayerController>();
-            PlayerMovement playerMovement = collision.collider.GetComponent<PlayerMovement>();
+            
+            PlayerController playerController = collision.collider.GetComponentInParent<PlayerController>();
+            PlayerMovement playerMovement = collision.collider.GetComponentInParent<PlayerMovement>();
 
             Collider2D collider = GetComponent<Collider2D>();
             
