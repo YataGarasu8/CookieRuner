@@ -123,8 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &46053917
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +866,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298560971}
   m_CullTransparentMesh: 1
->>>>>>> Dev
 --- !u!1 &1322380055
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,8 +958,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &1582376296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,9 +1384,11 @@ MonoBehaviour:
   - "\uBAA8\uC790\uB77C\uB2E4... \uBC18\uC9DD\uC774..."
   YataMent: {fileID: 1061868595}
   YataTalk: {fileID: 1665134487}
->>>>>>> Dev
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1322380058}
+  - {fileID: 1582376300}
+  - {fileID: 350283050}
+  - {fileID: 2107247577}
