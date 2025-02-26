@@ -12,7 +12,7 @@ public class Obstacle : MonoBehaviour
 
     [Header("Trigger 감지 설정")]
     public Vector2 triggerSize = new Vector2(2f, 2f);
-    public float triggerOffset = 20f;
+    public float triggerOffset = 0f;
 
     private void Start()
     {
@@ -31,13 +31,13 @@ public class Obstacle : MonoBehaviour
         }
 
         // Collider 설정
-        var collider = GetComponent<BoxCollider2D>();
-        if (collider == null)
-        {
-            collider = gameObject.AddComponent<BoxCollider2D>();
-        }
-        collider.size = data.size;
-        collider.isTrigger = false; // 충돌 감지를 위해 isTrigger 해제
+        //var collider = GetComponent<BoxCollider2D>();
+        //if (collider == null)
+        //{
+        //    collider = gameObject.AddComponent<BoxCollider2D>();
+        //}
+        //collider.size = data.size;
+        //collider.isTrigger = false; // 충돌 감지를 위해 isTrigger 해제
 
         // Rigidbody2D 설정
         rb = GetComponent<Rigidbody2D>();
@@ -119,8 +119,10 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.LogWarning("온콜리전내부");
         if (collision.collider.CompareTag("Player"))
         {
+            Debug.LogWarning("if문내부");
             //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
             PlayerController playerController = collision.collider.GetComponent<PlayerController>();
             PlayerMovement playerMovement = collision.collider.GetComponent<PlayerMovement>();
@@ -137,8 +139,8 @@ public class Obstacle : MonoBehaviour
                 {
                     Debug.Log("ELSE문 진입");
                     rb.bodyType = RigidbodyType2D.Dynamic;
-                    Debug.Log(rb.bodyType);
                     rb.AddForce((Vector2)collision.gameObject.transform.position * data.power);
+                    collider.isTrigger = true;
                     Destroy(collider);
                 }
             }

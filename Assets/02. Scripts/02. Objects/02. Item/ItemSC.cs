@@ -143,5 +143,10 @@ public class ItemSC : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+    }
 }
 
