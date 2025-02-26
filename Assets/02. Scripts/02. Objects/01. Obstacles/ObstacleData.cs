@@ -21,5 +21,5 @@ public class ObstacleData : ScriptableObject
     public float flyingSpeed = 5f; // 날아오는 속도
 
     [Header("물리충돌")]
-    public float power = 1;
+    public float power = 5f;
 }

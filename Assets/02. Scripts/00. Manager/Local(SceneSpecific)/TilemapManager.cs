@@ -106,30 +106,42 @@ public class TilemapManager : MonoBehaviour
             {
                 Debug.LogWarning("Tilemap(Obstacles)에서 TilemapRenderer 컴포넌트를 찾을 수 없습니다.");
             }
+
+            // TilemapCollider2D 컴포넌트를 가져와 비활성화
+            TilemapCollider2D tilemapCollider2D = obstaclesTransform.GetComponent<TilemapCollider2D>();
+            if (tilemapCollider2D != null)
+            {
+                tilemapCollider2D.enabled = false;
+            }
+            else
+            {
+                Debug.LogWarning("Tilemap(Obstacles)에서 TilemapCollider2D 컴포넌트를 찾을 수 없습니다.");
+            }
         }
         else
         {
             Debug.LogWarning("tilemapPrefabs 내에 'Tilemap(Obstacles)' 오브젝트가 존재하지 않습니다.");
         }
 
-        Transform itemsTransform = currentTilemap.transform.Find("Grid/Tilemap(Items)");
-        if (itemsTransform != null)
-        {
-            // TilemapRenderer 컴포넌트를 가져와 비활성화
-            TilemapRenderer tilemapRenderer = itemsTransform.GetComponent<TilemapRenderer>();
-            if (tilemapRenderer != null)
-            {
-                tilemapRenderer.enabled = false;
-            }
-            else
-            {
-                Debug.LogWarning("Tilemap(items)에서 TilemapRenderer 컴포넌트를 찾을 수 없습니다.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("tilemapPrefabs 내에 'Tilemap(items)' 오브젝트가 존재하지 않습니다.");
-        }
+
+        //Transform itemsTransform = currentTilemap.transform.Find("Grid/Tilemap(Items)");
+        //if (itemsTransform != null)
+        //{
+        //    // TilemapRenderer 컴포넌트를 가져와 비활성화
+        //    TilemapRenderer tilemapRenderer = itemsTransform.GetComponent<TilemapRenderer>();
+        //    if (tilemapRenderer != null)
+        //    {
+        //        tilemapRenderer.enabled = false;
+        //    }
+        //    else
+        //    {
+        //        Debug.LogWarning("Tilemap(items)에서 TilemapRenderer 컴포넌트를 찾을 수 없습니다.");
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("tilemapPrefabs 내에 'Tilemap(items)' 오브젝트가 존재하지 않습니다.");
+        //}
     }
 
 

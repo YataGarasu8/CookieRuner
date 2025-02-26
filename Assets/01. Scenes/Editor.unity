@@ -260,8 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemapPrefabs:
-  - {fileID: 8622471835378288503, guid: 990a2b991b304cd4ba16c6b9758a0988, type: 3}
-  - {fileID: 8622471835378288503, guid: 733b776fa97fd0f46a93cb8f218efadd, type: 3}
   - {fileID: 8622471835378288503, guid: 546304848d515b0499406662288958f8, type: 3}
   player: {fileID: 354924344}
   parallaxLayer: {fileID: 61675983}
@@ -500,6 +498,7 @@ MonoBehaviour:
   slideColliderOffset: {x: 0.1, y: -1.07}
   invincibilityDuration: 2
   blinkInterval: 0.2
+  isItemInvincible: 0
 --- !u!61 &354924354
 BoxCollider2D:
   m_ObjectHideFlags: 0
