@@ -64,9 +64,9 @@ public class ItemSC : MonoBehaviour
         PlayerStats playerStats = collider.GetComponentInParent<PlayerStats>();
         PlayerMovement playerMovement = collider.GetComponentInParent<PlayerMovement>();
 
-        if (playerStats == null)
+        if (playerStats == null || playerMovement == null)
         {
-            Debug.Log("PlayerStat 없음");
+            Debug.Log("PlayerStat or playerMovement 없음");
             return;
         }
         switch (data.Type)
@@ -83,22 +83,16 @@ public class ItemSC : MonoBehaviour
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
+                    playerMovement.CancelInvoke(nameof(playerMovement.OffSpeedUPImmune));
                     playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
+                    playerMovement.Invoke(nameof(playerMovement.OffSpeedUPImmune), data.duration);
                 }
                 else
                 {
                     playerStats.ModifySpeed(data.speedBonus);
+                    playerMovement.OnSpeedUPImmune();
                     playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
-                }
-                if (playerMovement.isItemInvincible)
-                {
-                    playerMovement.CancelInvoke(nameof(playerMovement.TolggleImmune));
-                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
-                }
-                else
-                {
-                    playerMovement.TolggleImmune();
-                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                    playerMovement.Invoke(nameof(playerMovement.OffSpeedUPImmune), data.duration);
                 }
                 break;
             case ItemType.TreasureItem:
@@ -106,12 +100,16 @@ public class ItemSC : MonoBehaviour
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
+                    playerMovement.CancelInvoke(nameof(playerMovement.OffSpeedUPImmune));
                     playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
+                    playerMovement.Invoke(nameof(playerMovement.OffSpeedUPImmune), data.duration);
                 }
                 else
                 {
                     playerStats.ModifySpeed(data.speedBonus);
-                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), 5f);
+                    playerMovement.OnSpeedUPImmune();
+                    playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
+                    playerMovement.Invoke(nameof(playerMovement.OffSpeedUPImmune), data.duration);
                 }
                 break;
             case ItemType.BonusItem:

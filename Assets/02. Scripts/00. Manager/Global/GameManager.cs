@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Instance = this;
+        //Instance = this;
         DontDestroyOnLoad(gameObject); // 씬 전환 시 유지
     }
     private void Start()
