@@ -2091,8 +2091,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140, y: 2}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 166.02115, y: 0}
+  m_SizeDelta: {x: 270, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &790110901
 MonoBehaviour:
@@ -2116,7 +2116,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 489fabca9503f054eaa1939b7e015e62, type: 3}
-    m_FontSize: 25
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4176,6 +4176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1891477118}
+  - component: {fileID: 1891477119}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4204,6 +4205,20 @@ Transform:
   - {fileID: 1919424401}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1891477119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891477117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e4db7af02b66947aea69c905996a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getGold: {fileID: 0}
+  playerGold: {fileID: 790110901}
 --- !u!1 &1916019894
 GameObject:
   m_ObjectHideFlags: 0
