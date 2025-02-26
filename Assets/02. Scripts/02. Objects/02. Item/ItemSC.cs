@@ -118,7 +118,7 @@ public class ItemSC : MonoBehaviour
             case ItemType.BonusItem:
                 if (GameManager.Instance.GetBonusItem(data.name))
                 {
-                    //?´ë¯? ë³´ë„ˆ?Š¤ ?•„?´?…œ?„ ?š?“?•œ ê²½ìš° ? ?ˆ˜?š?“
+                    
                     ScoreManager.Instance.AddScore(data.score);
                     Debug.Log($"½ºÄÚ¾î È¹µæ: {data.score}");
                 }
