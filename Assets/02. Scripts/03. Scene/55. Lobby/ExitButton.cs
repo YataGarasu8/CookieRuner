@@ -3,15 +3,20 @@ using UnityEngine.UI;
 
 public class ExitButton : MonoBehaviour
 {
-    public Button exitButton;  
+    public Button exitButton;
 
     void Start()
-    {            
-            exitButton.onClick.AddListener(ExitGame);    
+    {
+        
+
+       
+        exitButton.onClick.AddListener(ExitGame);
     }
 
     void ExitGame()
     {
-        Debug.Log("게임 종료");        
+        Debug.Log("게임 종료");
+
+
     }
 }

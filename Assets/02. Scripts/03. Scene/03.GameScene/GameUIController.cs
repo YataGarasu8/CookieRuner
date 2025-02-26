@@ -8,12 +8,10 @@ using UnityEngine.SceneManagement;
 public class GameUIController : MonoBehaviour
 {
     public TextMeshProUGUI CoinCountText;
-    public TextMeshProUGUI ScoreCountText;
     public GameObject PausePanel;
     public GameObject Canvas;
 
     int coinCount;
-    int scoreCount;
 
     private void Awake()
     {

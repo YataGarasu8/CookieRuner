@@ -72,8 +72,20 @@ public class ItemSC : MonoBehaviour
         switch (data.Type)
         {
             case ItemType.Score:
+
+
+               // ScoreManager.Instance.AddScore(data.score);
+                Debug.Log($"?ìˆ˜?ë“ :   {data.score}");
+
+                ScoreManager.Instance.AddScore(data.score);
+                Debug.Log($"? ?ˆ˜?š?“ :   {data.score}");
+
+
+               // ScoreManager.Instance.AddScore(data.score);
+                Debug.Log($"? ?ˆ˜?š?“ :   {data.score}");
                 ScoreManager.Instance.AddScore(data.score);
                 Debug.Log($"½ºÄÚ¾î È¹µæ: {data.score}");
+
                 break;
             case ItemType.HPUPItem:
                 playerStats.Heal(data.healthBonus);
