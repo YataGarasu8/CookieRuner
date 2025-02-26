@@ -9,13 +9,15 @@ public class GameUIController : MonoBehaviour
 {
     public TextMeshProUGUI CoinCountText;
     public GameObject PausePanel;
+    public GameObject EndPanel;
     public GameObject Canvas;
 
-    int coinCount;
+
 
     private void Awake()
     {
         PausePanel.gameObject.SetActive(false);
+        EndPanel.gameObject.SetActive(false);
     }
     private void Start()
     {
