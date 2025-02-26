@@ -145,7 +145,9 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.MoneyItem:
+                GameManager.Instance.Money += data.money;
                 Debug.Log($"∏”¥œæ∆¿Ã≈€ »πµÊ : {data.money}");
+                Debug.Log($"√—«’ :  {GameManager.Instance.Money}");
                 break;
             default:
                 Debug.Log("Default");

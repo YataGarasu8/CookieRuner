@@ -19,7 +19,7 @@ public class Item : ScriptableObject
     public float speedBonus;
 
     [Header("머니 아이템 전용")]
-    public float money;
+    public int money;
 
     [Header("스코어 아이템 전용")]
     public int score;
