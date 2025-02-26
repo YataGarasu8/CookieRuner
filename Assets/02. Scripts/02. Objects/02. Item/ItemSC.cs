@@ -90,6 +90,16 @@ public class ItemSC : MonoBehaviour
                     playerStats.ModifySpeed(data.speedBonus);
                     playerStats.Invoke(nameof(playerStats.ResetSpeedModifier), data.duration);
                 }
+                if (playerMovement.isItemInvincible)
+                {
+                    playerMovement.CancelInvoke(nameof(playerMovement.TolggleImmune));
+                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                }
+                else
+                {
+                    playerMovement.TolggleImmune();
+                    playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
+                }
                 break;
             case ItemType.TreasureItem:
                 playerStats.Heal(data.healthBonus);
