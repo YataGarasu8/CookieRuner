@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
@@ -13,6 +14,7 @@ public class Obstacle : MonoBehaviour
     [Header("Trigger 감지 설정")]
     public Vector2 triggerSize = new Vector2(2f, 2f);
     public float triggerOffset = 0f;
+    private bool isKicked = false;
 
     private void Start()
     {
@@ -20,6 +22,15 @@ public class Obstacle : MonoBehaviour
         SetupObstacle();
         SetupTriggerCollider(); // 트리거 콜라이더 추가
         this.gameObject.layer = 7;
+    }
+
+    private void Update()
+    {
+        if (isKicked)
+        {
+            transform.Rotate(0, 0, Time.deltaTime * 50f, Space.Self);
+        }
+        
     }
 
     private void InitializeComponents()
@@ -138,6 +149,7 @@ public class Obstacle : MonoBehaviour
                 }
                 else
                 {
+                    isKicked = true;
                     Debug.Log("ELSE문 진입");
                     rb.bodyType = RigidbodyType2D.Dynamic;
                     rb.AddForce((Vector2)collision.gameObject.transform.position * data.power);
