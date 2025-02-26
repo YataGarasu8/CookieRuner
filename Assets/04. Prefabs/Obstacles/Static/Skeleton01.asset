@@ -35,4 +35,4 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 1
   obstacleData: {fileID: 0}
-  obstaclePrefab: {fileID: 6114960080753035339, guid: ec81b1e72109b0a40b4480c270a68104, type: 3}
+  obstaclePrefab: {fileID: 3603200770483364690, guid: ec81b1e72109b0a40b4480c270a68104, type: 3}
