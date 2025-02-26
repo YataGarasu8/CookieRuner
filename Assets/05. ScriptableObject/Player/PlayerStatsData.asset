@@ -16,6 +16,6 @@ MonoBehaviour:
   baseSpeed: 6
   baseScale: 1
   maxScale: 2
-  scaleIncreaseAmount: 0.2
+  scaleIncreaseAmount: 3
   scaleDuration: 5
-  scaleChangeSpeed: 2
+  scaleChangeSpeed: 5

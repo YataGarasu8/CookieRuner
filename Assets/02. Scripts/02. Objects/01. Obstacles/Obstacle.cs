@@ -119,10 +119,8 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.LogWarning("온콜리전내부");
         if (collision.collider.CompareTag("Player"))
         {
-            Debug.LogWarning("if문내부");
             //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
             PlayerController playerController = collision.collider.GetComponent<PlayerController>();
             PlayerMovement playerMovement = collision.collider.GetComponent<PlayerMovement>();
