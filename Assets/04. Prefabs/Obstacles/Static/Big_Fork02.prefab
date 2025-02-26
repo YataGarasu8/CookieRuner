@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3554320692598444963}
   - component: {fileID: 7411577468120886353}
   - component: {fileID: 5621942422856933168}
+  - component: {fileID: -2993215611610707362}
   m_Layer: 0
   m_Name: Big_Fork02
   m_TagString: Untagged
@@ -215,3 +216,18 @@ PolygonCollider2D:
       - {x: -0.01, y: 2.01}
       - {x: -0.02, y: 2}
   m_UseDelaunayMesh: 0
+--- !u!114 &-2993215611610707362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912905479572522311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10ba112baa47b944a84658bfe5a6d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 87ca45f449643fe4d8e217e1bd9942b9, type: 2}
+  triggerSize: {x: 2, y: 2}
+  triggerOffset: 20
