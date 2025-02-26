@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
-  m_Name: PowerUP01
+  m_Name: GoldCoin_big
   m_EditorClassIdentifier: 
-  Type: 6
-  itemName: PowerUP01
-  icon: {fileID: -524006377, guid: e4071d3b27311c1409431889956ccc08, type: 3}
-  size: {x: 10, y: 10}
+  Type: 5
+  itemName: GoldCoin_big
+  icon: {fileID: 1919163752, guid: e4071d3b27311c1409431889956ccc08, type: 3}
+  size: {x: 15, y: 15}
   healthBonus: 0
   speedBonus: 0
-  money: 0
+  money: 100
   score: 0
-  duration: 5
+  duration: 0
+  name: 0
