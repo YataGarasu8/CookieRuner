@@ -34,4 +34,5 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  obstacleData: {fileID: 11400000, guid: 87ca45f449643fe4d8e217e1bd9942b9, type: 2}
+  obstacleData: {fileID: 0}
+  obstaclePrefab: {fileID: 1912905479572522311, guid: 1d65ea3b916444949a8499b826b7c3d4, type: 3}

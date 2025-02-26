@@ -107,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;               // 애니메이션 제어용 Animator
     private PlayerStats stats;               // 플레이어 스탯 데이터 접근
     private BoxCollider2D boxCollider;       // 충돌체 참조
+    private BoxCollider2D itemCollider;       // 충돌체 참조
     private SpriteRenderer spriteRenderer;   // 깜빡임 효과를 위한 스프라이트 렌더러
 
     private int currentJumpCount = 0;        // 현재 점프 횟수
@@ -126,6 +127,11 @@ public class PlayerMovement : MonoBehaviour
         stats = GetComponent<PlayerStats>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        itemCollider = GameObject.Find("ItemColider").GetComponent<BoxCollider2D>();
+        //itemCollider = GetComponentInChildren<BoxCollider2D>();
+
+        Debug.LogWarning(boxCollider.name);
+        Debug.LogWarning(itemCollider.gameObject.name);
 
         // 컴포넌트가 없을 시 오류 로그 출력
         if (rb == null) Debug.LogError("[PlayerMovement] Rigidbody2D가 누락되었습니다.");
@@ -133,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
         if (stats == null) Debug.LogError("[PlayerMovement] PlayerStats가 누락되었습니다.");
         if (spriteRenderer == null) Debug.LogError("[PlayerMovement] SpriteRenderer가 누락되었습니다.");
         if (boxCollider == null) Debug.LogError("[PlayerMovement] BoxCollider2D가 누락되었습니다.");
+        if (itemCollider == null) Debug.LogError("[PlayerMovement] itemCollider가 누락되었습니다.");
     }
 
     void Start()
@@ -176,10 +183,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (boxCollider == null)
             boxCollider = GetComponent<BoxCollider2D>();
+        if(itemCollider == null)
+            itemCollider = GetComponent<BoxCollider2D>();
 
         if (boxCollider == null)
         {
             Debug.LogWarning("[PlayerMovement] BoxCollider2D가 할당되지 않았습니다. 충돌체를 추가하세요.");
+            return;
+        }
+
+        if (itemCollider == null)
+        {
+            Debug.LogWarning("[PlayerMovement] itemCollider가 할당되지 않았습니다. 충돌체를 추가하세요.");
             return;
         }
 
@@ -298,6 +313,12 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if (itemCollider == null)
+        {
+            Debug.LogWarning("[PlayerMovement] itemCollider가 null입니다. 충돌체 적용 실패.");
+            return;
+        }
+
         if (stats == null)
         {
             stats = GetComponent<PlayerStats>();
@@ -310,6 +331,8 @@ public class PlayerMovement : MonoBehaviour
 
         boxCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
         boxCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
+        itemCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
+        itemCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
     }
 
     // 슬라이드 시 충돌체 적용 (크기 및 위치 변경)
@@ -318,6 +341,12 @@ public class PlayerMovement : MonoBehaviour
         if (boxCollider == null)
         {
             Debug.LogWarning("[PlayerMovement] BoxCollider2D가 null입니다. 충돌체 적용 실패.");
+            return;
+        }
+
+        if (itemCollider == null)
+        {
+            Debug.LogWarning("[PlayerMovement] itemCollider가 null입니다. 충돌체 적용 실패.");
             return;
         }
 
@@ -333,6 +362,8 @@ public class PlayerMovement : MonoBehaviour
 
         boxCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
         boxCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
+        itemCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
+        itemCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
     }
 
     // 플레이어 피격 시 호출할 함수
@@ -390,6 +421,17 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Debug.LogWarning("[PlayerMovement] BoxCollider2D가 null입니다. Gizmos 표시 실패.");
+        }
+
+        if (itemCollider != null)
+        {
+            Gizmos.color = isSliding ? Color.blue : Color.yellow; // 슬라이드 시 파랑, 일반 시 노랑
+            Vector2 colliderPosition = (Vector2)transform.position + itemCollider.offset; // 현재 위치와 오프셋 합산
+            Gizmos.DrawWireCube(colliderPosition, itemCollider.size); // 충돌체 시각화
+        }
+        else
+        {
+            Debug.LogWarning("[PlayerMovement] itemCollider2D가 null입니다. Gizmos 표시 실패.");
         }
     }
 
