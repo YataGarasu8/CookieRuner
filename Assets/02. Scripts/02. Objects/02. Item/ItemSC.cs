@@ -6,10 +6,8 @@ public class ItemSC : MonoBehaviour
 {
     public Item data;
     private SpriteRenderer spriteRenderer;
-    //private Animator animator;
-    //private Rigidbody2D rb;
 
-    [Header("Trigger ?¬ê¸°")]
+    [Header("Trigger ¹üÀ§")]
     public Vector2 triggerSize = new Vector2(1f, 1f);
     public float triggerOffset = 0f;
 
@@ -18,9 +16,6 @@ public class ItemSC : MonoBehaviour
         Invoke(nameof(InitializeComponents), 0.001f);
         Invoke(nameof(SetupItem), 0.001f);
         Invoke(nameof(SetupTriggerCollider), 0.001f);
-        //InitializeComponents();
-        //SetupItem();
-        //SetupTriggerCollider();
     }
 
     private void SetupItem()
@@ -28,8 +23,9 @@ public class ItemSC : MonoBehaviour
         if (data.icon != null)
             spriteRenderer.sprite = data.icon;
         else
-            Debug.LogWarning("?¤í”„?¼ì´?¸ê? ?†ìŒ.");
+            Debug.LogWarning("icon¾øÀ½");
     }
+
     private void InitializeComponents()
     {
         // SpriteRenderer 
@@ -47,15 +43,6 @@ public class ItemSC : MonoBehaviour
         }
         collider.size = data.size;
         collider.isTrigger = true;
-
-        // Rigidbody2D
-        /*rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
-        {
-            rb = gameObject.AddComponent<Rigidbody2D>();
-        }
-        rb.gravityScale = 0;
-        rb.bodyType = RigidbodyType2D.Static; // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½Ö¹ï¿½ï¿½ï¿?ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)*/
     }
 
     private void SetupTriggerCollider()
@@ -79,19 +66,25 @@ public class ItemSC : MonoBehaviour
 
         if (playerStats == null)
         {
-            Debug.Log("PlayerStat?†ìŒ");
+            Debug.Log("PlayerStat ¾øÀ½");
             return;
         }
-        Debug.Log("Item Trigger?— Playerê°? ê°ì???¨!");
         switch (data.Type)
         {
             case ItemType.Score:
+
 
                // ScoreManager.Instance.AddScore(data.score);
                 Debug.Log($"?ìˆ˜?ë“ :   {data.score}");
 
                 ScoreManager.Instance.AddScore(data.score);
                 Debug.Log($"? ?ˆ˜?š?“ :   {data.score}");
+
+
+               // ScoreManager.Instance.AddScore(data.score);
+                Debug.Log($"? ?ˆ˜?š?“ :   {data.score}");
+                ScoreManager.Instance.AddScore(data.score);
+                Debug.Log($"½ºÄÚ¾î È¹µæ: {data.score}");
 
                 break;
             case ItemType.HPUPItem:
@@ -123,25 +116,23 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.BonusItem:
-                if(GameManager.Instance.GetBonusItem(data.name))
+                if (GameManager.Instance.GetBonusItem(data.name))
                 {
                     //?´ë¯? ë³´ë„ˆ?Š¤ ?•„?´?…œ?„ ?š?“?•œ ê²½ìš° ? ?ˆ˜?š?“
                     ScoreManager.Instance.AddScore(data.score);
-                    Debug.Log($"? ?ˆ˜?š?“ :   {data.score}");
+                    Debug.Log($"½ºÄÚ¾î È¹µæ: {data.score}");
                 }
                 else
                 {
-                    Debug.Log($"ë³´ë„ˆ?Š¤ ?•„?´?…œ ?š?“ : {data.name}");
+                    Debug.Log($"º¸³Ê½º¾ÆÀÌÅÛ È¹µæ : {data.name}");
                 }
 
                 if (GameManager.Instance.IsGetAllBonusItem())
                 {
-                    //ë³´ë„ˆ?Š¤ ?Š¤?…Œ?´ì§?ë¡? ?´?™ ì²˜ë¦¬
                     GameManager.Instance.ResetBonusItem();
                 }
                 break;
             case ItemType.PowerUPItem:
-                Debug.Log("?Œì›Œ?…ì•„?´í…œ ?ë“");
                 if (playerMovement.isItemInvincible)
                 {
                     playerMovement.CancelInvoke(nameof(playerMovement.TolggleImmune));
@@ -155,12 +146,13 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.MoneyItem:
-                Debug.Log($"???„ì´???ë“ : {data.money}");
+                Debug.Log($"¸Ó´Ï¾ÆÀÌÅÛ È¹µæ : {data.money}");
                 break;
             default:
-                Debug.Log("?”í´??");
+                Debug.Log("Default");
                 break;
         }
         Destroy(this.gameObject);
     }
 }
+

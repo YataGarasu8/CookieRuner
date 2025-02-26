@@ -119,11 +119,11 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("ObsColider"))
+        if (collision.collider.CompareTag("Player"))
         {
             //PlayerStats playerStats = collision.collider.GetComponentInParent<PlayerStats>();
-            PlayerController playerController = collision.collider.GetComponentInParent<PlayerController>();
-            PlayerMovement playerMovement = collision.collider.GetComponentInParent<PlayerMovement>();
+            PlayerController playerController = collision.collider.GetComponent<PlayerController>();
+            PlayerMovement playerMovement = collision.collider.GetComponent<PlayerMovement>();
 
             Collider2D collider = GetComponent<Collider2D>();
             

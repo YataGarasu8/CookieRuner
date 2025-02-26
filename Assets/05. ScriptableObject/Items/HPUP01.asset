@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
   m_Name: HPUP01
   m_EditorClassIdentifier: 
-  Type: 0
-  itemName: 
+  Type: 1
+  itemName: HPUPItem01
   icon: {fileID: 1056327008, guid: e4071d3b27311c1409431889956ccc08, type: 3}
   size: {x: 1, y: 1}
   healthBonus: 30
@@ -21,3 +21,4 @@ MonoBehaviour:
   money: 0
   score: 0
   duration: 0
+  name: 0
