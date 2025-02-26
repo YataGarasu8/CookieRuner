@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
-  m_Name: HPUP01
+  m_Name: Trseure01
   m_EditorClassIdentifier: 
-  Type: 1
-  itemName: HPUPItem01
-  icon: {fileID: 1056327008, guid: e4071d3b27311c1409431889956ccc08, type: 3}
-  size: {x: 1, y: 1}
-  healthBonus: 30
-  speedBonus: 0
+  Type: 3
+  itemName: SpeedUPItem01
+  icon: {fileID: 21300000, guid: cb5152bcde84dcc45aa01ded60e115cc, type: 3}
+  size: {x: 7, y: 7}
+  healthBonus: 100
+  speedBonus: 0.8
   money: 0
   score: 0
-  duration: 0
-  name: 0
+  duration: 5

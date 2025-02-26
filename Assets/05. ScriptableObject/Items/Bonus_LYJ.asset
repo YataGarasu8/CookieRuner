@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
-  m_Name: SilverCoin
+  m_Name: Bonus_LYJ
   m_EditorClassIdentifier: 
-  Type: 0
-  itemName: 
-  icon: {fileID: 0}
-  size: {x: 1, y: 1}
+  Type: 4
+  itemName: Bonus_LYJ
+  icon: {fileID: 21300000, guid: a6166a77a275e6d48bd153272036a933, type: 3}
+  size: {x: 2, y: 2}
   healthBonus: 0
   speedBonus: 0
   money: 0
-  score: 0
+  score: 10
   duration: 0
+  name: 3
