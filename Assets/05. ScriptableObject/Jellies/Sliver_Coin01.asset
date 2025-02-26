@@ -18,6 +18,7 @@ MonoBehaviour:
   size: {x: 1, y: 1}
   healthBonus: 0
   speedBonus: 0
-  money: 1
+  money: 10
   score: 0
   duration: 0
+  name: 0
