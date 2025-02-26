@@ -24,7 +24,6 @@ public class PlayerStats : MonoBehaviour
     // 현재 크기 상태 (크기 증가/감소 시 변경)
     public float CurrentScale => Mathf.Max(currentScale, 0.01f); // 최소값 보장
 
-
     // 크기 변화에 사용되는 코루틴 참조 (중복 실행 방지용)
     private Coroutine scaleCoroutine;
 
