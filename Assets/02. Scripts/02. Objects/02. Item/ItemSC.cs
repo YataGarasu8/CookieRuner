@@ -9,7 +9,7 @@ public class ItemSC : MonoBehaviour
     //private Animator animator;
     //private Rigidbody2D rb;
 
-    [Header("Trigger í¬ê¸°")]
+    [Header("Trigger ?¬ê¸°")]
     public Vector2 triggerSize = new Vector2(1f, 1f);
     public float triggerOffset = 0f;
 
@@ -28,7 +28,7 @@ public class ItemSC : MonoBehaviour
         if (data.icon != null)
             spriteRenderer.sprite = data.icon;
         else
-            Debug.LogWarning("ìŠ¤í”„ë¼ì´íŠ¸ê°€ ì—†ìŒ.");
+            Debug.LogWarning("?¤í”„?¼ì´?¸ê? ?†ìŒ.");
     }
     private void InitializeComponents()
     {
@@ -55,7 +55,7 @@ public class ItemSC : MonoBehaviour
             rb = gameObject.AddComponent<Rigidbody2D>();
         }
         rb.gravityScale = 0;
-        rb.bodyType = RigidbodyType2D.Static; // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)*/
+        rb.bodyType = RigidbodyType2D.Static; // ï¿½ï¿½Ö¹ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½Ö¹ï¿½ï¿½ï¿?ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)*/
     }
 
     private void SetupTriggerCollider()
@@ -79,15 +79,15 @@ public class ItemSC : MonoBehaviour
 
         if (playerStats == null)
         {
-            Debug.Log("PlayerStatì—†ìŒ");
+            Debug.Log("PlayerStat?†ìŒ");
             return;
         }
-        Debug.Log("Item Triggerì— Playerê°€ ê°ì§€ë¨!");
+        Debug.Log("Item Trigger?— Playerê°? ê°ì???¨!");
         switch (data.Type)
         {
             case ItemType.Score:
                 ScoreManager.Instance.AddScore(data.score);
-                Debug.Log($"ì ìˆ˜íšë“ :   {data.score}");
+                Debug.Log($"? ?ˆ˜?š?“ :   {data.score}");
                 break;
             case ItemType.HPUPItem:
                 playerStats.Heal(data.healthBonus);
@@ -120,23 +120,23 @@ public class ItemSC : MonoBehaviour
             case ItemType.BonusItem:
                 if(GameManager.Instance.GetBonusItem(data.name))
                 {
-                    //ì´ë¯¸ ë³´ë„ˆìŠ¤ ì•„ì´í…œì„ íšë“í•œ ê²½ìš° ì ìˆ˜íšë“
+                    //?´ë¯? ë³´ë„ˆ?Š¤ ?•„?´?…œ?„ ?š?“?•œ ê²½ìš° ? ?ˆ˜?š?“
                     ScoreManager.Instance.AddScore(data.score);
-                    Debug.Log($"ì ìˆ˜íšë“ :   {data.score}");
+                    Debug.Log($"? ?ˆ˜?š?“ :   {data.score}");
                 }
                 else
                 {
-                    Debug.Log($"ë³´ë„ˆìŠ¤ ì•„ì´í…œ íšë“ : {data.name}");
+                    Debug.Log($"ë³´ë„ˆ?Š¤ ?•„?´?…œ ?š?“ : {data.name}");
                 }
 
                 if (GameManager.Instance.IsGetAllBonusItem())
                 {
-                    //ë³´ë„ˆìŠ¤ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™ ì²˜ë¦¬
+                    //ë³´ë„ˆ?Š¤ ?Š¤?…Œ?´ì§?ë¡? ?´?™ ì²˜ë¦¬
                     GameManager.Instance.ResetBonusItem();
                 }
                 break;
             case ItemType.PowerUPItem:
-                Debug.Log("íŒŒì›Œì—…ì•„ì´í…œ íšë“");
+                Debug.Log("?Œì›Œ?…ì•„?´í…œ ?ë“");
                 if (playerMovement.isItemInvincible)
                 {
                     playerMovement.CancelInvoke(nameof(playerMovement.TolggleImmune));
@@ -150,10 +150,10 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.MoneyItem:
-                Debug.Log($"ëˆ ì•„ì´í…œ íšë“ : {data.money}");
+                Debug.Log($"???„ì´???ë“ : {data.money}");
                 break;
             default:
-                Debug.Log("ë””í´íŠ¸");
+                Debug.Log("?”í´??");
                 break;
         }
         Destroy(this.gameObject);
