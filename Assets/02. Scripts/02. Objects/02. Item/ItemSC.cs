@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemSC : MonoBehaviour
 {
-
     public Item data;
     private SpriteRenderer spriteRenderer;
     //private Animator animator;
@@ -83,7 +82,7 @@ public class ItemSC : MonoBehaviour
             Debug.Log("PlayerStat없음");
             return;
         }
-        Debug.Log("Trigger에 Player가 감지됨!");
+        Debug.Log("Item Trigger에 Player가 감지됨!");
         switch (data.Type)
         {
             case ItemType.Score:

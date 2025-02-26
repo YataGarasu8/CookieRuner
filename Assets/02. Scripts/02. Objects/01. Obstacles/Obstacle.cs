@@ -149,7 +149,7 @@ public class Obstacle : MonoBehaviour
 
     public void OnPlayerDetected()
     {
-        Debug.Log("Trigger 영역에서 플레이어 감지!");
+        Debug.Log("Obstacle Trigger 영역에서 플레이어 감지!");
         // 감지 시 추가 로직 가능 (예: 팝업 시작, 공격 준비 등)
     }
 }
