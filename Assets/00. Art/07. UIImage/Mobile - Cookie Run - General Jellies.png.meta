@@ -417,7 +417,7 @@ TextureImporter:
         width: 51
         height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -425,6 +425,27 @@ TextureImporter:
       bones: []
       spriteID: fb4d558367afc674795a395392907443
       internalID: 362491319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearJelly_Pink
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 668
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d267fa7462d678f47bb2fdadebc9c9ac
+      internalID: 578468538
       vertices: []
       indices: 
       edges: []
@@ -440,6 +461,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      BearJelly_Pink: 578468538
       Bear_Jelly01: 362491319
       Big_Heart_01: -1114243370
       Big_Heart_02: -1414835450
