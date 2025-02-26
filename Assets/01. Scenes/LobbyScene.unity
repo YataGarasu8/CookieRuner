@@ -1314,6 +1314,7 @@ GameObject:
   - component: {fileID: 287968015}
   - component: {fileID: 287968017}
   - component: {fileID: 287968016}
+  - component: {fileID: 287968018}
   m_Layer: 5
   m_Name: CoinUI
   m_TagString: Untagged
@@ -1339,7 +1340,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 45, y: -30}
-  m_SizeDelta: {x: 411.4012, y: 134.1135}
+  m_SizeDelta: {x: 410, y: 135}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &287968016
 MonoBehaviour:
@@ -1379,6 +1380,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287968014}
   m_CullTransparentMesh: 1
+--- !u!114 &287968018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287968014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280cab71be230ac40baea4d45c84c9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addGold: {fileID: 790110901}
 --- !u!1 &315963169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,8 +1692,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401896044}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.308837, y: -1.0842499, z: -1.6094139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2285,8 +2299,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140, y: 2}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 166.02115, y: 0}
+  m_SizeDelta: {x: 270, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &790110901
 MonoBehaviour:
@@ -2310,7 +2324,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 489fabca9503f054eaa1939b7e015e62, type: 3}
-    m_FontSize: 25
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

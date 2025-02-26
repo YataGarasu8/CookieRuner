@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
 
     [Header("UI Elements")]
-    public Text scoreText;          // 현재 점수 표시
-    public Text highScoresText;     // 역대 최고 점수 표시
+    public TextMeshProUGUI scoreText;          // 현재 점수 표시
+    public TextMeshProUGUI highScoresText;     // 역대 최고 점수 표시
 
     [Header("Settings")]
     public int maxHighScores = 10;  // 최대 순위 개수
