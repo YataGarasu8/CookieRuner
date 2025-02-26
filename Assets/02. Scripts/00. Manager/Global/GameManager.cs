@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -30,15 +31,19 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    public int Money { get; set; } // 유저 골드재화
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // 중복 방지
+            return;
+        }
 
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // 씬 전환 시 유지
     }
-
-    public void GameOver()
-    { }
 
     public bool IsGetAllBonusItem()
     {
