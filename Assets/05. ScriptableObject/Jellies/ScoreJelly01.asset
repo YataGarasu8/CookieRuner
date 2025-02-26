@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2824a08c1343e3428d55964446d402a, type: 3}
-  m_Name: Score05
+  m_Name: ScoreJelly01
   m_EditorClassIdentifier: 
   Type: 0
-  itemName: jelly05
-  icon: {fileID: 1368280296, guid: e4071d3b27311c1409431889956ccc08, type: 3}
-  size: {x: 3, y: 3}
+  itemName: jelly01
+  icon: {fileID: 1015055405, guid: e4071d3b27311c1409431889956ccc08, type: 3}
+  size: {x: 1, y: 1}
   healthBonus: 0
   speedBonus: 0
   money: 0
-  score: 8
+  score: 5

@@ -1313,8 +1313,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 86ccdcfe8cb55b2479bde168d1cca0ae, type: 2}
-  m_sharedMaterial: {fileID: 1825958623717316332, guid: 86ccdcfe8cb55b2479bde168d1cca0ae, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2617,7 +2617,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoinCountText: {fileID: 1903246685}
-  ScoreCountText: {fileID: 0}
   PausePanel: {fileID: 490198645}
   Canvas: {fileID: 1035911783}
 --- !u!4 &1543031560

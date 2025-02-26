@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a09035144695874daecb12184108c1b, type: 3}
-  m_Name: Silver_Coin01
+  m_Name: BearJelly_Pink
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1128967672, guid: d0147459fe7a98d44969d0a08950e798, type: 3}
+  m_Sprite: {fileID: 578468538, guid: d0147459fe7a98d44969d0a08950e798, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,4 +34,4 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  itemdata: {fileID: 11400000, guid: 47ba721453ce3174aba0b0580b282047, type: 2}
+  itemdata: {fileID: 11400000, guid: 965abd188a647a046a9a669eead05385, type: 2}
