@@ -4,56 +4,56 @@ using UnityEngine.UI;
 
 public class BuyManager : MonoBehaviour
 {
-    public int cookie1Price = 1500;
-    public int cookie2Price = 1500;
+    int cookie1Price = 1500;
+    int cookie2Price = 1500;
     public TextMeshProUGUI cookie1ButtonText;
     public TextMeshProUGUI cookie2ButtonText;
-    private GameManager gameManager;
-    
-    private bool isCookie1Purchased = false;
-    private bool isCookie2Purchased = false;
 
     void Start()
     {
-        
+
+    }
+    private void Update()
+    {
+        Sale();
     }
 
     public void BuyCookie1()
     {
-        if (isCookie1Purchased) return;
-
-        if (gameManager.Money >= cookie1Price) 
+        if (GameManager.Instance.Money >= cookie1Price)
         {
-            gameManager.Money -= cookie1Price;
-            isCookie1Purchased = true;
-            UpdateUI();
+            if (!GameManager.Instance.HinaGet)
+            {
+                GameManager.Instance.Money -= cookie1Price;
+                GameManager.Instance.HinaGet = true;
+            }
         }
         else
         {
             Debug.Log("돈이 부족합니다");
         }
     }
-
     public void BuyCookie2()
     {
-        if (isCookie2Purchased) return;
-
-        if (gameManager.Money >= cookie2Price) 
+        if (GameManager.Instance.Money >= cookie2Price)
         {
-            gameManager.Money -= cookie2Price;
-            isCookie2Purchased = true;
-            UpdateUI();
+            if (!GameManager.Instance.SantaGet)
+            {
+                GameManager.Instance.Money -= cookie2Price;
+                GameManager.Instance.SantaGet = true;
+            }
         }
         else
         {
             Debug.Log("돈이 부족합니다");
         }
     }
-
-    void UpdateUI()
+    void Sale()
     {
-        cookie1ButtonText.text = isCookie1Purchased ? "구매완료" : "구매";
-        cookie2ButtonText.text = isCookie2Purchased ? "구매완료" : "구매";
+        if (GameManager.Instance.HinaGet == true)
+        { cookie1ButtonText.text = "구매 완료"; }
+        if (GameManager.Instance.SantaGet == true)
+        { cookie2ButtonText.text = "구매 완료"; }
     }
 }
 

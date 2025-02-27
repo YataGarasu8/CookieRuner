@@ -151,6 +151,8 @@ public class ScoreManager : MonoBehaviour
     public void UpdateUI()
     {
 #pragma warning disable CS4014
+        using var _ =
+#pragma warning disable CS4014
         PlayerDataManager.Instance.GetTopPlayersAsync();
         PlayerDataManager.Instance.LoadPlayerDataAsync();
 #pragma warning restore CS4014

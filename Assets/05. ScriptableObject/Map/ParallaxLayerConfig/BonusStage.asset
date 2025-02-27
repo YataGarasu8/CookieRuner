@@ -19,23 +19,26 @@ MonoBehaviour:
     parallaxMultiplier: 0.5
     imageCount: 3
     startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 1, y: 1}
+    lastAppliedScale: {x: 3.2, y: 3.2}
     lastAppliedStartPosition: {x: 0, y: 0}
+    sortingOrder: -3
   midgroundLayer:
     layerName: Mid
     backgroundSprite: {fileID: 937046342, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
-    scale: {x: 1, y: 1}
+    scale: {x: 2.5, y: 2.5}
     parallaxMultiplier: 0.5
     imageCount: 3
     startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 1, y: 1}
+    lastAppliedScale: {x: 2.5, y: 2.5}
     lastAppliedStartPosition: {x: 0, y: 0}
+    sortingOrder: -1
   foregroundLayer:
     layerName: Fore
     backgroundSprite: {fileID: -1689772492, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
-    scale: {x: 1, y: 1}
-    parallaxMultiplier: 0.5
+    scale: {x: 2, y: 2.5}
+    parallaxMultiplier: 0.3
     imageCount: 3
     startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 1, y: 1}
+    lastAppliedScale: {x: 2, y: 2.5}
     lastAppliedStartPosition: {x: 0, y: 0}
+    sortingOrder: 0
