@@ -39,6 +39,7 @@ public class GameManager
     public int Money { get; set; } //플레이어가 보유한 골드의 총량
     public int getMoney;//
     int startMoney;
+    public string PlayerName {  get; set; }
 
     public bool IsGetAllBonusItem()
     {
