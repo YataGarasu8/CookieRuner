@@ -51,7 +51,7 @@ public class PlayerDataManager : MonoBehaviour
         }
 
         // Cloud Save에서 플레이어 데이터 불러오기 (Newtonsoft.Json 사용)
-        bool loaded = await LoadPlayerDataAsync();
+        bool loaded = false;//await LoadPlayerDataAsync();
         if (!loaded)
         {
             // 저장된 데이터가 없으면 기본값 할당

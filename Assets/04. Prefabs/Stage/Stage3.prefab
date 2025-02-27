@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6723754230192694982}
   - component: {fileID: 8220011777039125759}
   m_Layer: 0
-  m_Name: Tilemap(Obstacles_Tree)
+  m_Name: Tilemap(2Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 2218078052302284767}
   - component: {fileID: 566411649633081668}
   m_Layer: 0
-  m_Name: Tilemap(Obstacles)
+  m_Name: Tilemap(1Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10734,4 +10734,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac49eb67719d214e9d175d9b9431888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxConfigData: {fileID: 11400000, guid: cf194951242ce4e4aba72ec6d0650514, type: 2}
+  parallaxConfigData: {fileID: 11400000, guid: 4d750d93b0e49634fa9038270a9e0f67, type: 2}
