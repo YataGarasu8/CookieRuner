@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
@@ -132,6 +133,8 @@ public class PlayerMovement : MonoBehaviour
         itemCollider = GameObject.Find("ItemColider").GetComponent<BoxCollider2D>();
         obsCollider = GameObject.Find("ObsColider").GetComponent<BoxCollider2D>();
 
+        GameManager.Instance.IsGameOver = false;
+
         // 컴포넌트가 없을 시 오류 로그 출력
         if (rb == null) Debug.LogError("[PlayerMovement] Rigidbody2D가 누락되었습니다.");
         if (animator == null) Debug.LogError("[PlayerMovement] Animator가 누락되었습니다.");
@@ -151,12 +154,12 @@ public class PlayerMovement : MonoBehaviour
         // 초기 충돌체 설정 (크기 초기화 방지)
         Invoke(nameof(ApplyNormalCollider), 0.01f); // 0.01초 지연 호출로 적용 보장
 
-        GameManager.Instance.IsGameOver = false;
+        
     }
 
     void FixedUpdate()
     {
-        if(GameManager.Instance.IsGameOver == false)
+        if (GameManager.Instance.IsGameOver == false)
         {
             Move();                      // 지속 이동 처리
             isGrounded = CheckGrounded(); // 바닥 감지 업데이트
@@ -182,6 +185,11 @@ public class PlayerMovement : MonoBehaviour
                 currentJumpCount = 0;
 
             if (stats.CurrentHealth <= 0.01)
+            {
+                GameOver();
+            }
+
+            if (this.gameObject.transform.position.y < -10f)
             {
                 GameOver();
             }
