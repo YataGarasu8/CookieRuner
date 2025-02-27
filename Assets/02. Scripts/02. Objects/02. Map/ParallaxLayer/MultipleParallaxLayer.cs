@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 // 패럴랙스 레이어의 구성 정보를 담는 클래스
 // 각 레이어의 이름, 배경 스프라이트, 스케일, 패럴랙스 속도, 이미지 개수, 시작 위치 등을 설정
 [System.Serializable]
@@ -17,6 +16,9 @@ public class ParallaxLayerConfig
 
     [HideInInspector] public Vector2 lastAppliedScale = Vector2.one;         // 이전에 적용된 스케일 값 (중복 업데이트 방지용)
     [HideInInspector] public Vector2 lastAppliedStartPosition = Vector2.zero; // 이전에 적용된 시작 위치 값 (중복 업데이트 방지용)
+
+    // MODIFIED: 각 레이어의 Order in Layer를 설정할 수 있도록 추가 (인스펙터에서 설정 가능)
+    public int sortingOrder = 0;
 }
 
 // 패럴랙스 레이어들을 관리하며 플레이어 이동에 따라 배경을 반복적으로 스크롤하는 클래스
@@ -62,23 +64,17 @@ public class MultipleParallaxLayer : MonoBehaviour
             return;
         }
 
-        // 레이어가 아직 생성되지 않았다면 생성
-        if (layers == null || layers.Length == 0)
+        // MODIFIED: 기존 레이어를 제거하여 새 맵의 configData가 적용되도록 함
+        ClearExistingLayers();
+
+        // MODIFIED: 새로운 configData를 기반으로 레이어 재생성
+        // 이제 각 레이어의 sortingOrder는 configData에 설정된 값을 사용합니다.
+        layers = new ParallaxLayer[]
         {
-            layers = new ParallaxLayer[]
-            {
             CreateLayer(configData.backgroundLayer),
             CreateLayer(configData.midgroundLayer),
             CreateLayer(configData.foregroundLayer)
-            };
-        }
-        else
-        {
-            // 기존 레이어의 설정만 업데이트 (새로 생성하지 않음)
-            UpdateLayerSettings(layers[0], configData.backgroundLayer);
-            UpdateLayerSettings(layers[1], configData.midgroundLayer);
-            UpdateLayerSettings(layers[2], configData.foregroundLayer);
-        }
+        };
 
         // 플레이어 현재 위치 기록
         lastPlayerPosition = playerTransform.position;
@@ -110,13 +106,15 @@ public class MultipleParallaxLayer : MonoBehaviour
     }
 
     // 주어진 설정을 기반으로 새로운 패럴랙스 레이어를 생성하는 메서드
+    // MODIFIED: sortingOrder 매개변수를 제거하고, config의 sortingOrder 값을 사용하도록 변경
     private ParallaxLayer CreateLayer(ParallaxLayerConfig config)
     {
         // 스프라이트가 지정되지 않은 경우 레이어 생성하지 않고 null 반환
+        // (기존 주석 그대로 유지)
         if (!config.backgroundSprite)
         {
             Debug.LogWarning($"MultipleParallaxLayer: 레이어 '{config.layerName}'에 스프라이트가 지정되지 않았습니다. 의도했다면 정상입니다.");
-            return null;
+            // 스프라이트가 없더라도 레이어 생성 (null 반환하지 않음)
         }
 
         // 이미지 개수가 최소값(2)보다 작은 경우 경고 출력 후 기본값 적용
@@ -145,6 +143,8 @@ public class MultipleParallaxLayer : MonoBehaviour
 
             SpriteRenderer sr = bg.AddComponent<SpriteRenderer>();
             sr.sprite = config.backgroundSprite; // 설정된 스프라이트 적용
+            // MODIFIED: SpriteRenderer의 sortingOrder를 config에서 설정한 값으로 지정
+            sr.sortingOrder = config.sortingOrder;
 
             bg.transform.localScale = new Vector3(config.scale.x, config.scale.y, 1f); // 스케일 적용
             layer.backgrounds.Add(bg.transform); // 생성된 배경을 레이어 리스트에 추가
@@ -161,6 +161,16 @@ public class MultipleParallaxLayer : MonoBehaviour
     private void UpdateLayerProperties(ParallaxLayer layer, bool forceUpdate = false)
     {
         var config = layer.config;
+
+        // config 데이터의 sortingOrder 값이 변경되었을 수 있으므로 각 배경 오브젝트의 sortingOrder를 갱신
+        foreach (var bg in layer.backgrounds)
+        {
+            SpriteRenderer sr = bg.GetComponent<SpriteRenderer>();
+            if (sr != null && sr.sortingOrder != config.sortingOrder)
+            {
+                sr.sortingOrder = config.sortingOrder;
+            }
+        }
 
         // 스케일이나 시작 위치가 이전 값과 다르거나 강제 업데이트 요청 시 실행
         if (forceUpdate || config.scale != config.lastAppliedScale || config.startPosition != config.lastAppliedStartPosition)
@@ -185,6 +195,7 @@ public class MultipleParallaxLayer : MonoBehaviour
             config.lastAppliedStartPosition = config.startPosition;
         }
     }
+
 
     // 매 프레임 호출되어 패럴랙스 효과를 적용하는 메서드
     void Update()
