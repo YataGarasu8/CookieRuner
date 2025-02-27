@@ -891,6 +891,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_35
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 5
+        width: 855
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec79b0af591a52f4daff024544acdbfd
+      internalID: 1318804966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_36
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 5
+        width: 855
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b717d1755a60a140adc84a32ee76818
+      internalID: 937046342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_37
+      rect:
+        serializedVersion: 2
+        x: 1730
+        y: 5
+        width: 855
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fedc157aad2fd44b986b5fe100b590f
+      internalID: -1689772492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -932,6 +995,9 @@ TextureImporter:
       Mobile - Cookie Run - Episode 1 - Escape from the Oven_32: -1013682372
       Mobile - Cookie Run - Episode 1 - Escape from the Oven_33: -120203755
       Mobile - Cookie Run - Episode 1 - Escape from the Oven_34: 1325591061
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_35: 1318804966
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_36: 937046342
+      Mobile - Cookie Run - Episode 1 - Escape from the Oven_37: -1689772492
       Mobile - Cookie Run - Episode 1 - Escape from the Oven_4: 937417355
       Mobile - Cookie Run - Episode 1 - Escape from the Oven_5: -430173494
       Mobile - Cookie Run - Episode 1 - Escape from the Oven_6: 942478377

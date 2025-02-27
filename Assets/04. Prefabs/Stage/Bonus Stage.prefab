@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7030200483754855810}
   - component: {fileID: 5976656346662284807}
   m_Layer: 0
-  m_Name: Tilemap(06Obstacles)
+  m_Name: Tilemap(6Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 6238098322227627068}
   - component: {fileID: 7940202645383225835}
   m_Layer: 0
-  m_Name: Tilemap(03Obstacles)
+  m_Name: Tilemap(3Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1304,7 +1304,7 @@ GameObject:
   - component: {fileID: 2218078052302284767}
   - component: {fileID: 566411649633081668}
   m_Layer: 0
-  m_Name: Tilemap(Obstacles)
+  m_Name: Tilemap(1Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2073,7 +2073,7 @@ GameObject:
   - component: {fileID: 6560363065082318940}
   - component: {fileID: 2572100516315678549}
   m_Layer: 0
-  m_Name: Tilemap(02Obstacles)
+  m_Name: Tilemap(2Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2502,7 +2502,7 @@ GameObject:
   - component: {fileID: 6612241143067867456}
   - component: {fileID: 5152841064791945982}
   m_Layer: 0
-  m_Name: Tilemap(07Obstacles)
+  m_Name: Tilemap(7Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5781,7 +5781,7 @@ GameObject:
   - component: {fileID: 6847921165594513355}
   - component: {fileID: 5282756266421129370}
   m_Layer: 0
-  m_Name: Tilemap(04Obstacles)
+  m_Name: Tilemap(4Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5982,7 +5982,7 @@ GameObject:
   - component: {fileID: 7680869201949788646}
   - component: {fileID: 2600728116037354137}
   m_Layer: 0
-  m_Name: Tilemap(05Obstacles)
+  m_Name: Tilemap(5Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6213,7 +6213,7 @@ GameObject:
   - component: {fileID: 8144317590253112991}
   - component: {fileID: 3616434961126309780}
   m_Layer: 0
-  m_Name: Tilemap(08Obstacles)
+  m_Name: Tilemap(8Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6522,7 +6522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac49eb67719d214e9d175d9b9431888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxConfigData: {fileID: 11400000, guid: cf194951242ce4e4aba72ec6d0650514, type: 2}
+  parallaxConfigData: {fileID: 11400000, guid: 11c457bd0f19efc468f231b4d47329cc, type: 2}
 --- !u!1 &9128855795345299108
 GameObject:
   m_ObjectHideFlags: 0
@@ -6536,7 +6536,7 @@ GameObject:
   - component: {fileID: 8077690495438554495}
   - component: {fileID: 593036477889474059}
   m_Layer: 0
-  m_Name: Tilemap(09Obstacles)
+  m_Name: Tilemap(9Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
