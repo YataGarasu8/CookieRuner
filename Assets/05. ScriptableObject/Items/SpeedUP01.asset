@@ -17,8 +17,8 @@ MonoBehaviour:
   icon: {fileID: 272768705, guid: e4071d3b27311c1409431889956ccc08, type: 3}
   size: {x: 5, y: 5}
   healthBonus: 0
-  speedBonus: 1.5
+  speedBonus: 6
   money: 0
   score: 0
-  duration: 5
+  duration: 4
   name: 0
