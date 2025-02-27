@@ -15,6 +15,7 @@ public class GameUIController : MonoBehaviour
     public GameObject Canvas;
 
     bool isMove = false;
+    int startMoney;
 
     private void Awake()
     {
@@ -25,16 +26,17 @@ public class GameUIController : MonoBehaviour
     private void Start()
     {
         Canvas.gameObject.SetActive(true);
+        CoinSet();
+
+
     }
     private void Update()
     {
+        CoinCalCulate();
         if (Input.GetKeyDown(KeyCode.P))
         {
             PauseGame();
         }
-
-        CoinCountText.text = GameManager.Instance.Money.ToString();
-
         if (GameManager.Instance.IsGameOver == true)
         {
             GameOver();
@@ -79,5 +81,14 @@ public class GameUIController : MonoBehaviour
                     );
             }
         }
+    }
+    public void CoinSet()
+    {
+        startMoney = GameManager.Instance.Money;
+    }
+    public void CoinCalCulate()
+    {
+        GameManager.Instance.getMoney = GameManager.Instance.Money - startMoney;
+        CoinCountText.text = GameManager.Instance.getMoney.ToString();
     }
 }
