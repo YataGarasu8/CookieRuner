@@ -6522,7 +6522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac49eb67719d214e9d175d9b9431888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxConfigData: {fileID: 11400000, guid: cf194951242ce4e4aba72ec6d0650514, type: 2}
+  parallaxConfigData: {fileID: 11400000, guid: 11c457bd0f19efc468f231b4d47329cc, type: 2}
 --- !u!1 &9128855795345299108
 GameObject:
   m_ObjectHideFlags: 0
