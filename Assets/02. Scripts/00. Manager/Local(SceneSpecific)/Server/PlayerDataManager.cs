@@ -16,6 +16,7 @@ public class PlayerDataManager : MonoBehaviour
 
     private const string SaveDataKey = "PlayerData"; // 클라우드 저장 키
     private const string LeaderboardId = "Ranking"; // 리더보드 ID
+    public LeaderboardScoresPage leaderboard;
 
     // 플레이어 데이터 (ScriptableObject)
     public PlayerDataSO playerDataSO;
@@ -66,6 +67,8 @@ public class PlayerDataManager : MonoBehaviour
 
         // 리더보드에서 상위 10명의 플레이어 데이터를 가져옴
         await GetTopPlayersAsync();
+
+        
     }
 
     // 클라우드에서 플레이어 데이터를 불러오는 함수
@@ -186,6 +189,8 @@ public class PlayerDataManager : MonoBehaviour
             }
 
             Debug.Log("상위 10명 랭킹 불러오기 성공.");
+
+            leaderboard = scoresPage;
 
             foreach (var score in scoresPage.Results)
             {

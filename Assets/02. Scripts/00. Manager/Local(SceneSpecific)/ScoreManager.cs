@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Services.CloudSave;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -35,7 +36,7 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int amount)
     {
         currentScore += amount;
-        UpdateUI();
+        //UpdateUI();
         Debug.Log($"현재 점수: {currentScore}");
     }
     //void Update()
@@ -78,17 +79,31 @@ public class ScoreManager : MonoBehaviour
     // UI 업데이트 함수
     private void UpdateUI()
     {
+        PlayerDataManager.Instance.GetTopPlayersAsync();
+        PlayerDataManager.Instance.LoadPlayerDataAsync();
+
+        TextMeshProUGUI proUGUI = new TextMeshProUGUI();
+        
+        foreach (var score in PlayerDataManager.Instance.leaderboard.Results)
+        {
+            proUGUI.text += $"{score.Rank+1}등  점수 : {score.Score}\n";
+            Debug.Log($"순위: {score.Rank}, 플레이어 ID: {score.PlayerId}, 점수: {score.Score}");
+        }
+
+        highScoresText.text = "";
+        highScoresText.text += proUGUI.text;
+
         if (scoreText != null)
             scoreText.text = $"현재 점수: {currentScore}";
 
-        if (highScoresText != null)
-        {
-            highScoresText.text = "역대 최고 점수:\n";
-            for (int i = 0; i < highScores.Count; i++)
-            {
-                highScoresText.text += $"{i + 1}. {highScores[i]}점\n";
-            }
-        }
+        //if (highScoresText != null)
+        //{
+        //    highScoresText.text = "역대 최고 점수:\n";
+        //    for (int i = 0; i < highScores.Count; i++)
+        //    {
+        //        highScoresText.text += $"{i + 1}. {highScores[i]}점\n";
+        //    }
+        //}
     }
 
     // 로컬 최고 점수 로드 (PlayerPrefs 사용)
