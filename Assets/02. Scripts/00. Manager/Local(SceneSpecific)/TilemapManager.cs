@@ -94,10 +94,71 @@ public class TilemapManager : MonoBehaviour
     {
         // currentTilemap의 자식 중 "Tilemap(Obstacles)" 오브젝트를 찾음
         Transform obstaclesTransform = currentTilemap.transform.Find("Grid/Tilemap(Obstacles)");
+        Transform obstacles02Transform = currentTilemap.transform.Find("Grid/Tilemap(02Obstacles)");
+        Transform obstacles03Transform = currentTilemap.transform.Find("Grid/Tilemap(03Obstacles)");
+        Transform obstacles04Transform = currentTilemap.transform.Find("Grid/Tilemap(04Obstacles)");
+        Transform obstacles05Transform = currentTilemap.transform.Find("Grid/Tilemap(05Obstacles)");
+        Transform obstacles06Transform = currentTilemap.transform.Find("Grid/Tilemap(06Obstacles)");
+        Transform obstacles07Transform = currentTilemap.transform.Find("Grid/Tilemap(07Obstacles)");
+        Transform obstacles08Transform = currentTilemap.transform.Find("Grid/Tilemap(08Obstacles)");
+        Transform obstacles09Transform = currentTilemap.transform.Find("Grid/Tilemap(09Obstacles)");
+        Transform obstacles10Transform = currentTilemap.transform.Find("Grid/Tilemap(10Obstacles)");
+        Transform obstacles11Transform = currentTilemap.transform.Find("Grid/Tilemap(11Obstacles)");
+        Transform obstacles12Transform = currentTilemap.transform.Find("Grid/Tilemap(12Obstacles)");
+        List<Transform> obstacles = new List<Transform>();
+        if(obstaclesTransform!=null)
+            obstacles.Add(obstaclesTransform);
+        if (obstacles02Transform != null)
+            obstacles.Add(obstacles02Transform);
+        if (obstacles03Transform != null)
+            obstacles.Add(obstacles03Transform);
+        if (obstacles04Transform != null)
+            obstacles.Add(obstacles04Transform);
+        if (obstacles05Transform != null)
+            obstacles.Add(obstacles05Transform);
+        if (obstacles06Transform != null)
+            obstacles.Add(obstacles06Transform);
+        if (obstacles07Transform != null)
+            obstacles.Add(obstacles07Transform);
+        if (obstacles08Transform != null)
+            obstacles.Add(obstacles08Transform);
+        if (obstacles09Transform != null)
+            obstacles.Add(obstacles09Transform);
+        if (obstacles10Transform != null)
+            obstacles.Add(obstacles10Transform);
+        if (obstacles11Transform != null)
+            obstacles.Add(obstacles11Transform);
+        if (obstacles12Transform != null)
+            obstacles.Add(obstacles12Transform);
+
+
         if (obstaclesTransform != null)
         {
             // TilemapRenderer 컴포넌트를 가져와 비활성화
-            TilemapRenderer tilemapRenderer = obstaclesTransform.GetComponent<TilemapRenderer>();
+            for(int i = 0; i < obstacles.Count; i++)
+            {
+                TilemapRenderer tilemapRenderer = obstacles[i].GetComponent<TilemapRenderer>();
+                if (tilemapRenderer != null)
+                {
+                    tilemapRenderer.enabled = false;
+                }
+                else
+                {
+                    Debug.LogWarning("Tilemap(Obstacles)에서 TilemapRenderer 컴포넌트를 찾을 수 없습니다.");
+                }
+
+                TilemapCollider2D tilemapCollider2D = obstacles[i].GetComponent<TilemapCollider2D>();
+                if (tilemapCollider2D != null)
+                {
+                    tilemapCollider2D.enabled = false;
+                }
+
+                else
+                {
+                    Debug.LogWarning("Tilemap(Obstacles)에서 TilemapCollider2D 컴포넌트를 찾을 수 없습니다.");
+                }
+            }
+            /*TilemapRenderer tilemapRenderer = obstaclesTransform.GetComponent<TilemapRenderer>();
             if (tilemapRenderer != null)
             {
                 tilemapRenderer.enabled = false;
@@ -116,7 +177,7 @@ public class TilemapManager : MonoBehaviour
             else
             {
                 Debug.LogWarning("Tilemap(Obstacles)에서 TilemapCollider2D 컴포넌트를 찾을 수 없습니다.");
-            }
+            }*/
         }
         else
         {
