@@ -176,7 +176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   addGold: {fileID: 1326720404}
   getGold: {fileID: 0}
-  Money: 5000
 --- !u!114 &35591102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,6 +1176,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 306390750}
+  - {fileID: 1263353424}
   m_Father: {fileID: 1582376300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1498,11 +1498,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1582376300}
+  m_Father: {fileID: 1053123394}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 538, y: -41}
+  m_AnchoredPosition: {x: 8, y: -215}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1263353425
@@ -1982,6 +1982,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389976812}
   m_CullTransparentMesh: 1
+--- !u!1 &1498609619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498609620}
+  - component: {fileID: 1498609621}
+  m_Layer: 0
+  m_Name: BuyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1498609620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498609619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 672.9679, y: 565.01917, z: -3.5477362}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1498609621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498609619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f45562642ead5e4bb57b9241a2d0c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookie1Price: 1500
+  cookie2Price: 1500
+  cookie1ButtonText: {fileID: 324128815}
+  cookie2ButtonText: {fileID: 1943297074}
 --- !u!1 &1582376296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,7 +2132,6 @@ RectTransform:
   - {fileID: 35591100}
   - {fileID: 612800861}
   - {fileID: 1053123394}
-  - {fileID: 1263353424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2554,3 +2601,4 @@ SceneRoots:
   - {fileID: 1582376300}
   - {fileID: 350283050}
   - {fileID: 2107247577}
+  - {fileID: 1498609620}
