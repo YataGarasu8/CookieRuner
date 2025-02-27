@@ -12,7 +12,6 @@ public class GameUIController : MonoBehaviour
 {
     public TextMeshProUGUI CoinCountText;
     public GameObject PausePanel;
-    public GameObject EndPanel;
     public GameObject RankingBoard;
     public GameObject Canvas;
 
@@ -29,8 +28,6 @@ public class GameUIController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        PausePanel.gameObject.SetActive(false);
-        EndPanel.gameObject.SetActive(false);
         RankingBoard.gameObject.SetActive(false);
     }
 
@@ -76,10 +73,8 @@ public class GameUIController : MonoBehaviour
     {
         await ScoreManager.Instance.SaveCurrentScore();
 
-        Canvas.gameObject.SetActive(false);
-        PausePanel.gameObject.SetActive(false);
-        EndPanel.gameObject.SetActive(false);
         RankingBoard.gameObject.SetActive(false);
+        PausePanel.gameObject.SetActive(false);
         Canvas.gameObject.SetActive(false);
         SoundManager.Instance.StopBGM();
         SceneManager.LoadScene("LobbyScene");
@@ -88,25 +83,24 @@ public class GameUIController : MonoBehaviour
     }
     public void GameOver()
     {
-        Canvas.gameObject.SetActive(true);
-        EndPanel.gameObject.SetActive(true);
-        //RankingBoard.gameObject.SetActive(true);
-        Invoke("SetRankingBoard", 0);
+        Canvas.gameObject.SetActive(true);;
+        RankingBoard.gameObject.SetActive(true);
+        //Invoke("SetRankingBoard", 0);
     }
-    public void SetRankingBoard()
-    {
-        if (!isMove)
-        {
-            if (!RankingBoard.activeSelf)
-            {
-                RankingBoard.gameObject.SetActive(true);
-                RankingBoard.transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutExpo).OnComplete
-                    (
-                    () => { isMove = false; }
-                    );
-            }
-        }
-    }
+    //public void SetRankingBoard()
+    //{
+    //    if (!isMove)
+    //    {
+    //        if (!RankingBoard.activeSelf)
+    //        {
+    //            RankingBoard.gameObject.SetActive(true);
+    //            RankingBoard.transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutExpo).OnComplete
+    //                (
+    //                () => { isMove = false; }
+    //                );
+    //        }
+    //    }
+    //}
     public void CoinSet()
     {
         startMoney = GameManager.Instance.Money;
