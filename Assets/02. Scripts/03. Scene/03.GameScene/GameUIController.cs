@@ -32,27 +32,29 @@ public class GameUIController : MonoBehaviour
 
         CoinCountText.text = GameManager.Instance.Money.ToString();
 
-        if(GameManager.Instance.IsGameOver == true)
+        if (GameManager.Instance.IsGameOver == true)
         {
-            EndPanel.gameObject.SetActive(true);
+            if (EndPanel.gameObject.activeSelf == false)
+                EndPanel.gameObject.SetActive(true);
         }
     }
 
     public void PauseGame()
     {
-            PausePanel.gameObject.SetActive(true);
-            Time.timeScale = 0f;
+        PausePanel.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
     public void ReturnGame()
     {
-            PausePanel.gameObject.SetActive(false);
-            Time.timeScale = 1f;
+        PausePanel.gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
     public void OutGame()
     {
         PausePanel.gameObject.SetActive(false);
         Canvas.gameObject.SetActive(false);
         EndPanel.gameObject.SetActive(false);
+        GameManager.Instance.IsGameOver = false;
         SceneManager.LoadScene("LobbyScene");
         Time.timeScale = 1f;
     }

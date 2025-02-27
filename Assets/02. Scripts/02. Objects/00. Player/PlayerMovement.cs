@@ -333,6 +333,7 @@ public class PlayerMovement : MonoBehaviour
     // 일반 상태 충돌체 적용
     private void ApplyNormalCollider()
     {
+
         if (boxCollider == null)
         {
             Debug.LogWarning("[PlayerMovement] BoxCollider2D가 null입니다. 충돌체 적용 실패.");
@@ -361,12 +362,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        boxCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
-        boxCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
-        itemCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
-        itemCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
-        obsCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
-        obsCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
+        boxCollider.size = normalColliderSize;  // 일반 상태 충돌체 크기 적용
+        boxCollider.offset = normalColliderOffset; // 일반 상태 충돌체 위치 적용
+        itemCollider.size = normalColliderSize;  // 일반 상태 충돌체 크기 적용
+        itemCollider.offset = normalColliderOffset; // 일반 상태 충돌체 위치 적용
+        obsCollider.size = normalColliderSize;  // 일반 상태 충돌체 크기 적용
+        obsCollider.offset = normalColliderOffset; // 일반 상태 충돌체 위치 적용
     }
 
     // 슬라이드 시 충돌체 적용 (크기 및 위치 변경)
@@ -400,12 +401,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        boxCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
-        boxCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
-        itemCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
-        itemCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
-        obsCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
-        obsCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
+        //slideColliderOffset = stats.isScaleUP ? new Vector2(0f, -0.4f) : new Vector2(0f, -1f);
+
+        boxCollider.size = slideColliderSize;// 슬라이드 상태 충돌체 크기 적용
+        boxCollider.offset = slideColliderOffset; // 슬라이드 상태 충돌체 위치 적용
+        itemCollider.size = slideColliderSize;  // 슬라이드 상태 충돌체 크기 적용
+        itemCollider.offset = slideColliderOffset; // 슬라이드 상태 충돌체 위치 적용
+        obsCollider.size = slideColliderSize;   // 슬라이드 상태 충돌체 크기 적용
+        obsCollider.offset = slideColliderOffset;// 슬라이드 상태 충돌체 위치 적용  * stats.CurrentScale; 
+
     }
 
     // 플레이어 피격 시 호출할 함수
