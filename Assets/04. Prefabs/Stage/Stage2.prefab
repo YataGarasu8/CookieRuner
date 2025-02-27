@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2218078052302284767}
   - component: {fileID: 566411649633081668}
   m_Layer: 0
-  m_Name: Tilemap(Obstacles)
+  m_Name: Tilemap(1Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4091,7 +4091,7 @@ GameObject:
   - component: {fileID: 1076363888786234555}
   - component: {fileID: 692825339410286376}
   m_Layer: 0
-  m_Name: Tilemap(Obstacles_Skeleton)
+  m_Name: Tilemap(2Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21098,7 +21098,7 @@ GameObject:
   - component: {fileID: 3882434237361905641}
   - component: {fileID: 6923580589312707633}
   m_Layer: 0
-  m_Name: Tilemap(Obstacles_Light)
+  m_Name: Tilemap(3Obstacles)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -92,12 +92,41 @@ public class TilemapManager : MonoBehaviour
 
     void DisableTilemapRendererComponent(GameObject currentTilemap)
     {
-        // currentTilemap의 자식 중 "Tilemap(Obstacles)" 오브젝트를 찾음
-        Transform obstaclesTransform = currentTilemap.transform.Find("Grid/Tilemap(Obstacles)");
-        if (obstaclesTransform != null)
+        List<Transform> obstacles = new List<Transform>();
+
+        for (int i = 1; i < 13; i++)
+        {
+            if(currentTilemap.transform.Find($"Grid/Tilemap({i}Obstacles)")!=null)
+                obstacles.Add(currentTilemap.transform.Find($"Grid/Tilemap({i}Obstacles)"));
+        }
+
+        if (obstacles != null)
         {
             // TilemapRenderer 컴포넌트를 가져와 비활성화
-            TilemapRenderer tilemapRenderer = obstaclesTransform.GetComponent<TilemapRenderer>();
+            for (int i = 0; i < obstacles.Count; i++)
+            {
+                TilemapRenderer tilemapRenderer = obstacles[i].GetComponent<TilemapRenderer>();
+                if (tilemapRenderer != null)
+                {
+                    tilemapRenderer.enabled = false;
+                }
+                else
+                {
+                    Debug.LogWarning("Tilemap(Obstacles)에서 TilemapRenderer 컴포넌트를 찾을 수 없습니다.");
+                }
+
+                TilemapCollider2D tilemapCollider2D = obstacles[i].GetComponent<TilemapCollider2D>();
+                if (tilemapCollider2D != null)
+                {
+                    tilemapCollider2D.enabled = false;
+                }
+
+                else
+                {
+                    Debug.LogWarning("Tilemap(Obstacles)에서 TilemapCollider2D 컴포넌트를 찾을 수 없습니다.");
+                }
+            }
+            /*TilemapRenderer tilemapRenderer = obstaclesTransform.GetComponent<TilemapRenderer>();
             if (tilemapRenderer != null)
             {
                 tilemapRenderer.enabled = false;
@@ -116,7 +145,7 @@ public class TilemapManager : MonoBehaviour
             else
             {
                 Debug.LogWarning("Tilemap(Obstacles)에서 TilemapCollider2D 컴포넌트를 찾을 수 없습니다.");
-            }
+            }*/
         }
         else
         {

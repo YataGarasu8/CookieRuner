@@ -18,6 +18,9 @@ public class NickNameManager : MonoBehaviour
         nickNameDisplayText.text = playerNickName;
 
         nickNamePanel.SetActive(false);
+
+        // 플레이어 닉네임 변경
+        GameManager.Instance.PlayerName = playerNickName;
     }
 
     public void ToggleNickNamePanel()
@@ -41,6 +44,8 @@ public class NickNameManager : MonoBehaviour
 
             nickNamePanel.SetActive(false);
 
+            // 플레이어 닉네임 변경
+            GameManager.Instance.PlayerName = playerNickName;
         }
     }
 }
