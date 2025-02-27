@@ -34,6 +34,11 @@ public class SoundManagerBehaviour : MonoBehaviour
         StartCoroutine(coroutine); // 傈崔等 内风凭 角青
     }
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         SoundManager.Instance.LoadSounds();
