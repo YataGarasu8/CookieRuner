@@ -1873,6 +1873,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686939036}
   m_CullTransparentMesh: 1
+--- !u!1 &689632034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 689632035}
+  - component: {fileID: 689632037}
+  - component: {fileID: 689632036}
+  m_Layer: 5
+  m_Name: FadeImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &689632035
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689632034}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1035911787}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.000061035156}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &689632036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689632034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &689632037
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689632034}
+  m_CullTransparentMesh: 1
 --- !u!1 &722791116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,6 +2467,7 @@ RectTransform:
   - {fileID: 757837661}
   - {fileID: 1170051935}
   - {fileID: 520343676}
+  - {fileID: 689632035}
   m_Father: {fileID: 1543031560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2445,9 +2521,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemapPrefabs:
-  - {fileID: 8622471835378288503, guid: 990a2b991b304cd4ba16c6b9758a0988, type: 3}
-  - {fileID: 8622471835378288503, guid: 733b776fa97fd0f46a93cb8f218efadd, type: 3}
   - {fileID: 8622471835378288503, guid: 546304848d515b0499406662288958f8, type: 3}
+  - {fileID: 8622471835378288503, guid: 733b776fa97fd0f46a93cb8f218efadd, type: 3}
+  - {fileID: 8622471835378288503, guid: 990a2b991b304cd4ba16c6b9758a0988, type: 3}
   - {fileID: 8622471835378288503, guid: 1a78b87efe3b9bd4fba01564999bb730, type: 3}
   player: {fileID: 255115609}
   parallaxLayer: {fileID: 507018789}
@@ -3159,9 +3235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60dc13f86d3e39b4a81eedd30bd34b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeImage: {fileID: 6611446334193943595, guid: d8b467d1418d6b049b687a031e2ff4bd, type: 3}
-  targetAlpha: 0.9
-  fadeDuration: 3
+  fadeImage: {fileID: 689632036}
+  targetAlpha: 1
+  fadeDuration: 4
 --- !u!1 &1724818610
 GameObject:
   m_ObjectHideFlags: 0

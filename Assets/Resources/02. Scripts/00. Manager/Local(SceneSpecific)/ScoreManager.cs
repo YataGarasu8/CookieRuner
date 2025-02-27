@@ -79,8 +79,10 @@ public class ScoreManager : MonoBehaviour
     // UI 업데이트 함수
     private void UpdateUI()
     {
+#pragma warning disable CS4014
         PlayerDataManager.Instance.GetTopPlayersAsync();
         PlayerDataManager.Instance.LoadPlayerDataAsync();
+#pragma warning restore CS4014
 
         TextMeshProUGUI proUGUI = new TextMeshProUGUI();
         

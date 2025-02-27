@@ -10,35 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b70bc8b908810448830c789a058080c, type: 3}
-  m_Name: Stage02
+  m_Name: Stage03
   m_EditorClassIdentifier: 
   backgroundLayer:
     layerName: Back
-    backgroundSprite: {fileID: 1842722955, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
+    backgroundSprite: {fileID: -1927066342, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
     scale: {x: 2.4, y: 2.4}
-    parallaxMultiplier: 0.8
+    parallaxMultiplier: 0.9
     imageCount: 3
-    startPosition: {x: 0, y: -1}
+    startPosition: {x: 0, y: -0.5}
     lastAppliedScale: {x: 2.4, y: 2.4}
-    lastAppliedStartPosition: {x: 0, y: -1}
+    lastAppliedStartPosition: {x: 0, y: -0.5}
     sortingOrder: -3
   midgroundLayer:
     layerName: Mid
-    backgroundSprite: {fileID: 237377017, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
+    backgroundSprite: {fileID: 937417355, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
     scale: {x: 2.4, y: 2.4}
     parallaxMultiplier: 0.5
     imageCount: 3
-    startPosition: {x: 0, y: -1.2}
+    startPosition: {x: 0, y: -0.5}
     lastAppliedScale: {x: 2.4, y: 2.4}
-    lastAppliedStartPosition: {x: 0, y: -1.2}
+    lastAppliedStartPosition: {x: 0, y: -0.5}
     sortingOrder: -2
   foregroundLayer:
     layerName: Fore
-    backgroundSprite: {fileID: 0}
-    scale: {x: 0, y: 0}
-    parallaxMultiplier: 0.5
+    backgroundSprite: {fileID: -430173494, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
+    scale: {x: 2.4, y: 2.4}
+    parallaxMultiplier: 0.1
     imageCount: 3
-    startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 0, y: 0}
-    lastAppliedStartPosition: {x: 0, y: 0}
-    sortingOrder: 0
+    startPosition: {x: 0, y: -0.5}
+    lastAppliedScale: {x: 2.4, y: 2.4}
+    lastAppliedStartPosition: {x: 0, y: -0.5}
+    sortingOrder: -1
