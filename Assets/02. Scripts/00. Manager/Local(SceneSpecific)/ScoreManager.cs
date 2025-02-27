@@ -74,23 +74,49 @@ public class ScoreManager : MonoBehaviour
             Debug.LogError("DontDestroyOnLoad에 있는 GameUI 오브젝트를 찾지 못했습니다.");
         }
 
-        GameObject rankingBoard = GameObject.Find("RankingBoard");
-        if (rankingBoard != null)
+        if (gameUI != null)
         {
-            Transform highScoreTransform = rankingBoard.transform.Find("HighScoreText");
-            if (highScoreTransform != null)
+            // GameUI 밑의 Canvas 오브젝트 찾기
+            Transform canvasTransform = gameUI.transform.Find("Canvas");
+            if (canvasTransform != null)
             {
-                highScoresText = highScoreTransform.GetComponent<TextMeshProUGUI>();
-                // targetText 사용
+                // Canvas 밑의 RankingBoard 오브젝트 찾기
+                Transform rankingBoardTransform = canvasTransform.Find("RankingBoard");
+                if (rankingBoardTransform != null)
+                {
+                    // RankingBoard 밑의 HighScoreText 오브젝트 찾기
+                    Transform highScoreTextTransform = rankingBoardTransform.Find("HighScoreText");
+                    if (highScoreTextTransform != null)
+                    {
+                        highScoresText = highScoreTextTransform.GetComponent<TextMeshProUGUI>();
+                        if (highScoresText != null)
+                        {
+                            highScoresText.text = "";
+                            Debug.Log("HighScoreText 오브젝트를 성공적으로 찾았습니다.");
+                        }
+                        else
+                        {
+                            Debug.LogError("HighScoreText 오브젝트에서 TextMeshProUGUI 컴포넌트를 찾지 못했습니다.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("RankingBoard 하위에서 HighScoreText 오브젝트를 찾지 못했습니다.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Canvas 하위에서 RankingBoard 오브젝트를 찾지 못했습니다.");
+                }
             }
             else
             {
-                Debug.LogError("HighScoreText 오브젝트를 찾을 수 없습니다.");
+                Debug.LogError("GameUI 하위에서 Canvas 오브젝트를 찾지 못했습니다.");
             }
         }
         else
         {
-            Debug.LogError("RankingBoard 오브젝트를 찾을 수 없습니다.");
+            Debug.LogError("DontDestroyOnLoad에 있는 GameUI 오브젝트를 찾지 못했습니다.");
         }
     }
 

@@ -2554,13 +2554,14 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 689632035}
+  - {fileID: 476264011}
   - {fileID: 1665323995}
   - {fileID: 1961604016}
   - {fileID: 490198646}
   - {fileID: 757837661}
   - {fileID: 1170051935}
   - {fileID: 520343676}
-  - {fileID: 689632035}
   m_Father: {fileID: 1543031560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2620,7 +2621,6 @@ MonoBehaviour:
   - {fileID: 8622471835378288503, guid: 1a78b87efe3b9bd4fba01564999bb730, type: 3}
   player: {fileID: 255115609}
   parallaxLayer: {fileID: 507018789}
-  fadeManager: {fileID: 1685067304}
 --- !u!1 &1111793926
 GameObject:
   m_ObjectHideFlags: 0
