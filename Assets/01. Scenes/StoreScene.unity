@@ -2657,8 +2657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f45562642ead5e4bb57b9241a2d0c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookie1Price: 15000
-  cookie2Price: 15000
   cookie1ButtonText: {fileID: 324128815}
   cookie2ButtonText: {fileID: 1943297074}
 --- !u!1 &1582376296
@@ -3222,6 +3220,7 @@ MonoBehaviour:
   - "\uBC18\uC9DD\uC774 \uC8FC\uBA74\u2026 \uC6D0\uD558\uB294 \uAC70 \uAC00\uC838\u2026"
   - "\uB354 \uD070 \uBC18\uC9DD\uC774!"
   - "\uBAA8\uC790\uB77C\uB2E4... \uBC18\uC9DD\uC774..."
+  - "\uB098 \uBC14\uBCF4 \uC544\uB2C8\uB2E4..."
   YataMent: {fileID: 1061868595}
   YataTalk: {fileID: 1665134487}
 --- !u!1660057539 &9223372036854775807
