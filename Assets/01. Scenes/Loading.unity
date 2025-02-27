@@ -257,6 +257,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126050412}
   m_CullTransparentMesh: 1
+--- !u!1 &384260847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 384260849}
+  - component: {fileID: 384260848}
+  m_Layer: 0
+  m_Name: SoundController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &384260848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384260847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eca78ad694b14146b69da5424042e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &384260849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384260847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9800095, y: 0.52856356, z: -0.006695944}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &385159665
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +590,7 @@ MonoBehaviour:
   progressText: {fileID: 1765589237}
   loadingDetailText: {fileID: 1373731291}
   startButton: {fileID: 1948986913}
-  sceneToLoad: Editor
+  sceneToLoad: LobbyScene
   buttonFloatAmplitude: 10
   buttonFloatSpeed: 2
   waitTimeAfterComplete: 1
@@ -1327,3 +1371,4 @@ SceneRoots:
   - {fileID: 1073484996}
   - {fileID: 1061599939}
   - {fileID: 1637847728}
+  - {fileID: 384260849}

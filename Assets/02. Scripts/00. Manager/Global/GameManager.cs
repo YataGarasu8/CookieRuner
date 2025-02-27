@@ -28,13 +28,17 @@ public class GameManager
     private bool isGetLYJ = false;
     private bool isGetKYJ = false;
 
+    //게임오버 변수
+    public bool IsGameOver { get; set; }
+
     // 초기화 함수: 인스턴스 생성 시 필요한 초기 설정 수행
     private void Init()
     {
 
     }
-    public int Money { get; set; } // 한 게임에서 얻는 골드재화
-    public int playerMoney;//플레이어가 보유한 골드의 총량
+    public int Money { get; set; } //플레이어가 보유한 골드의 총량
+    public int getMoney;//
+    int startMoney;
 
     public bool IsGetAllBonusItem()
     {
@@ -100,9 +104,4 @@ public class GameManager
         isGetLYJ = false;
         isGetLJH = false;
     }
-    public void CalculateMoney()
-    {
-        playerMoney += Money;
-    }
-
 }

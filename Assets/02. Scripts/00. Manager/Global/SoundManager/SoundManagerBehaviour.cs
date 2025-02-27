@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // 설명: MonoBehaviour를 상속하는 헬퍼 클래스
 // SoundManager에서 사용할 수 없는 코루틴 및 transform 관련 기능을 제공하기 위해 사용
@@ -31,5 +32,35 @@ public class SoundManagerBehaviour : MonoBehaviour
     public void RunCoroutine(System.Collections.IEnumerator coroutine)
     {
         StartCoroutine(coroutine); // 전달된 코루틴 실행
+    }
+
+    private void Awake()
+    {
+        
+    }
+
+    private void Start()
+    {
+        SoundManager.Instance.LoadSounds();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "GameScene")
+        {
+            SoundManager.Instance.StopBGM();
+            SoundManager.Instance.PlayBGM("GameSceneBGM01");
+        }
+        if(scene.name == "LobbyScene")
+        {
+            SoundManager.Instance.StopBGM();
+            SoundManager.Instance.PlayBGM("LobbyBGM01");
+        }
+        if(scene.name == "StoreScene")
+        {
+            SoundManager.Instance.StopBGM();
+            SoundManager.Instance.PlayBGM("StoreSceneBGM01");
+        }
     }
 }

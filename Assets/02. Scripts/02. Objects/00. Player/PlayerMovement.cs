@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
@@ -119,6 +120,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool shouldTriggerJump = false;         // 점프 트리거 호출 플래그
     private bool shouldTriggerDoubleJump = false;   // 더블 점프 트리거 호출 플래그
+
+    private bool isGameOver = false;
     void Awake()
     {
         // 필수 컴포넌트 초기화 및 검사
@@ -130,8 +133,7 @@ public class PlayerMovement : MonoBehaviour
         itemCollider = GameObject.Find("ItemColider").GetComponent<BoxCollider2D>();
         obsCollider = GameObject.Find("ObsColider").GetComponent<BoxCollider2D>();
 
-        Debug.LogWarning(boxCollider.name);
-        Debug.LogWarning(itemCollider.gameObject.name);
+        GameManager.Instance.IsGameOver = false;
 
         // 컴포넌트가 없을 시 오류 로그 출력
         if (rb == null) Debug.LogError("[PlayerMovement] Rigidbody2D가 누락되었습니다.");
@@ -151,32 +153,54 @@ public class PlayerMovement : MonoBehaviour
 
         // 초기 충돌체 설정 (크기 초기화 방지)
         Invoke(nameof(ApplyNormalCollider), 0.01f); // 0.01초 지연 호출로 적용 보장
+
+        
     }
 
     void FixedUpdate()
     {
-        Move();                      // 지속 이동 처리
-        isGrounded = CheckGrounded(); // 바닥 감지 업데이트
-        UpdateAnimatorParameters(); // 애니메이터 파라미터 업데이트
-
-        // 점프 트리거 호출
-        if (shouldTriggerJump)
+        if (GameManager.Instance.IsGameOver == false)
         {
-            animator.SetTrigger(Constants.AnimatorParams.JumpTrigger);
-            //Debug.Log("[JumpTrigger] 트리거 호출");
-            shouldTriggerJump = false;
-        }
+            Move();                      // 지속 이동 처리
+            isGrounded = CheckGrounded(); // 바닥 감지 업데이트
+            UpdateAnimatorParameters(); // 애니메이터 파라미터 업데이트
 
-        if (shouldTriggerDoubleJump)
-        {
-            animator.SetTrigger(Constants.AnimatorParams.DoubleJumpTrigger);
-            //Debug.Log("[DoubleJumpTrigger] 트리거 호출");
-            shouldTriggerDoubleJump = false;
-        }
+            // 점프 트리거 호출
+            if (shouldTriggerJump)
+            {
+                animator.SetTrigger(Constants.AnimatorParams.JumpTrigger);
+                //Debug.Log("[JumpTrigger] 트리거 호출");
+                shouldTriggerJump = false;
+            }
 
-        // 착지 시 점프 횟수 초기화
-        if (isGrounded && currentJumpCount > 0)
-            currentJumpCount = 0;
+            if (shouldTriggerDoubleJump)
+            {
+                animator.SetTrigger(Constants.AnimatorParams.DoubleJumpTrigger);
+                //Debug.Log("[DoubleJumpTrigger] 트리거 호출");
+                shouldTriggerDoubleJump = false;
+            }
+
+            // 착지 시 점프 횟수 초기화
+            if (isGrounded && currentJumpCount > 0)
+                currentJumpCount = 0;
+
+            if (stats.CurrentHealth <= 0.01)
+            {
+                GameOver();
+            }
+
+            if (this.gameObject.transform.position.y < -10f)
+            {
+                GameOver();
+            }
+
+        }
+    }
+
+    void GameOver()
+    {
+        GameManager.Instance.IsGameOver = true;
+        rb.velocity = new Vector2(0f, rb.velocity.y); // x축 이동 속도 적용 (y축 속도는 유지)
     }
 
     // 인스펙터에서 값 변경 시 자동 호출 (에디터 실시간 반영)
@@ -299,6 +323,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat(Constants.AnimatorParams.VerticalVelocity, rb.velocity.y);  // 수직 속도 반영
         animator.SetBool(Constants.AnimatorParams.IsGrounded, isGrounded);            // 바닥 접촉 여부 반영
         animator.SetBool(Constants.AnimatorParams.IsSliding, isSliding);              // 슬라이드 상태 반영
+        animator.SetFloat(Constants.AnimatorParams.PlayerHP, stats.CurrentHealth); // 현재체력 반영
     }
 
     // 바닥 접촉 여부 확인
@@ -316,6 +341,7 @@ public class PlayerMovement : MonoBehaviour
     // 일반 상태 충돌체 적용
     private void ApplyNormalCollider()
     {
+
         if (boxCollider == null)
         {
             Debug.LogWarning("[PlayerMovement] BoxCollider2D가 null입니다. 충돌체 적용 실패.");
@@ -344,12 +370,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        boxCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
-        boxCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
-        itemCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
-        itemCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
-        obsCollider.size = normalColliderSize * stats.CurrentScale;  // 일반 상태 충돌체 크기 적용
-        obsCollider.offset = normalColliderOffset * stats.CurrentScale; // 일반 상태 충돌체 위치 적용
+        boxCollider.size = normalColliderSize;  // 일반 상태 충돌체 크기 적용
+        boxCollider.offset = normalColliderOffset; // 일반 상태 충돌체 위치 적용
+        itemCollider.size = normalColliderSize;  // 일반 상태 충돌체 크기 적용
+        itemCollider.offset = normalColliderOffset; // 일반 상태 충돌체 위치 적용
+        obsCollider.size = normalColliderSize;  // 일반 상태 충돌체 크기 적용
+        obsCollider.offset = normalColliderOffset; // 일반 상태 충돌체 위치 적용
     }
 
     // 슬라이드 시 충돌체 적용 (크기 및 위치 변경)
@@ -383,12 +409,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        boxCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
-        boxCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
-        itemCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
-        itemCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
-        obsCollider.size = slideColliderSize * stats.CurrentScale;   // 슬라이드 상태 충돌체 크기 적용
-        obsCollider.offset = slideColliderOffset * stats.CurrentScale; // 슬라이드 상태 충돌체 위치 적용
+        //slideColliderOffset = stats.isScaleUP ? new Vector2(0f, -0.4f) : new Vector2(0f, -1f);
+
+        boxCollider.size = slideColliderSize;// 슬라이드 상태 충돌체 크기 적용
+        boxCollider.offset = slideColliderOffset; // 슬라이드 상태 충돌체 위치 적용
+        itemCollider.size = slideColliderSize;  // 슬라이드 상태 충돌체 크기 적용
+        itemCollider.offset = slideColliderOffset; // 슬라이드 상태 충돌체 위치 적용
+        obsCollider.size = slideColliderSize;   // 슬라이드 상태 충돌체 크기 적용
+        obsCollider.offset = slideColliderOffset;// 슬라이드 상태 충돌체 위치 적용  * stats.CurrentScale; 
+
     }
 
     // 플레이어 피격 시 호출할 함수
