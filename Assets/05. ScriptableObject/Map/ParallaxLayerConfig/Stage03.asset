@@ -15,27 +15,30 @@ MonoBehaviour:
   backgroundLayer:
     layerName: Back
     backgroundSprite: {fileID: -1927066342, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
-    scale: {x: 3, y: 3}
-    parallaxMultiplier: 0.8
+    scale: {x: 2.4, y: 2.4}
+    parallaxMultiplier: 0.9
     imageCount: 3
-    startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 3, y: 3}
-    lastAppliedStartPosition: {x: 0, y: 0}
+    startPosition: {x: 0, y: -1.2}
+    lastAppliedScale: {x: 2.4, y: 2.4}
+    lastAppliedStartPosition: {x: 0, y: -1.2}
+    sortingOrder: -3
   midgroundLayer:
     layerName: Mid
     backgroundSprite: {fileID: 937417355, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
-    scale: {x: 3, y: 3}
+    scale: {x: 2.4, y: 2.4}
     parallaxMultiplier: 0.5
     imageCount: 3
-    startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 3, y: 3}
-    lastAppliedStartPosition: {x: 0, y: 0}
+    startPosition: {x: 0, y: -1.2}
+    lastAppliedScale: {x: 2.4, y: 2.4}
+    lastAppliedStartPosition: {x: 0, y: -1.2}
+    sortingOrder: -2
   foregroundLayer:
     layerName: Fore
     backgroundSprite: {fileID: -430173494, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
-    scale: {x: 2, y: 2}
-    parallaxMultiplier: 0.3
-    imageCount: 32
-    startPosition: {x: 0, y: 0}
-    lastAppliedScale: {x: 2, y: 2}
-    lastAppliedStartPosition: {x: 0, y: 0}
+    scale: {x: 2.4, y: 2.4}
+    parallaxMultiplier: 0.1
+    imageCount: 3
+    startPosition: {x: 0, y: -1.2}
+    lastAppliedScale: {x: 2.4, y: 2.4}
+    lastAppliedStartPosition: {x: 0, y: -1.2}
+    sortingOrder: -1
