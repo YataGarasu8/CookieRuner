@@ -13,7 +13,6 @@ public class CoinManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.CalculateMoney();
         WriteMoney();
     }
 
@@ -26,14 +25,7 @@ public class CoinManager : MonoBehaviour
     {
         if (addGold != null)
         {
-            addGold.text = GameManager.Instance.playerMoney.ToString();
-        }
-    }
-    void GoldGet()
-    {
-        if (getGold != null)
-        {
-            getGold.text = GameManager.Instance.Money.ToString();
+            addGold.text = GameManager.Instance.Money.ToString();
         }
     }
 }

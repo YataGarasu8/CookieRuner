@@ -28,7 +28,7 @@ public class Obstacle : MonoBehaviour
     {
         if (isKicked)
         {
-            transform.Rotate(0, 0, Time.deltaTime * 50f, Space.Self);
+            transform.Rotate(0, 0, Time.deltaTime * 300f, Space.Self);
         }
         
     }
