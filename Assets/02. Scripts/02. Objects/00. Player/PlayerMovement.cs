@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -130,20 +131,89 @@ public class PlayerMovement : MonoBehaviour
         itemCollider = GameObject.Find("ItemColider").GetComponent<BoxCollider2D>();
         obsCollider = GameObject.Find("ObsColider").GetComponent<BoxCollider2D>();
 
+
+        RuntimeAnimatorController newController;
+        Sprite newSprite;
+
         switch (GameManager.Instance.charSelect)
         {
+            // 기본쿠키 렌더러 및 애니메이터 달아주기
             case CharacterSelect.Default:
-                //기본쿠기 렌더러 및 애니메이터 달아주기
-                //sprite = Resources.Load<Sprite>("00.Character/Breve_run1");
+                {
+                    newSprite = Resources.Load<Sprite>("Breve_run1");
+                    if (newSprite != null)
+                    {
+                        spriteRenderer.sprite = newSprite;
+                    }
+                    else
+                    {
+                        Debug.LogError("스프라이트 로드 실패: 지정한 경로에 스프라이트가 없습니다.");
+                    }
 
+                    // 재선언하지 않고 바깥 변수에 할당
+                    newController = Resources.Load<RuntimeAnimatorController>("Player\\BraveCookie\\Brave_AnimatorController");
+                    if (newController != null)
+                    {
+                        animator.runtimeAnimatorController = newController;
+                    }
+                    else
+                    {
+                        Debug.LogError("애니메이터 컨트롤러 로드 실패: 지정한 경로에 컨트롤러가 없습니다.");
+                    }
+                }
                 break;
+
+            // 2번째 쿠키 렌더러 및 애니메이터 달아주기
             case CharacterSelect.Cookie2:
-                //2번째 쿠키 렌더러 및 애니메이터 달아주기
+                {
+                    newSprite = Resources.Load<Sprite>("cookie0001z03x2_0032");
+                    if (newSprite != null)
+                    {
+                        spriteRenderer.sprite = newSprite;
+                    }
+                    else
+                    {
+                        Debug.LogError("스프라이트 로드 실패: 지정한 경로에 스프라이트가 없습니다.");
+                    }
+
+                    newController = Resources.Load<RuntimeAnimatorController>("Player\\SantaCookie\\SantaCookie");
+                    if (newController != null)
+                    {
+                        animator.runtimeAnimatorController = newController;
+                    }
+                    else
+                    {
+                        Debug.LogError("애니메이터 컨트롤러 로드 실패: 지정한 경로에 컨트롤러가 없습니다.");
+                    }
+                }
                 break;
+
+            // 히나 렌더러 및 애니메이터 달아주기
             case CharacterSelect.SorasakiHina:
-                //히나 렌더러 및 애니메이터 달아주기
+                {
+                    newSprite = Resources.Load<Sprite>("tile000");
+                    if (newSprite != null)
+                    {
+                        spriteRenderer.sprite = newSprite;
+                    }
+                    else
+                    {
+                        Debug.LogError("스프라이트 로드 실패: 지정한 경로에 스프라이트가 없습니다.");
+                    }
+
+                    newController = Resources.Load<RuntimeAnimatorController>("Player\\Hina\\Hina");
+                    if (newController != null)
+                    {
+                        animator.runtimeAnimatorController = newController;
+                    }
+                    else
+                    {
+                        Debug.LogError("애니메이터 컨트롤러 로드 실패: 지정한 경로에 컨트롤러가 없습니다.");
+                    }
+                }
                 break;
         }
+
 
         GameManager.Instance.IsGameOver = false;
 
