@@ -106,7 +106,8 @@ public class PlayerDataManager : MonoBehaviour
                 }
 
                 // ScriptableObject에 값 적용
-                playerDataSO.playerName = tempData.playerName;
+                if (playerDataSO.playerName == "Guest")
+                    playerDataSO.playerName = tempData.playerName;
                 playerDataSO.highScore = tempData.highScore;
                 playerDataSO.gold = tempData.gold;
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using System.Threading.Tasks;
 
 public class GameUIController : MonoBehaviour
 {
@@ -71,8 +72,10 @@ public class GameUIController : MonoBehaviour
         PausePanel.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
-    public void OutGame()
+    public async void OutGame()
     {
+        await ScoreManager.Instance.SaveCurrentScore();
+
         Canvas.gameObject.SetActive(false);
         PausePanel.gameObject.SetActive(false);
         EndPanel.gameObject.SetActive(false);

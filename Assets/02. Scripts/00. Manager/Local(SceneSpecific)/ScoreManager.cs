@@ -171,7 +171,8 @@ public class ScoreManager : MonoBehaviour
             Debug.LogError("PlayerDataManager 또는 playerDataSO가 null입니다!");
         }
 
-        gameUIController.GameOver();
+        if (gameUIController)
+            gameUIController.GameOver();
     }
 
     // UI 업데이트 함수
@@ -238,6 +239,10 @@ public class ScoreManager : MonoBehaviour
     }
     void OnApplicationQuit()
     {
-        SaveCurrentScore();
+        ExecuteSaveCurrentScore();
+    }
+    public async void ExecuteSaveCurrentScore()
+    {
+        await SaveCurrentScore();
     }
 }
