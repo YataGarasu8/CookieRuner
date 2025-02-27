@@ -106,7 +106,7 @@ public class GameManager
     public void CalculateMoney()
     {
         playerMoney += Money;
-        Money = 0;
+       
     }
 
 }
