@@ -19,20 +19,18 @@ public class PlayerDataManager : MonoBehaviour
     // 플레이어 데이터 (ScriptableObject)
     public PlayerDataSO playerDataSO;
 
-    public static PlayerDataManager Instance; // 싱글턴 인스턴스
+    public static PlayerDataManager Instance { get; private set; } // 싱글턴 인스턴스
 
     void Awake()
     {
         // 싱글턴 패턴을 사용하여 인스턴스를 유지
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public async void Start()

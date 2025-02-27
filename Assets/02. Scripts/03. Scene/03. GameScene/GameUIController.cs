@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class GameUIController : MonoBehaviour
 {
@@ -16,18 +17,36 @@ public class GameUIController : MonoBehaviour
 
     bool isMove = false;
     int startMoney;
-
-    private void Awake()
+    public static GameUIController Instance { get; private set; }
+    void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         PausePanel.gameObject.SetActive(false);
         EndPanel.gameObject.SetActive(false);
         RankingBoard.gameObject.SetActive(false);
     }
+
     private void Start()
     {
-        Canvas.gameObject.SetActive(true);
-        CoinSet();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 씬 로드 시마다 실행할 초기화 코드
+        if (scene.name == "GameScene")
+        {
+            Canvas.gameObject.SetActive(true);
+            CoinSet();
+        }
+    }
+
     private void Update()
     {
         CoinCalCulate();
@@ -35,10 +54,11 @@ public class GameUIController : MonoBehaviour
         {
             PauseGame();
         }
-        if (GameManager.Instance.IsGameOver == true)
-        {
-            GameOver();
-        }
+        //if (GameManager.Instance.IsGameOver == true)
+        //{
+        //    GameOver();
+        //    GameManager.Instance.IsGameOver = false;
+        //}
     }
 
     public void PauseGame()
@@ -53,18 +73,22 @@ public class GameUIController : MonoBehaviour
     }
     public void OutGame()
     {
+        Canvas.gameObject.SetActive(false);
         PausePanel.gameObject.SetActive(false);
         EndPanel.gameObject.SetActive(false);
         RankingBoard.gameObject.SetActive(false);
         Canvas.gameObject.SetActive(false);
         SoundManager.Instance.StopBGM();
         SceneManager.LoadScene("LobbyScene");
+        ScoreManager.Instance.ResetCurrentScore();
         Time.timeScale = 1f;
     }
     public void GameOver()
     {
+        Canvas.gameObject.SetActive(true);
         EndPanel.gameObject.SetActive(true);
-        Invoke("SetRankingBoard", 2.2f);
+        //RankingBoard.gameObject.SetActive(true);
+        Invoke("SetRankingBoard", 0);
     }
     public void SetRankingBoard()
     {
