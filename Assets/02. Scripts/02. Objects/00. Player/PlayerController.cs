@@ -84,6 +84,12 @@ public class PlayerController : MonoBehaviour
     {
         movement.TakeDamage(damage);
         Debug.Log($"플레이어가 {damage}의 데미지를 받았습니다.");
+
+        CameraShakeLerp cameraShake = Camera.main.GetComponent<CameraShakeLerp>();
+        if (cameraShake != null)
+        {
+            cameraShake.Shake();
+        }
     }
 
     // 임시 데미지 입력 처리 (C 키 입력 시 10 데미지 적용)
