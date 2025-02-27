@@ -1021,7 +1021,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1405802978}
   m_Father: {fileID: 1582376300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2256,7 +2257,7 @@ GameObject:
   - component: {fileID: 1405802980}
   - component: {fileID: 1405802979}
   m_Layer: 5
-  m_Name: Image
+  m_Name: StoreTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2275,13 +2276,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1229431594}
-  m_Father: {fileID: 1582376300}
+  m_Father: {fileID: 676563986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231.75, y: 442.5}
-  m_SizeDelta: {x: 363.5029, y: 173.1953}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 90}
+  m_SizeDelta: {x: 350, y: 160}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1405802979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2632,8 +2633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f45562642ead5e4bb57b9241a2d0c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookie1Price: 1500
-  cookie2Price: 1500
+  cookie1Price: 15000
+  cookie2Price: 15000
   cookie1ButtonText: {fileID: 324128815}
   cookie2ButtonText: {fileID: 1943297074}
 --- !u!1 &1582376296
@@ -2738,7 +2739,6 @@ RectTransform:
   - {fileID: 35591100}
   - {fileID: 612800861}
   - {fileID: 1053123394}
-  - {fileID: 1405802978}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
