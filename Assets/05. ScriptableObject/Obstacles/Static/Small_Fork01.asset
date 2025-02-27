@@ -16,6 +16,6 @@ MonoBehaviour:
   staticSprite: {fileID: 21300000, guid: a53c93244c4e12c418c6dc66e2c84529, type: 3}
   animatorController: {fileID: 0}
   size: {x: 1, y: 1}
-  damage: 1
+  damage: 5
   flyingSpeed: 0
   power: 1
