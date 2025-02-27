@@ -192,6 +192,7 @@ public class PlayerMovement : MonoBehaviour
             if (this.gameObject.transform.position.y < -10f)
             {
                 GameOver();
+                SoundManager.Instance.PlaySFX("FallDeathSFX01");
             }
 
         }

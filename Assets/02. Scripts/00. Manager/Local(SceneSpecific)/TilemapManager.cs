@@ -216,8 +216,25 @@ public class TilemapManager : MonoBehaviour
         activeTilemaps.Enqueue(newTilemap);
         currentTilemap = newTilemap;
 
+        Debug.LogWarning(newTilemap.name);
+
         // 새 타일맵의 패럴랙스 설정 적용 (임계값 업데이트 이후에 호출)
         ApplyParallaxConfigFromTilemap(newTilemap);
+        switch (newTilemap.name)
+        {
+            case "Stage1(Clone)":
+                SoundManager.Instance.StopBGM();
+                SoundManager.Instance.PlayBGM("GameSceneBGM01");
+                break;
+            case "Stage2(Clone)":
+                SoundManager.Instance.StopBGM();
+                SoundManager.Instance.PlayBGM("LobbyBGM01");
+                break;
+            case "Stage3(Clone)":
+                SoundManager.Instance.StopBGM();
+                SoundManager.Instance.PlayBGM("StoreSceneBGM01");
+                break;
+        }
 
         // TilemapRenderer 비활성화
         DisableTilemapRendererComponent(currentTilemap);
