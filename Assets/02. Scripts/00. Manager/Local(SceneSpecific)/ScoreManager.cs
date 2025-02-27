@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Services.CloudSave;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,15 @@ public class ScoreManager : MonoBehaviour
         UpdateUI();
         Debug.Log($"현재 점수: {currentScore}");
     }
+    //void Update()
+    //{
+    //    // Q 키가 눌렸을 경우 SaveCurrentScore() 실행
+    //    if (Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        Debug.Log("저장 시작");
+    //        SaveCurrentScore();
+    //    }
+    //}
 
     // 게임 종료 시 호출되는 함수 (한 번만 클라우드에 저장)
     public void SaveCurrentScore()
@@ -52,13 +62,12 @@ public class ScoreManager : MonoBehaviour
         // PlayerDataManager의 ScriptableObject와 비교하여 최고 점수 갱신
         if (PlayerDataManager.Instance != null && PlayerDataManager.Instance.playerDataSO != null)
         {
-            if (currentScore > PlayerDataManager.Instance.playerDataSO.highScore)
-            {
-                PlayerDataManager.Instance.playerDataSO.highScore = currentScore;
-                Debug.Log("클라우드에 저장할 최고 점수를 업데이트합니다: " + currentScore);
-                // 게임 종료 시 한 번만 클라우드에 저장
-                PlayerDataManager.Instance.SavePlayerDataAsync();
-            }
+            PlayerDataManager.Instance.playerDataSO.highScore = Mathf.Max(currentScore, PlayerDataManager.Instance.playerDataSO.highScore);
+            Debug.Log("클라우드에 저장할 최고 점수를 업데이트합니다: " + currentScore);
+            // 게임 종료 시 한 번만 클라우드에 저장
+#pragma warning disable CS4014
+            PlayerDataManager.Instance.SavePlayerDataAsync();
+#pragma warning restore CS4014
         }
         else
         {
