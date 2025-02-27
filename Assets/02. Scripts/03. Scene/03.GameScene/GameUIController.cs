@@ -31,6 +31,11 @@ public class GameUIController : MonoBehaviour
         }
 
         CoinCountText.text = GameManager.Instance.Money.ToString();
+
+        if(GameManager.Instance.IsGameOver == true)
+        {
+            EndPanel.gameObject.SetActive(true);
+        }
     }
 
     public void PauseGame()
@@ -47,7 +52,9 @@ public class GameUIController : MonoBehaviour
     {
         PausePanel.gameObject.SetActive(false);
         Canvas.gameObject.SetActive(false);
+        EndPanel.gameObject.SetActive(false);
         SceneManager.LoadScene("LobbyScene");
         Time.timeScale = 1f;
     }
+
 }
