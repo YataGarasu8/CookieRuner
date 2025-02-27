@@ -115,21 +115,12 @@ public class PlayerMovement : MonoBehaviour
     private bool shouldTriggerJump = false;         // 점프 트리거 호출 플래그
     private bool shouldTriggerDoubleJump = false;   // 더블 점프 트리거 호출 플래그
 
+    Sprite sprite;
+
     private bool isGameOver = false;
     void Awake()
     {
-        switch (GameManager.Instance.charSelect)
-        {
-            case CharacterSelect.Default:
-                //기본쿠기 렌더러 및 애니메이터 달아주기
-                break;
-            case CharacterSelect.Cookie2:
-                //2번째 쿠키 렌더러 및 애니메이터 달아주기
-                break;
-            case CharacterSelect.SorasakiHina:
-                //히나 렌더러 및 애니메이터 달아주기
-                break;
-        }
+        
         // 필수 컴포넌트 초기화 및 검사
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -138,6 +129,21 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         itemCollider = GameObject.Find("ItemColider").GetComponent<BoxCollider2D>();
         obsCollider = GameObject.Find("ObsColider").GetComponent<BoxCollider2D>();
+
+        switch (GameManager.Instance.charSelect)
+        {
+            case CharacterSelect.Default:
+                //기본쿠기 렌더러 및 애니메이터 달아주기
+                //sprite = Resources.Load<Sprite>("00.Character/Breve_run1");
+
+                break;
+            case CharacterSelect.Cookie2:
+                //2번째 쿠키 렌더러 및 애니메이터 달아주기
+                break;
+            case CharacterSelect.SorasakiHina:
+                //히나 렌더러 및 애니메이터 달아주기
+                break;
+        }
 
         GameManager.Instance.IsGameOver = false;
 
@@ -208,6 +214,8 @@ public class PlayerMovement : MonoBehaviour
     {
         GameManager.Instance.IsGameOver = true;
         rb.velocity = new Vector2(0f, rb.velocity.y); // x축 이동 속도 적용 (y축 속도는 유지)
+        obsCollider.gameObject.SetActive(false);
+        ScoreManager.Instance.SaveCurrentScore();
     }
 
     // 인스펙터에서 값 변경 시 자동 호출 (에디터 실시간 반영)
