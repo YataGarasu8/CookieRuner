@@ -47,7 +47,7 @@ public class NickNameManager : MonoBehaviour
             PlayerPrefs.Save();
 
             nickNamePanel.SetActive(false);
-
+             
             // 플레이어 닉네임 변경
             GameManager.Instance.PlayerName = playerNickName;
 

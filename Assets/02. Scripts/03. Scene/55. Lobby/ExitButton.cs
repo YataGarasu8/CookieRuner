@@ -11,6 +11,8 @@ public class ExitButton : MonoBehaviour
     {
         Debug.Log("게임 종료");
 
+        ScoreManager.Instance.ExecuteSaveCurrentScore();
+
         UnityEditor.EditorApplication.isPlaying = false;//유니티 플레이 종료
         Application.Quit();//빌드 된 게임 종료
     }
