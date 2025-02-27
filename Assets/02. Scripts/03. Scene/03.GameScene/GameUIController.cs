@@ -29,6 +29,8 @@ public class GameUIController : MonoBehaviour
         {
             PauseGame();
         }
+
+        CoinCountText.text = GameManager.Instance.Money.ToString();
     }
 
     public void PauseGame()

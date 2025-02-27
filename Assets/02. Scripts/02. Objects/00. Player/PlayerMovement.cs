@@ -119,7 +119,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool shouldTriggerJump = false;         // 점프 트리거 호출 플래그
     private bool shouldTriggerDoubleJump = false;   // 더블 점프 트리거 호출 플래그
-
     void Awake()
     {
         // 필수 컴포넌트 초기화 및 검사
@@ -486,5 +485,15 @@ public class PlayerMovement : MonoBehaviour
             isInvincible = true; isItemInvincible = true;
         }
             
+    }
+
+    public void OnSpeedUPImmune()
+    {
+        obsCollider.gameObject.SetActive(false);
+    }
+
+    public void OffSpeedUPImmune()
+    {
+        obsCollider.gameObject.SetActive(true);
     }
 }
