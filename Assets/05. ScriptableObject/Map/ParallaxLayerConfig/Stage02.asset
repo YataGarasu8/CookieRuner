@@ -18,9 +18,9 @@ MonoBehaviour:
     scale: {x: 2.4, y: 2.4}
     parallaxMultiplier: 0.8
     imageCount: 3
-    startPosition: {x: 0, y: -1}
+    startPosition: {x: 0, y: -0.5}
     lastAppliedScale: {x: 2.4, y: 2.4}
-    lastAppliedStartPosition: {x: 0, y: -1}
+    lastAppliedStartPosition: {x: 0, y: -0.5}
     sortingOrder: -3
   midgroundLayer:
     layerName: Mid
@@ -28,9 +28,9 @@ MonoBehaviour:
     scale: {x: 2.4, y: 2.4}
     parallaxMultiplier: 0.5
     imageCount: 3
-    startPosition: {x: 0, y: -1.2}
+    startPosition: {x: 0, y: -0.5}
     lastAppliedScale: {x: 2.4, y: 2.4}
-    lastAppliedStartPosition: {x: 0, y: -1.2}
+    lastAppliedStartPosition: {x: 0, y: -0.5}
     sortingOrder: -2
   foregroundLayer:
     layerName: Fore
