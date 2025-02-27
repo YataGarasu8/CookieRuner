@@ -8,15 +8,21 @@ using System;
 [Serializable]
 public class PlayerData
 {
-    public int highScore;  // 최고 점수
+    public string playerName;   // 플레이어 이름
+    public int highScore;       // 최고 점수
+    public int gold;            // 골드
 }
 
-// 일반 데이터 클래스 - json 역직렬화 전용
+
+// JSON 직렬화/역직렬화를 위한 데이터 클래스
 [Serializable]
 public class PlayerDataPlain
 {
+    public string playerName;
     public int highScore;
+    public int gold;
 }
+
 
 // PlayerDataSO must be instantiated using the ScriptableObject.CreateInstance method instead of new PlayerDataSO.
 // ScriptableObject를 Newtonsoft.Json으로 직접 역직렬화하려고 할 때 발생

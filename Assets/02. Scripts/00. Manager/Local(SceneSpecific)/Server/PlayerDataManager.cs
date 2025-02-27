@@ -7,12 +7,11 @@ using Unity.Services.Core;
 using UnityEngine;
 using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 public class PlayerDataManager : MonoBehaviour
 {
     public static PlayerDataManager Instance;
     private const string SaveDataKey = "PlayerData"; // 저장할 데이터의 키
+
     // Inspector에서 할당할 ScriptableObject 에셋 (PlayerDataSO 에셋)
     public PlayerDataSO playerDataSO;
 
@@ -52,19 +51,20 @@ public class PlayerDataManager : MonoBehaviour
         }
 
         // Cloud Save에서 플레이어 데이터 불러오기 (Newtonsoft.Json 사용)
-        bool loaded = await LoadPlayerDataWithNewtonsoftAsync();
+        bool loaded = await LoadPlayerDataAsync();
         if (!loaded)
         {
             // 저장된 데이터가 없으면 기본값 할당
-            playerDataSO.highScore = 0;
+            SetDefaultPlayerData();
             Debug.Log("저장된 플레이어 데이터가 없습니다. 기본 데이터 생성됨.");
         }
         else
         {
-            Debug.Log($"불러온 데이터 - 최고 점수: {playerDataSO.highScore}");
+            Debug.Log($"불러온 데이터 - 이름: {playerDataSO.playerName}, 점수: {playerDataSO.highScore}, 골드: {playerDataSO.gold}");
         }
     }
-    public async Task<bool> LoadPlayerDataWithNewtonsoftAsync()
+
+    public async Task<bool> LoadPlayerDataAsync()
     {
         try
         {
@@ -73,57 +73,41 @@ public class PlayerDataManager : MonoBehaviour
 #pragma warning restore CS0618
             if (loadedData.ContainsKey(SaveDataKey))
             {
-                // 불러온 데이터를 rawData 변수에 저장 (타입은 object)
-                object rawData = loadedData[SaveDataKey];
-                string jsonData = "";
-
-                // rawData가 string이면 바로 사용합니다.
-                if (rawData is string)
-                {
-                    jsonData = (string)rawData;
-                    Debug.Log("불러온 데이터가 string 타입입니다: " + jsonData);
-                }
-                else
-                {
-                    // 그렇지 않다면, rawData의 ToString()이나 SerializeObject를 사용해 봅니다.
-                    // (주의: ToString()은 객체의 타입 이름을 반환할 수 있으므로 SerializeObject를 사용하는 것이 좋습니다)
-                    jsonData = JsonConvert.SerializeObject(rawData);
-                    Debug.Log("SerializeObject를 사용하여 변환한 JSON 데이터: " + jsonData);
-                }
-
-                // 불필요한 공백 제거
+                string jsonData = JsonConvert.SerializeObject(loadedData[SaveDataKey]);
                 jsonData = jsonData.Trim();
 
-                // 만약 jsonData가 이중 인코딩된 경우 (따옴표로 감싸져 있다면) 처리
-                if (jsonData.StartsWith("\"") && jsonData.EndsWith("\""))
-                {
-                    Debug.Log("이중 인코딩 감지됨. 추가 따옴표 제거합니다.");
-                    jsonData = jsonData.Substring(1, jsonData.Length - 2);
-                    jsonData = jsonData.Replace("\\\"", "\"");
-                }
-
-                Debug.Log("최종 처리된 JSON 데이터: " + jsonData);
-                Debug.Log("JSON 데이터 길이: " + jsonData.Length);
-
-                // JSON 문자열이 올바른 형식인지 확인 ('{' 또는 '['로 시작하는지)
+                // JSON 데이터 형식 검증
                 if (!jsonData.StartsWith("{") && !jsonData.StartsWith("["))
                 {
-                    Debug.LogError("처리된 JSON 데이터가 '{' 또는 '['로 시작하지 않습니다. 값: " + jsonData);
+                    Debug.LogError("처리된 JSON 데이터 형식이 잘못되었습니다. 값: " + jsonData);
                     return false;
                 }
 
                 try
                 {
-                    // 일반 데이터 클래스로 역직렬화 (예: PlayerDataPlain)
-                    PlayerDataPlain tempData = JsonConvert.DeserializeObject<PlayerDataPlain>(jsonData);
-                    // ScriptableObject에 값 복사
-                    PlayerDataManager.Instance.playerDataSO.highScore = tempData.highScore;
-                    Debug.Log("플레이어 데이터 역직렬화 및 ScriptableObject 업데이트 성공.");
+                    // JSON 데이터를 PlayerDataSO로 역직렬화
+                    PlayerDataSO tempData = JsonConvert.DeserializeObject<PlayerDataSO>(jsonData);
+
+                    // 데이터 검증
+                    if (!IsValidPlayerData(tempData))
+                    {
+                        Debug.LogWarning("불러온 데이터가 유효하지 않아 기본값으로 초기화됩니다.");
+                        SetDefaultPlayerData();
+                        return false;
+                    }
+
+                    // ScriptableObject에 값 적용
+                    playerDataSO.playerName = tempData.playerName;
+                    playerDataSO.highScore = tempData.highScore;
+                    playerDataSO.gold = tempData.gold;
+
+                    Debug.Log($"플레이어 데이터 불러오기 완료 - 이름: {playerDataSO.playerName}, 점수: {playerDataSO.highScore}, 골드: {playerDataSO.gold}");
                 }
                 catch (Exception innerEx)
                 {
-                    Debug.LogError("역직렬화 오류: " + innerEx.Message);
-                    throw;
+                    Debug.LogError("JSON 역직렬화 오류: " + innerEx.Message);
+                    SetDefaultPlayerData();
+                    return false;
                 }
 
                 return true;
@@ -141,18 +125,26 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
-
     // 플레이어 데이터를 저장하는 함수 (ScriptableObject를 JSON으로 직렬화하여 저장)
     public async Task SavePlayerDataAsync()
     {
         try
         {
-            // ScriptableObject를 JSON 문자열로 직렬화 (JsonUtility 사용)
-            string jsonData = JsonUtility.ToJson(playerDataSO);
+            // 저장 전에 데이터 검증
+            if (!IsValidPlayerData(playerDataSO))
+            {
+                Debug.LogError("저장하려는 데이터가 유효하지 않습니다. 저장이 취소됩니다.");
+                return;
+            }
+
+            // PlayerDataSO 객체를 JSON으로 변환
+            string jsonData = JsonConvert.SerializeObject(playerDataSO);
+
             var dataToSave = new Dictionary<string, object>
             {
                 { SaveDataKey, jsonData }
             };
+
 #pragma warning disable CS0618
             await CloudSaveService.Instance.Data.ForceSaveAsync(dataToSave);
 #pragma warning restore CS0618
@@ -162,5 +154,23 @@ public class PlayerDataManager : MonoBehaviour
         {
             Debug.LogError("플레이어 데이터 저장 오류: " + ex.Message);
         }
+    }
+
+    // 데이터 검증 함수 (유효한 값인지 확인)
+    private bool IsValidPlayerData(PlayerDataSO data)
+    {
+        if (data == null) return false;
+        if (string.IsNullOrWhiteSpace(data.playerName)) return false; // 이름이 비어있으면 안됨
+        if (data.highScore < 0) return false; // 점수는 0 이상이어야 함
+        if (data.gold < 0) return false; // 골드는 0 이상이어야 함
+        return true;
+    }
+
+    // 기본 플레이어 데이터 설정 (잘못된 데이터가 있을 경우 기본값 할당)
+    private void SetDefaultPlayerData()
+    {
+        playerDataSO.playerName = "Guest";
+        playerDataSO.highScore = 0;
+        playerDataSO.gold = 0;
     }
 }
