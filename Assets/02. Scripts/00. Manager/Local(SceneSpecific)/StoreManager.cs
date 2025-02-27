@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using Random = UnityEngine.Random;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class StoreManager : MonoBehaviour
 {
@@ -20,7 +18,7 @@ public class StoreManager : MonoBehaviour
 
     void Update()
     {
-       
+
     }
     public void StoreYataClick()
     {
@@ -34,7 +32,7 @@ public class StoreManager : MonoBehaviour
     }
     public void EraseMentBox()
     {
-            YataMent.SetActive(false);
+        YataMent.SetActive(false);
     }
     public void ReturnScene()
     {

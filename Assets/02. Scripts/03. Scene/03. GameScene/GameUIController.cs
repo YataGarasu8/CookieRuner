@@ -27,8 +27,6 @@ public class GameUIController : MonoBehaviour
     {
         Canvas.gameObject.SetActive(true);
         CoinSet();
-
-
     }
     private void Update()
     {
