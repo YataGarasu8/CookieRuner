@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BonusStage
   m_EditorClassIdentifier: 
   backgroundLayer:
-    layerName: 
+    layerName: Back
     backgroundSprite: {fileID: 1318804966, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
     scale: {x: 3.2, y: 3.2}
     parallaxMultiplier: 0.5
@@ -22,7 +22,7 @@ MonoBehaviour:
     lastAppliedScale: {x: 1, y: 1}
     lastAppliedStartPosition: {x: 0, y: 0}
   midgroundLayer:
-    layerName: 
+    layerName: Mid
     backgroundSprite: {fileID: 937046342, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
     scale: {x: 1, y: 1}
     parallaxMultiplier: 0.5
@@ -31,7 +31,7 @@ MonoBehaviour:
     lastAppliedScale: {x: 1, y: 1}
     lastAppliedStartPosition: {x: 0, y: 0}
   foregroundLayer:
-    layerName: 
+    layerName: Fore
     backgroundSprite: {fileID: -1689772492, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
     scale: {x: 1, y: 1}
     parallaxMultiplier: 0.5
