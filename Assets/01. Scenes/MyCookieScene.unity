@@ -974,6 +974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 512117380}
   - component: {fileID: 512117381}
+  - component: {fileID: 512117382}
   m_Layer: 0
   m_Name: MyCookieManager
   m_TagString: Untagged
@@ -1008,6 +1009,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939aeb6749c484542a4d2c8558f9915f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &512117382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512117378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd5edf62dd80540bd698aaccb5577c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CookieUI1: {fileID: 0}
+  CookieUI2: {fileID: 0}
+  CookieUI3: {fileID: 0}
 --- !u!1 &749860246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,7 +1651,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1291013042}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 512117382}
+        m_TargetAssemblyTypeName: CharaterSelcet, Assembly-CSharp
+        m_MethodName: onClickCookie2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1291013042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,7 +2296,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1817061019}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 512117382}
+        m_TargetAssemblyTypeName: CharaterSelcet, Assembly-CSharp
+        m_MethodName: onClickSorasakiHina
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1817061019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,7 +2613,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2089815749}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 512117382}
+        m_TargetAssemblyTypeName: CharaterSelcet, Assembly-CSharp
+        m_MethodName: onClickdefaultCookie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2089815749
 MonoBehaviour:
   m_ObjectHideFlags: 0
