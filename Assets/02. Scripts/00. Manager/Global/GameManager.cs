@@ -9,6 +9,7 @@ using UnityEngine;
 public class GameManager
 {
     private static GameManager instance;
+    
     public static GameManager Instance     // ΩÃ±€≈Ê ¿ŒΩ∫≈œΩ∫
     {
         get
