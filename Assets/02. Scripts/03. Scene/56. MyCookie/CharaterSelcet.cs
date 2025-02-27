@@ -18,7 +18,7 @@ public class CharaterSelcet : MonoBehaviour
 
     public void onClickdefaultCookie()
     {
-        GameManager.Instance.charSelect = CharacterSelect.Default.ToString();
+        GameManager.Instance.charSelect = CharacterSelect.Default;
         CookieUI1.text = "장착중";
         CookieUI2.text = "변경";
         CookieUI3.text = "변경";
@@ -27,7 +27,7 @@ public class CharaterSelcet : MonoBehaviour
 
     public void onClickCookie2()
     {
-        GameManager.Instance.charSelect = CharacterSelect.Cookie2.ToString();
+        GameManager.Instance.charSelect = CharacterSelect.Cookie2;
         CookieUI1.text = "변경";
         CookieUI2.text = "장착중";
         CookieUI3.text = "변경";
@@ -36,7 +36,7 @@ public class CharaterSelcet : MonoBehaviour
 
     public void onClickSorasakiHina()
     {
-        GameManager.Instance.charSelect = CharacterSelect.SorasakiHina.ToString();
+        GameManager.Instance.charSelect = CharacterSelect.SorasakiHina;
         CookieUI1.text = "변경";
         CookieUI2.text = "변경";
         CookieUI3.text = "장착중";

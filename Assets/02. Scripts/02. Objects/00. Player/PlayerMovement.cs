@@ -73,12 +73,6 @@ using UnityEngine;
 // - 물리 기반 캐릭터 컨트롤러에서는 트리거 호출을 FixedUpdate에서 처리하는 것이 안정적
 // - 이를 통해 트리거가 적용되지 않는 문제를 방지하고, 애니메이션 전환과 물리 연산의 일관성을 유지할 수 있음
 
-
-
-
-
-
-
 // 플레이어 이동, 점프, 슬라이드 및 충돌 영역 변경을 관리하는 클래스
 // PlayerStats에서 스탯 데이터를 가져와 이동 속도, 크기 등에 적용
 // CircleCollider2D를 사용하여 슬라이드 시 충돌체 반지름 및 위치를 변경
@@ -124,6 +118,18 @@ public class PlayerMovement : MonoBehaviour
     private bool isGameOver = false;
     void Awake()
     {
+        switch (GameManager.Instance.charSelect)
+        {
+            case CharacterSelect.Default:
+                //기본쿠기 렌더러 및 애니메이터 달아주기
+                break;
+            case CharacterSelect.Cookie2:
+                //2번째 쿠키 렌더러 및 애니메이터 달아주기
+                break;
+            case CharacterSelect.SorasakiHina:
+                //히나 렌더러 및 애니메이터 달아주기
+                break;
+        }
         // 필수 컴포넌트 초기화 및 검사
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

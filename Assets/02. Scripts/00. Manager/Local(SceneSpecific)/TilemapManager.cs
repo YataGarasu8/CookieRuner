@@ -189,11 +189,15 @@ public class TilemapManager : MonoBehaviour
                 break;
             case "Stage2(Clone)":
                 SoundManager.Instance.StopBGM();
-                SoundManager.Instance.PlayBGM("LobbyBGM01");
+                SoundManager.Instance.PlayBGM("GameSceneBGM02");
                 break;
             case "Stage3(Clone)":
                 SoundManager.Instance.StopBGM();
-                SoundManager.Instance.PlayBGM("StoreSceneBGM01");
+                SoundManager.Instance.PlayBGM("GameSceneBGM03");
+                break;
+            case "BonusStage(Clone)":
+                SoundManager.Instance.StopBGM();
+                SoundManager.Instance.PlayBGM("GameSceneBGM04");
                 break;
         }
 
