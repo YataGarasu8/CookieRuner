@@ -73,6 +73,7 @@ public class ItemSC : MonoBehaviour
         {
             case ItemType.Score:
                 ScoreManager.Instance.AddScore(data.score);
+                SoundManager.Instance.PlaySFX("JellySFX01");
                 Debug.Log($"½ºÄÚ¾î È¹µæ: {data.score}");
 
                 break;
@@ -115,7 +116,6 @@ public class ItemSC : MonoBehaviour
             case ItemType.BonusItem:
                 if (GameManager.Instance.GetBonusItem(data.name))
                 {
-                    
                     ScoreManager.Instance.AddScore(data.score);
                     Debug.Log($"½ºÄÚ¾î È¹µæ: {data.score}");
                 }
@@ -137,6 +137,7 @@ public class ItemSC : MonoBehaviour
                 }
                 else
                 {
+                    SoundManager.Instance.PlaySFX("PowerUPSFX01");
                     playerStats.IncreaseSize();
                     playerMovement.TolggleImmune();
                     playerMovement.Invoke(nameof(playerMovement.TolggleImmune), data.duration);
@@ -146,6 +147,7 @@ public class ItemSC : MonoBehaviour
                 GameManager.Instance.Money += data.money;
                 Debug.Log($"¸Ó´Ï¾ÆÀÌÅÛ È¹µæ : {data.money}");
                 Debug.Log($"ÃÑÇÕ :  {GameManager.Instance.Money}");
+                SoundManager.Instance.PlaySFX("CoinSFX01");
                 break;
             default:
                 Debug.Log("Default");
