@@ -15,7 +15,7 @@ MonoBehaviour:
   backgroundLayer:
     layerName: Back
     backgroundSprite: {fileID: -861370730, guid: 1764fa9798ae04a43868ed203eae9ea9, type: 3}
-    scale: {x: 3.2, y: 3.2}
+    scale: {x: 2.96, y: 3.2}
     parallaxMultiplier: 0.8
     imageCount: 3
     startPosition: {x: 0, y: 0}
@@ -23,7 +23,7 @@ MonoBehaviour:
     lastAppliedStartPosition: {x: 0, y: 0}
   midgroundLayer:
     layerName: Mid
-    backgroundSprite: {fileID: 0}
+    backgroundSprite: {fileID: 21300000, guid: a673d01e8ffb18d4f92e19c7782c43c5, type: 3}
     scale: {x: 1, y: 1}
     parallaxMultiplier: 0.5
     imageCount: 3
