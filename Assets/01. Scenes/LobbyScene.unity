@@ -4863,6 +4863,7 @@ MonoBehaviour:
   nickNamePanel: {fileID: 47439037}
   nickNameInput: {fileID: 410775873}
   nickNameDisplayText: {fileID: 1087727327}
+  playerDataSO: {fileID: 11400000, guid: 7ef7a3ba7951b6c4ea8bd705131ae789, type: 2}
 --- !u!1 &2044654861
 GameObject:
   m_ObjectHideFlags: 0

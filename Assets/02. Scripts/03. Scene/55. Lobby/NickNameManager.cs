@@ -9,7 +9,10 @@ public class NickNameManager : MonoBehaviour
     public InputField nickNameInput;  
     public Text nickNameDisplayText; 
     
-    private string playerNickName = "Guest"; 
+    private string playerNickName = "Guest";
+
+    // 플레이어 데이터 (ScriptableObject)
+    public PlayerDataSO playerDataSO;
 
     void Start()
     {
@@ -21,6 +24,7 @@ public class NickNameManager : MonoBehaviour
 
         // 플레이어 닉네임 변경
         GameManager.Instance.PlayerName = playerNickName;
+        playerDataSO.playerName = playerNickName;
     }
 
     public void ToggleNickNamePanel()
@@ -46,6 +50,9 @@ public class NickNameManager : MonoBehaviour
 
             // 플레이어 닉네임 변경
             GameManager.Instance.PlayerName = playerNickName;
+
+            // 설정한 닉네임을 플레이어 스크립터블 오브젝트에 설정
+            playerDataSO.playerName = playerNickName;
         }
     }
 }
