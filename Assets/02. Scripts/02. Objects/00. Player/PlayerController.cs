@@ -34,11 +34,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleMovementInput();  // 점프 및 슬라이드 입력 처리
-        HandleSpeedInput();     // 속도 조절 입력 처리
-        HandleSizeInput();      // 크기 조절 입력 처리
-        //Debug.Log($"{stats.CurrentHealth}");
-        HandleDamageTestInput(); // 임시 데미지 입력 처리
+        if (GameManager.Instance.IsGameOver == false)
+        {
+            HandleMovementInput();  // 점프 및 슬라이드 입력 처리
+            HandleSpeedInput();     // 속도 조절 입력 처리
+            HandleSizeInput();      // 크기 조절 입력 처리
+            HandleDamageTestInput(); // 임시 데미지 입력 처리
+        }
     }
 
     // 이동 관련 입력 처리
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
         movement.TakeDamage(damage);
         Debug.Log($"플레이어가 {damage}의 데미지를 받았습니다.");
     }
-    
+
     // 임시 데미지 입력 처리 (C 키 입력 시 10 데미지 적용)
     private void HandleDamageTestInput()
     {
