@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 
 
+
 public class GameManager
 {
     private static GameManager instance;
@@ -30,6 +31,8 @@ public class GameManager
 
     //게임오버 변수
     public bool IsGameOver { get; set; }
+
+    public string charSelect = CharacterSelect.Default.ToString();
 
     // 초기화 함수: 인스턴스 생성 시 필요한 초기 설정 수행
     private void Init()
