@@ -39,16 +39,16 @@ public class ObstacleTile : Tile
         // 설정해둔 프리팹이 있으면 Instantiate
         if (obstaclePrefab != null)
         {
-            Debug.Log("프리팹이 할당되어 있습니다. 인스턴스화를 시작합니다.");
+            //Debug.Log("프리팹이 할당되어 있습니다. 인스턴스화를 시작합니다.");
             obstacleObject = GameObject.Instantiate(obstaclePrefab);
             obstacleObject.name = obstaclePrefab.name;
-            Debug.Log("프리팹 인스턴스화가 완료되었습니다. 생성된 오브젝트 이름: " + obstacleObject.name);
+            //Debug.Log("프리팹 인스턴스화가 완료되었습니다. 생성된 오브젝트 이름: " + obstacleObject.name);
 
             // 인스턴스화된 오브젝트 혹은 하위 오브젝트에 Obstacle 컴포넌트가 있는지 검사
             Obstacle obstacleComponent = obstacleObject.GetComponentInChildren<Obstacle>();
             if (obstacleComponent == null)
             {
-                Debug.Log("오류: 인스턴스화된 프리팹에서 Obstacle 컴포넌트를 찾을 수 없습니다.");
+                //Debug.Log("오류: 인스턴스화된 프리팹에서 Obstacle 컴포넌트를 찾을 수 없습니다.");
             }
         }
         // 프리팹이 없으면 기존 방식대로 새로 생성하고 obstacleData 사용

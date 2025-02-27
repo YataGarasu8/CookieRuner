@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
         }
         Instance = this;
         LoadHighScores();
-        UpdateUI();
+        //UpdateUI();
     }
 
     // 게임 도중 점수를 추가하는 함수
@@ -38,6 +38,9 @@ public class ScoreManager : MonoBehaviour
         currentScore += amount;
         //UpdateUI();
         Debug.Log($"현재 점수: {currentScore}");
+
+        if (scoreText != null)
+            scoreText.text = $"현재 점수: {currentScore}";
     }
     //void Update()
     //{

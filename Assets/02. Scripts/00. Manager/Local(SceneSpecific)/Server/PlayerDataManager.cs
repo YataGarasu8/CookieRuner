@@ -12,14 +12,14 @@ using Newtonsoft.Json;
 
 public class PlayerDataManager : MonoBehaviour
 {
-    public static PlayerDataManager Instance; // 싱글턴 인스턴스
-
     private const string SaveDataKey = "PlayerData"; // 클라우드 저장 키
     private const string LeaderboardId = "Ranking"; // 리더보드 ID
     public LeaderboardScoresPage leaderboard;
 
     // 플레이어 데이터 (ScriptableObject)
     public PlayerDataSO playerDataSO;
+
+    public static PlayerDataManager Instance; // 싱글턴 인스턴스
 
     void Awake()
     {
@@ -67,8 +67,6 @@ public class PlayerDataManager : MonoBehaviour
 
         // 리더보드에서 상위 10명의 플레이어 데이터를 가져옴
         await GetTopPlayersAsync();
-
-        
     }
 
     // 클라우드에서 플레이어 데이터를 불러오는 함수
