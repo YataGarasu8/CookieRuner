@@ -7,6 +7,7 @@ using Unity.Services.Core;
 using UnityEngine;
 using System;
 using Newtonsoft.Json;
+
 public class PlayerDataManager : MonoBehaviour
 {
     public static PlayerDataManager Instance;
@@ -73,7 +74,7 @@ public class PlayerDataManager : MonoBehaviour
 #pragma warning restore CS0618
             if (loadedData.ContainsKey(SaveDataKey))
             {
-                string jsonData = JsonConvert.SerializeObject(loadedData[SaveDataKey]);
+                string jsonData = loadedData[SaveDataKey].ToString();
                 jsonData = jsonData.Trim();
 
                 // JSON 데이터 형식 검증
@@ -85,8 +86,8 @@ public class PlayerDataManager : MonoBehaviour
 
                 try
                 {
-                    // JSON 데이터를 PlayerDataSO로 역직렬화
-                    PlayerDataSO tempData = JsonConvert.DeserializeObject<PlayerDataSO>(jsonData);
+                    // JSON 데이터를 PlayerDataPlain으로 역직렬화 (불필요한 속성 제거)
+                    PlayerDataPlain tempData = JsonConvert.DeserializeObject<PlayerDataPlain>(jsonData);
 
                     // 데이터 검증
                     if (!IsValidPlayerData(tempData))
@@ -130,23 +131,29 @@ public class PlayerDataManager : MonoBehaviour
     {
         try
         {
-            // 저장 전에 데이터 검증
-            if (!IsValidPlayerData(playerDataSO))
+            // PlayerDataSO → PlayerDataPlain 변환 후 유효성 검사
+            PlayerDataPlain tempData = new PlayerDataPlain
+            {
+                playerName = playerDataSO.playerName,
+                highScore = playerDataSO.highScore,
+                gold = playerDataSO.gold
+            };
+
+            if (!IsValidPlayerData(tempData))
             {
                 Debug.LogError("저장하려는 데이터가 유효하지 않습니다. 저장이 취소됩니다.");
                 return;
             }
 
-            // PlayerDataSO 객체를 JSON으로 변환
-            string jsonData = JsonConvert.SerializeObject(playerDataSO);
-
-            var dataToSave = new Dictionary<string, object>
-            {
-                { SaveDataKey, jsonData }
-            };
+            // JSON 변환 후 저장
+            string jsonData = JsonConvert.SerializeObject(tempData);
+            var dataDict = new Dictionary<string, object>
+        {
+            { SaveDataKey, jsonData }
+        };
 
 #pragma warning disable CS0618
-            await CloudSaveService.Instance.Data.ForceSaveAsync(dataToSave);
+            await CloudSaveService.Instance.Data.ForceSaveAsync(dataDict);
 #pragma warning restore CS0618
             Debug.Log("플레이어 데이터가 클라우드에 성공적으로 저장되었습니다.");
         }
@@ -156,8 +163,9 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
+
     // 데이터 검증 함수 (유효한 값인지 확인)
-    private bool IsValidPlayerData(PlayerDataSO data)
+    private bool IsValidPlayerData(PlayerDataPlain data)
     {
         if (data == null) return false;
         if (string.IsNullOrWhiteSpace(data.playerName)) return false; // 이름이 비어있으면 안됨
