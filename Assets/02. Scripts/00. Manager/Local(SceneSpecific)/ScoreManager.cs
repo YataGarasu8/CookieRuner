@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.Services.CloudSave;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
@@ -20,6 +22,9 @@ public class ScoreManager : MonoBehaviour
     private int currentScore = 0;   // 현재 점수
     private List<int> highScores = new List<int>(); // 로컬 최고 점수 목록
 
+    [Header("Game UI Controller")]
+    public GameUIController gameUIController;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,8 +33,70 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
         LoadHighScores();
         //UpdateUI();
+
+
+        // 새로운 씬이 로드될 때 UI 참조 재설정
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject gameUI = GameObject.Find("GameUI");
+        if (gameUI != null)
+        {
+            // GameUI 내의 Canvas 오브젝트를 찾습니다.
+            Transform canvasTransform = gameUI.transform.Find("Canvas");
+            if (canvasTransform != null)
+            {
+                // Canvas 하위의 ScoreText 오브젝트를 찾습니다.
+                Transform scoreTextTransform = canvasTransform.Find("ScoreText");
+                if (scoreTextTransform != null)
+                {
+                    scoreText = scoreTextTransform.GetComponent<TextMeshProUGUI>();
+                    scoreText.text = $"현재 점수: {currentScore}";
+                    Debug.Log("ScoreText 오브젝트를 성공적으로 찾았습니다.");
+                }
+                else
+                {
+                    Debug.LogError("Canvas 하위에서 ScoreText 오브젝트를 찾지 못했습니다.");
+                }
+            }
+            else
+            {
+                Debug.LogError("GameUI 하위에서 Canvas 오브젝트를 찾지 못했습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogError("DontDestroyOnLoad에 있는 GameUI 오브젝트를 찾지 못했습니다.");
+        }
+
+        GameObject rankingBoard = GameObject.Find("RankingBoard");
+        if (rankingBoard != null)
+        {
+            Transform highScoreTransform = rankingBoard.transform.Find("HighScoreText");
+            if (highScoreTransform != null)
+            {
+                highScoresText = highScoreTransform.GetComponent<TextMeshProUGUI>();
+                // targetText 사용
+            }
+            else
+            {
+                Debug.LogError("HighScoreText 오브젝트를 찾을 수 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogError("RankingBoard 오브젝트를 찾을 수 없습니다.");
+        }
+    }
+
+    public void ResetCurrentScore()
+    {
+        currentScore = 0;
     }
 
     // 게임 도중 점수를 추가하는 함수
@@ -53,7 +120,7 @@ public class ScoreManager : MonoBehaviour
     //}
 
     // 게임 종료 시 호출되는 함수 (한 번만 클라우드에 저장)
-    public void SaveCurrentScore()
+    public async Task SaveCurrentScore()
     {
         // 로컬 최고 점수 목록 업데이트
         highScores.Add(currentScore);
@@ -61,7 +128,7 @@ public class ScoreManager : MonoBehaviour
         if (highScores.Count > maxHighScores)
             highScores.RemoveRange(maxHighScores, highScores.Count - maxHighScores);
         SaveHighScores();
-        UpdateUI();
+        await UpdateUI();
 
         // PlayerDataManager의 ScriptableObject와 비교하여 최고 점수 갱신
         if (PlayerDataManager.Instance != null && PlayerDataManager.Instance.playerDataSO != null)
@@ -77,16 +144,16 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.LogError("PlayerDataManager 또는 playerDataSO가 null입니다!");
         }
+
+        gameUIController.GameOver();
     }
 
     // UI 업데이트 함수
-    private void UpdateUI()
+    public async Task UpdateUI()
     {
 #pragma warning disable CS4014
-        using var _ =
-#pragma warning disable CS4014
-        PlayerDataManager.Instance.GetTopPlayersAsync();
-        PlayerDataManager.Instance.LoadPlayerDataAsync();
+        await PlayerDataManager.Instance.GetTopPlayersAsync();
+        await PlayerDataManager.Instance.LoadPlayerDataAsync();
 #pragma warning restore CS4014
 
         TextMeshProUGUI proUGUI = new TextMeshProUGUI();
