@@ -146,6 +146,7 @@ public class Obstacle : MonoBehaviour
                 if (playerMovement.isItemInvincible == false)
                 {
                     playerController.OnHit(data.damage);
+                    SoundManager.Instance.PlaySFX("OnHitSFX01");
                 }
                 else
                 {
@@ -153,6 +154,7 @@ public class Obstacle : MonoBehaviour
                     Debug.Log("ELSEπÆ ¡¯¿‘");
                     rb.bodyType = RigidbodyType2D.Dynamic;
                     rb.AddForce((Vector2)collision.gameObject.transform.position * data.power);
+                    SoundManager.Instance.PlaySFX("ObsFireSFX01");
                     collider.isTrigger = true;
                     Destroy(collider);
                 }
