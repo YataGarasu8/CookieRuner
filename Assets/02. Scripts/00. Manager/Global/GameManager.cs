@@ -22,7 +22,9 @@ public class GameManager
             return instance;
         }
     }
-
+    //Ä³¸¯ÅÍ È¹µæ ¿©ºÎ
+    public bool HinaGet = false;
+    public bool SantaGet = false;
     //º¸³Ê½º¾ÆÀÌÅÛ È¹µæ¿©ºÎ
     private bool isGetLJH = false;
     private bool isGetLKW = false;

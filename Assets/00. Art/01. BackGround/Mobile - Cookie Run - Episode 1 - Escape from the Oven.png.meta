@@ -181,9 +181,9 @@ TextureImporter:
       name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_1
       rect:
         serializedVersion: 2
-        x: 4
+        x: 7
         y: 4049
-        width: 615
+        width: 608
         height: 314
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -202,9 +202,9 @@ TextureImporter:
       name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_2
       rect:
         serializedVersion: 2
-        x: 626
+        x: 629
         y: 4048
-        width: 857
+        width: 850
         height: 315
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -223,9 +223,9 @@ TextureImporter:
       name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_3
       rect:
         serializedVersion: 2
-        x: 6
+        x: 9
         y: 3711
-        width: 584
+        width: 578
         height: 316
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -244,9 +244,9 @@ TextureImporter:
       name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_4
       rect:
         serializedVersion: 2
-        x: 596
+        x: 603
         y: 3710
-        width: 792
+        width: 780
         height: 316
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -265,9 +265,9 @@ TextureImporter:
       name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_5
       rect:
         serializedVersion: 2
-        x: 1395
+        x: 1398
         y: 3710
-        width: 857
+        width: 853
         height: 316
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -895,12 +895,12 @@ TextureImporter:
       name: Mobile - Cookie Run - Episode 1 - Escape from the Oven_35
       rect:
         serializedVersion: 2
-        x: 4
+        x: 5
         y: 5
-        width: 855
+        width: 854
         height: 315
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -921,7 +921,7 @@ TextureImporter:
         width: 855
         height: 315
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -942,7 +942,7 @@ TextureImporter:
         width: 855
         height: 315
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
