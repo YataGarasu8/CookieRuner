@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.Services.CloudSave;
 using UnityEngine;
@@ -119,7 +120,7 @@ public class ScoreManager : MonoBehaviour
     //}
 
     // 게임 종료 시 호출되는 함수 (한 번만 클라우드에 저장)
-    public void SaveCurrentScore()
+    public async Task SaveCurrentScore()
     {
         // 로컬 최고 점수 목록 업데이트
         highScores.Add(currentScore);
@@ -127,7 +128,7 @@ public class ScoreManager : MonoBehaviour
         if (highScores.Count > maxHighScores)
             highScores.RemoveRange(maxHighScores, highScores.Count - maxHighScores);
         SaveHighScores();
-        UpdateUI();
+        await UpdateUI();
 
         // PlayerDataManager의 ScriptableObject와 비교하여 최고 점수 갱신
         if (PlayerDataManager.Instance != null && PlayerDataManager.Instance.playerDataSO != null)
@@ -148,13 +149,11 @@ public class ScoreManager : MonoBehaviour
     }
 
     // UI 업데이트 함수
-    public void UpdateUI()
+    public async Task UpdateUI()
     {
 #pragma warning disable CS4014
-        using var _ =
-#pragma warning disable CS4014
-        PlayerDataManager.Instance.GetTopPlayersAsync();
-        PlayerDataManager.Instance.LoadPlayerDataAsync();
+        await PlayerDataManager.Instance.GetTopPlayersAsync();
+        await PlayerDataManager.Instance.LoadPlayerDataAsync();
 #pragma warning restore CS4014
 
         TextMeshProUGUI proUGUI = new TextMeshProUGUI();

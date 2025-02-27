@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            int testDamage = 10;
+            int testDamage = 50;
             Debug.Log($"[PlayerController] C 키 입력으로 {testDamage} 데미지 적용");
             OnHit(testDamage);
         }
