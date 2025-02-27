@@ -36,8 +36,9 @@ public class GameManager
     {
 
     }
-    public int Money { get; set; } // 한 게임에서 얻는 골드재화
-    public int playerMoney;//플레이어가 보유한 골드의 총량
+    public int Money { get; set; } //플레이어가 보유한 골드의 총량
+    public int getMoney;//
+    int startMoney;
 
     public bool IsGetAllBonusItem()
     {
@@ -103,10 +104,4 @@ public class GameManager
         isGetLYJ = false;
         isGetLJH = false;
     }
-    public void CalculateMoney()
-    {
-        playerMoney += Money;
-       
-    }
-
 }
