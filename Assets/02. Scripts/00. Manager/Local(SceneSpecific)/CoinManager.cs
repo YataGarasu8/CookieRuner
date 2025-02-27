@@ -9,7 +9,6 @@ public class CoinManager : MonoBehaviour
     public Text addGold;
     public TextMeshProUGUI getGold;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +20,7 @@ public class CoinManager : MonoBehaviour
     {
         
     }
-    void WriteMoney()
+    public void WriteMoney()
     {
         if (addGold != null)
         {
