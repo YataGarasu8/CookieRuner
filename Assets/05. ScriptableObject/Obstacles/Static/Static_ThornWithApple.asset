@@ -18,4 +18,4 @@ MonoBehaviour:
   size: {x: 1, y: 1}
   damage: 5
   flyingSpeed: 0
-  power: 1
+  power: 7
