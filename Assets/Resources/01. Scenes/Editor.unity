@@ -2522,6 +2522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapPrefabs:
   - {fileID: 8622471835378288503, guid: 5ac07f4dba488c7409811e20f8f26941, type: 3}
+  - {fileID: 8622471835378288503, guid: bcdb0f1c39dd95e419eb3fe96fa98d34, type: 3}
+  - {fileID: 8622471835378288503, guid: 9edd99848385bce4286ef0bc06dd83ee, type: 3}
   player: {fileID: 255115609}
   parallaxLayer: {fileID: 507018789}
   fadeManager: {fileID: 1685067304}

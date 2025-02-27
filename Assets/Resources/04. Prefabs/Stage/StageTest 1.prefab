@@ -2403,7 +2403,7 @@ GameObject:
   - component: {fileID: 7580379418344932111}
   - component: {fileID: 8800061012789847723}
   m_Layer: 0
-  m_Name: StageTest
+  m_Name: StageTest 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2437,4 +2437,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac49eb67719d214e9d175d9b9431888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxConfigData: {fileID: 11400000, guid: 4d750d93b0e49634fa9038270a9e0f67, type: 2}
+  parallaxConfigData: {fileID: 11400000, guid: 4ff34e54bf95fac4792761d636555b8b, type: 2}
