@@ -82,13 +82,13 @@ public class UIManager : MonoBehaviour
         search[0].fontSize = textSize;
     }
 
-    private void Start()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+    //private void Start()
+    //{
+    //    SceneManager.sceneLoaded += OnSceneLoaded;
+    //}
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        UIManager.Instance.UIStack.Clear();
-    }
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    UIManager.Instance.UIStack.Clear();
+    //}
 }
