@@ -288,10 +288,13 @@ public class PlayerMovement : MonoBehaviour
 
     void GameOver()
     {
-        GameManager.Instance.IsGameOver = true;
-        rb.velocity = new Vector2(0f, rb.velocity.y); // x축 이동 속도 적용 (y축 속도는 유지)
-        obsCollider.gameObject.SetActive(false);
-        ScoreManager.Instance.SaveCurrentScore();
+        if(!GameManager.Instance.IsGameOver)
+        {
+            GameManager.Instance.IsGameOver = true;
+            rb.velocity = new Vector2(0f, rb.velocity.y); // x축 이동 속도 적용 (y축 속도는 유지)
+            obsCollider.gameObject.SetActive(false);
+            ScoreManager.Instance.SaveCurrentScore();
+        }
     }
 
     // 인스펙터에서 값 변경 시 자동 호출 (에디터 실시간 반영)

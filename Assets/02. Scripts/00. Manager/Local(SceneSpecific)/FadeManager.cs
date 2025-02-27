@@ -17,8 +17,17 @@ public class FadeManager : MonoBehaviour
     [Tooltip("페이드 전체 지속 시간 (초)")]
     public float fadeDuration = 2f; // 전체 페이드 시간 (인스펙터 적용 가능)
 
+    public static FadeManager Instance { get; private set; }
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         if (!fadeImage)
         {
             Debug.LogError("FadeManager: fadeImage가 할당되지 않았습니다.");
