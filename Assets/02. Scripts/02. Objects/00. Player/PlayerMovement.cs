@@ -131,14 +131,23 @@ public class PlayerMovement : MonoBehaviour
         obsCollider = GameObject.Find("ObsColider").GetComponent<BoxCollider2D>();
 
         RuntimeAnimatorController newController;
-        Sprite newSprite;
+        Sprite newSprite = null;
 
         switch (GameManager.Instance.charSelect)
         {
             // 기본쿠키 렌더러 및 애니메이터 달아주기
             case CharacterSelect.Default:
                 {
-                    newSprite = Resources.Load<Sprite>("Breve_run1");
+                    Sprite[] sprites = Resources.LoadAll<Sprite>("Mobile - Cookie Run - Brave Cookie");
+                    foreach (var sprite in sprites)
+                    {
+                        if (sprite.name == "Brave_run1")
+                        {
+                            newSprite = sprite;
+                            break;
+                        }
+                    }
+
                     if (newSprite != null)
                     {
                         spriteRenderer.sprite = newSprite;

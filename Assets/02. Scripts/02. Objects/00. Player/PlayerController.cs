@@ -40,6 +40,11 @@ public class PlayerController : MonoBehaviour
             HandleSpeedInput();     // 속도 조절 입력 처리
             HandleSizeInput();      // 크기 조절 입력 처리
             HandleDamageTestInput(); // 임시 데미지 입력 처리
+
+            if (stats.CurrentHealth <= 0)
+            {
+                movement.TolggleImmune();
+            }
         }
     }
 
