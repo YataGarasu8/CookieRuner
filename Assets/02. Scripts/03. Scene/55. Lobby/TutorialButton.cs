@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TutorialButton : MonoBehaviour
 {
 
-    public void LoadGameScene()
+    public void LoadTutorialScene()
     {
         SceneManager.LoadScene("TutorialScene");  //
     }
