@@ -4,8 +4,6 @@ using System.Data.SqlTypes;
 using TMPro;
 using UnityEngine;
 
-
-
 public class GameManager
 {
     private static GameManager instance;
@@ -34,6 +32,8 @@ public class GameManager
 
     //게임오버 변수
     public bool IsGameOver { get; set; }
+
+    public bool isTutorialPlay = false;
 
     public CharacterSelect charSelect = CharacterSelect.Default;
 
