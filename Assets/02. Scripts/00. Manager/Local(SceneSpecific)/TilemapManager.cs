@@ -127,8 +127,34 @@ public class TilemapManager : MonoBehaviour
         Debug.LogWarning(newTilemap.name);
         // 새 타일맵에 패럴랙스 설정 적용
         ApplyParallaxConfigFromTilemap(newTilemap);
+
+        switch (newTilemap.name)
+        {
+            case "Stage1(Clone)":
+                SoundManager.Instance.StopBGM();
+                SoundManager.Instance.PlayBGM("GameSceneBGM01");
+                break;
+            case "Stage2(Clone)":
+                SoundManager.Instance.StopBGM();
+                SoundManager.Instance.PlayBGM("GameSceneBGM02");
+                break;
+            case "Stage3(Clone)":
+                SoundManager.Instance.StopBGM();
+                SoundManager.Instance.PlayBGM("GameSceneBGM03");
+                break;
+            case "Bonus Stage(Clone)":
+                SoundManager.Instance.StopBGM();
+                SoundManager.Instance.PlayBGM("GameSceneBGM04");
+                break;
+            default:
+                Debug.Log("타일맵매니저브금디폴트");
+                break;
+        }
+
+
         // 장애물 Renderer, Collider 비활성화 처리
         DisableTilemapRendererComponent(currentTilemap);
+
     }
 
     // 가장 오래된 타일맵 제거 및 메모리 최적화

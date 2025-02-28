@@ -8,6 +8,13 @@ public class TutorialButton : MonoBehaviour
 
     public void LoadTutorialScene()
     {
-        SceneManager.LoadScene("TutorialScene");  //
+        if (GameManager.Instance.isTutorialPlay == true)
+            return;
+        else
+        {
+            SceneManager.LoadScene("TutorialScene");  //
+            GameManager.Instance.isTutorialPlay = true;
+        }
+        
     }
 }
