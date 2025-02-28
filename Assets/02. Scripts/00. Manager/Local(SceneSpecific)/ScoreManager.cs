@@ -185,10 +185,14 @@ public class ScoreManager : MonoBehaviour
 
         TextMeshProUGUI proUGUI = new TextMeshProUGUI();
         
-        foreach (var score in PlayerDataManager.Instance.leaderboard.Results)
+
+        if(PlayerDataManager.Instance.leaderboard != null)
         {
-            proUGUI.text += $"{score.Rank+1}등  점수 : {score.Score}\n";
-            Debug.Log($"순위: {score.Rank}, 플레이어 : {score.PlayerName}, 점수: {score.Score}");
+            foreach (var score in PlayerDataManager.Instance.leaderboard.Results)
+            {
+                proUGUI.text += $"{score.Rank + 1}등  점수 : {score.Score}\n";
+                Debug.Log($"순위: {score.Rank}, 플레이어 : {score.PlayerName}, 점수: {score.Score}");
+            }
         }
 
         highScoresText.text = "";
