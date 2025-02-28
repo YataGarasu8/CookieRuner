@@ -81,6 +81,7 @@ public class ItemSC : MonoBehaviour
                 playerStats.Heal(data.healthBonus);
                 break;
             case ItemType.SpeedUPItem:
+                SoundManager.Instance.PlaySFX("SpeedUPSFX01");
                 if (playerStats.isSpeedUP)
                 {
                     playerStats.CancelInvoke(nameof(playerStats.ResetSpeedModifier));
@@ -114,6 +115,7 @@ public class ItemSC : MonoBehaviour
                 }
                 break;
             case ItemType.BonusItem:
+                SoundManager.Instance.PlaySFX("BonusJellySFX01");
                 if (GameManager.Instance.GetBonusItem(data.name))
                 {
                     ScoreManager.Instance.AddScore(data.score);

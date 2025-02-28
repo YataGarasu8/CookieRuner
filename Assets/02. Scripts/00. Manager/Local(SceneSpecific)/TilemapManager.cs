@@ -144,7 +144,7 @@ public class TilemapManager : MonoBehaviour
                 break;
             case "Bonus Stage(Clone)":
                 SoundManager.Instance.StopBGM();
-                SoundManager.Instance.PlayBGM("GameSceneBGM04");
+                SoundManager.Instance.PlayBGM("BonusStageBGM02");
                 break;
             default:
                 Debug.Log("타일맵매니저브금디폴트");
