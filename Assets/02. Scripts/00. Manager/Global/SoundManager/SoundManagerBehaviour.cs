@@ -62,5 +62,10 @@ public class SoundManagerBehaviour : MonoBehaviour
             SoundManager.Instance.StopBGM();
             SoundManager.Instance.PlayBGM("StoreSceneBGM01");
         }
+        if (scene.name == "TutorialScene")
+        {
+            SoundManager.Instance.StopBGM();
+            SoundManager.Instance.PlayBGM("GameSceneBGM01");
+        }
     }
 }
