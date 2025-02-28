@@ -1021,9 +1021,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cd5edf62dd80540bd698aaccb5577c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CookieUI1: {fileID: 0}
-  CookieUI2: {fileID: 0}
-  CookieUI3: {fileID: 0}
+  HinaStaned: {fileID: 21300000, guid: d8d0a0f8c512818428e1fe93281573d0, type: 3}
+  SantaStaned: {fileID: 21300000, guid: 97576a02e03e839448138d05e77d0b52, type: 3}
 --- !u!1 &749860246
 GameObject:
   m_ObjectHideFlags: 0

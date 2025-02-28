@@ -10,13 +10,15 @@ public class HPCotroller : MonoBehaviour
     public RectTransform rubTimeHPBar;
     public RectTransform backGroundBar;
 
+
     private void Start()
     {
+        rubTimeHPBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().CurrentHealth * 2, 50);
         if (PlayerStat != null)
         {
             PlayerStats stats = PlayerStat.GetComponent<PlayerStats>() as PlayerStats;
         }
-        backGroundBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().CurrentHealth*2, 50);
+        backGroundBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().CurrentHealth * 2, 50);
     }
     private void Update()
     {
@@ -27,7 +29,7 @@ public class HPCotroller : MonoBehaviour
     {
         if (PlayerStat != null)
         {
-            rubTimeHPBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().CurrentHealth*2, 0);
+            rubTimeHPBar.sizeDelta = new Vector2(PlayerStat.GetComponent<PlayerStats>().CurrentHealth * 2, 50);
             PlayerStat.GetComponent<PlayerStats>().CurrentHealth -= Time.deltaTime;
         }
     }

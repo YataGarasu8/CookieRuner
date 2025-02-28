@@ -1,0 +1,1005 @@
+fileFormatVersion: 2
+guid: 08be608cbea667e4ba0f0455f0335956
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Brave_doublejump1
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1364
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c530c6530793346aaf1b2bfbdbb5c3
+      internalID: 1349129229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_doublejump2
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 352c956e4f0efba40b9631aad84d2692
+      internalID: 574726758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_doublejump3
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfaf2fa01a0596a4ab08f9d5adf1c808
+      internalID: -995849130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_doublejump4
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b218f9f2b7cea4fa368f4ad53d017f
+      internalID: 1950497102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_doublejump5
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b302655605db124994144b12c349e60
+      internalID: 1085822390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_doublejump6
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b40f795b0eb5214b9258f2fb51c1c6a
+      internalID: 556386810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_doublejump0
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb40de060d8d5c74ba70c129369ca268
+      internalID: -1217443617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_jump0
+      rect:
+        serializedVersion: 2
+        x: 1909
+        y: 1366
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2344664ec3c92d844b0ae2be9e130be6
+      internalID: 1303747819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_jump1
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff656739b52daca4ca3fbf1513483a00
+      internalID: -1262981019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_slide0
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4696ba178328345438d18cd9fffd513a
+      internalID: 1438957772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_slide1
+      rect:
+        serializedVersion: 2
+        x: 2725
+        y: 1363
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64b57589d698e2648bf9ce402c237735
+      internalID: 1626176497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_run0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1091
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c5bc86d2fad044e96c9a7205cf779e
+      internalID: 2061702606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_run1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1091
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c139863d40dea7941ba1275aa78161fb
+      internalID: 2024222815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_run2
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 1091
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d3139905895dd3479120d292a6995b7
+      internalID: -405929553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_run3
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 1093
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b4a2c5ccb178d74288d45bfa23a8e28
+      internalID: 817101330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_fastrun0
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 1093
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8558eebbb794dd74588f6b08a7dc97f6
+      internalID: -1488958016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_fastrun1
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 1091
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 649cda1e5fe6ca54a904a4d71f9b290b
+      internalID: -114983024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_fastrun2
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 1091
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97738ff3339706d408cc16df40dbba03
+      internalID: 291398786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_fastrun3
+      rect:
+        serializedVersion: 2
+        x: 1909
+        y: 1091
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 485493a6867db0f46b23829ac7dbb5be
+      internalID: 236733102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusStart0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 819
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55dfa375a2c940843955cb47ff502fbd
+      internalID: 992763715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusStart1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 819
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c03ec642bb9d748a082bf19585292b
+      internalID: -792024321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusStart2
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 821
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b3a7b4bc346414b999a669723db65f
+      internalID: -174892236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusStart3
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 819
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1674941b0490c14a94d121385038d7d
+      internalID: -932143243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusStart4
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 819
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0707a5fceec78f4d82d7a9d15ccc6e4
+      internalID: 1321394893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusStart5
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 819
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce1058d9c07edf48b8e996397b35b05
+      internalID: 254148161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusEnd0
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 819
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d24bf27fa6a201143ba80d160ec7cfa4
+      internalID: 579466244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusEnd1
+      rect:
+        serializedVersion: 2
+        x: 1909
+        y: 820
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ad5ca733369cd24781d7c5ac483022b
+      internalID: 1006086122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusEnd2
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 819
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9a1fb1ed7fb664b96e6894376fee41
+      internalID: -2066092433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusLoop0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 547
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70479641c5a5c294f8548578d804c566
+      internalID: -596281271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_BonusLoop1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 547
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b390b3b121cdbad4d93f9923ab92a427
+      internalID: -2075096514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_Fall0
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 547
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96a5356d7ae6b084f86ee51b5bbc0e0c
+      internalID: -2021624652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_Exhaust0
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 275
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce2c6bf4788c0e4ca6a1a6480f8d1e9
+      internalID: 495266237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_Exhaust1
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 275
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa409e903015ad44b238fb52a30d937
+      internalID: -91141023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_Exhaust2
+      rect:
+        serializedVersion: 2
+        x: 1909
+        y: 275
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d7b786744fde747bad1ac9941b9f3e
+      internalID: -343987557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_Exhaust
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 275
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd36260c9e4d6448a3d296679ae152d
+      internalID: -754590321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave_Exhaust3
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 275
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff462c13de15044184e79d7a05a08f2
+      internalID: 577678965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave Cookie_OrJump1
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 3
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7c0afc0e6b54d140bddfd199ff479fd
+      internalID: -1166027883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brave Cookie_OrJump2
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 3
+        width: 264
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f172028201ccb3b4991f4110f19073d9
+      internalID: -1579655367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      1: -380604965
+      2: -1720481612
+      3: -1428954957
+      Brave Cookie_OrJump1: -1166027883
+      Brave Cookie_OrJump2: -1579655367
+      Brave_BonusEnd0: 579466244
+      Brave_BonusEnd1: 1006086122
+      Brave_BonusEnd2: -2066092433
+      Brave_BonusEnd3: 357153616
+      Brave_BonusEnd5: -64921847
+      Brave_BonusLoop0: -596281271
+      Brave_BonusLoop1: -2075096514
+      Brave_BonusStart0: 992763715
+      Brave_BonusStart1: -792024321
+      Brave_BonusStart2: -174892236
+      Brave_BonusStart3: -932143243
+      Brave_BonusStart4: 1321394893
+      Brave_BonusStart5: 254148161
+      Brave_Exhaust: -754590321
+      Brave_Exhaust0: 495266237
+      Brave_Exhaust1: -91141023
+      Brave_Exhaust2: -343987557
+      Brave_Exhaust3: 577678965
+      Brave_Fall0: -2021624652
+      Brave_doublejump0: -1217443617
+      Brave_doublejump1: 1349129229
+      Brave_doublejump2: 574726758
+      Brave_doublejump3: -995849130
+      Brave_doublejump4: 1950497102
+      Brave_doublejump5: 1085822390
+      Brave_doublejump6: 556386810
+      Brave_fastrun0: -1488958016
+      Brave_fastrun1: -114983024
+      Brave_fastrun2: 291398786
+      Brave_fastrun3: 236733102
+      Brave_jump0: 1303747819
+      Brave_jump1: -1262981019
+      Brave_run0: 2061702606
+      Brave_run1: 2024222815
+      Brave_run2: -405929553
+      Brave_run3: 817101330
+      Brave_slide0: 1438957772
+      Brave_slide1: 1626176497
+      MBrave Cookie_0: -1081722301
+      Mobile - Cookie Run - Brave Cookie_18: -99489893
+      Mobile - Cookie Run - Brave Cookie_19: -1958369732
+      Mobile - Cookie Run - Brave Cookie_26: 2039104942
+      Mobile - Cookie Run - Brave Cookie_27: 1128975045
+      Mobile - Cookie Run - Brave Cookie_28: 6103998
+      Mobile - Cookie Run - Brave Cookie_29: 923949982
+      Mobile - Cookie Run - Brave Cookie_30: -780553100
+      Mobile - Cookie Run - Brave Cookie_36: 2093877598
+      Mobile - Cookie Run - Brave Cookie_39: 692433981
+      Mobile - Cookie Run - Brave Cookie_40: 715683322
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
