@@ -32,6 +32,6 @@
 팀 노션 참조
 https://www.notion.so/teamsparta/19a2dc3ef51481468c65dbb53a9ddb93
 
-##
+## 트러블 슈팅
 팀 노션내에 PPT참조
 https://www.notion.so/teamsparta/19a2dc3ef51481468c65dbb53a9ddb93
